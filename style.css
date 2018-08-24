@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+@font-face
+{
+	font-family: helv;
+	src: url(Helv.otf);
+}
+@font-face
+{
+	font-family: helv;
+	font-style: italic;
+	src: url(HelvIT.otf);
+}
+body
+{
+	margin-top: 75px;
+	width: 80%;
+	padding: 0 9%;
+}
+a
+{
+	color: #000000;
+	text-decoration: underline;
+	cursor: pointer;
+}
+table
+{
+	border-collapse: collapse;
+}
+.navbar
+{
+    overflow: hidden;
+    position: fixed;
+	top: 0;
+	left: 0;
+    width: 80%;
+	padding: 0 10%;
+	margin: 0;
+	vertical-align: bottom;
+	font-family: helv;
+	font-size: 24px;
+}
+.navbarback
+{
+    overflow: hidden;
+    position: fixed;
+    background-color: #D3D3D3;
+	top: 0;
+	left: 0;
+	width: 100%;
+	margin: 0;
+	height: 60px;
+	border-bottom: medium solid #000000;	
+}
+.navbar table
+{
+	width: 100%;
+}
+.navbar tr
+{
+	height: 60px;
+}
+.navbar td
+{
+	padding: 0 0.5em;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+.navbar select
+{
+	font-family: helv;
+	font-size: 24px;
+	background-color: transparent;
+	border: none;
+	text-align: right;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+	text-decoration: underline;
+	direction: rtl;
+}
+.navbar option
+{
+	font-family: helv;
+	font-size: 24px;
+    background-color: #D3D3D3;
+	text-align-last: right; 
+}
+@media screen and (max-width: 1440px)
+{
+	.navdesk
+	{
+		visibility: hidden;
+		display: none;
+	}
+}
+@media screen and (min-width: 1441px)
+{
+	.navmob
+	{
+		visibility: hidden;
+		display: none;
+		width: 0;
+		padding: 0;
+		margin: 0;
+	}
+}
