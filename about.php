@@ -54,11 +54,6 @@
 {
 	width: calc(100% - 360px);
 }
-h2
-{
-	padding-bottom:0;
-	margin-bottom:0;
-}
 ul
 {
 	padding-top:0;
