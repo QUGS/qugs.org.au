@@ -58,7 +58,7 @@ while($game = mysqli_fetch_assoc($games_l))
 <meta content="utf-8" http-equiv="encoding"/>
 <meta name="author" content="Bradley Stone"/>
 <meta name="version" content="v1.3"/>
-<link rel="icon" href="fave<?php echo intval(date("z")) % 4 ?>.png"/>
+<link rel="icon" href="fave<?php echo intval(date("z")) % 6 ?>.png"/>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <style>
 .collect tr:nth-child(odd)
