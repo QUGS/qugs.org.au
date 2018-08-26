@@ -104,16 +104,16 @@ function ticket(v)
 	}
 	else
 	{
-		var points = v * parseInt(document.getElementById("ticket_val").value)
+		var points = parseInt(document.getElementById("ticket_val").value)
 		if (isNaN(points) || points <= 0)
 		{
 			return;
 		}
-		desti[ticks] = points;
 		ticks++;
+		desti[String(ticks)] = v * points;
 		document.getElementById("newticket").outerHTML = '<tr height="512" id="ticket_'+ticks+'"><td><img src="images/14996_ticket_'+(v==1 ? 'pass' : 'fail')+'.png" width="512" height="512"/></td> \
 			<td colspan="2"><img src="images/14996_ticket_destroy.png" width="512" height="512" onClick="destroy('+ticks+')"/></td> \
-			<td>=&nbsp;'+(v==1 ? '+' : '&minus;')+(v*points)+'</td></tr>\
+			<td>=&nbsp;'+(v==1 ? '+' : '&minus;')+points+'</td></tr>\
 			<tr height="512" id="newticket"><td>&nbsp;</td> \
 			<td colspan="2"><img src="images/14996_ticket_plus.png" width="512" height="512" onClick="newticket()"/></td> \
 			<td>&nbsp;</td>';
@@ -128,7 +128,7 @@ function ticket(v)
 function destroy(k)
 {
 	document.getElementById("ticket_"+k).outerHTML = "";
-	delete desti[k];
+	delete desti[String(k)];
 	updatescore();
 }
 
