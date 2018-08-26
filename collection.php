@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 }
 
 // Select all games from database
-$games_q = "SELECT bgg, name, playmin, playmax, timeplay, link, expand FROM Collection ORDER BY sortname";
+$games_q = "SELECT bgg, name, playmin, playmax, timeplay, link, expand, app FROM Collection ORDER BY sortname";
 $games_l = mysqli_query($db, $games_q) or die(mysqli_error($db));
 
 // String to form club's games table
@@ -41,7 +41,8 @@ while($game = mysqli_fetch_assoc($games_l))
 		<td>".$game['playmin'].($game['playmin']==$game['playmax'] ? "" : "-".$game['playmax'])."</td>
 		<td>".($game['timeplay'] >= 60 ? intval($game['timeplay']/60)." hr ": "").($game['timeplay'] % 60 != 0 ? $game['timeplay']%60 ." min": "")."</td>
 		<td id=s".$game['bgg'].">[Loading]</td>
-		<td><a href=\"rules/r".$game['bgg'].".pdf\">Link</a></td></tr>\n";
+		<td><a href=\"rules/r".$game['bgg'].".pdf\">Link</a></td>
+		".($game['app'] ? "<td>".$game['app']."</td>" : "<td style='color:#808080;'>N/A</td>")."</tr>\n";
 	
 	$table .= $row;
 	$select .= "<option value='".$game['bgg']."|".$game['name']."'>".$game['name']."</option>\n";
@@ -585,7 +586,7 @@ Maximum:<label id="timemaxvalm" for="timemax" class="moblab">&emsp;6 hr</label><
 Minimum:<label id="rateminvalm" for="ratemin" class="moblab">&emsp;0.0</label><input type="range" min=0 max=10 value=0 step=0.2 class="slider" id="ratemin" onInput="raterfilter('min');" onChange="raterfilter('min');" autocomplete="off"><label id="rateminvald" for="ratemin" class="desklab">0.0</label><br/>
 Maximum:<label id="ratemaxvalm" for="ratemax" class="moblab">&emsp;10.0</label><input type="range" min=0 max=10 value=10 step=0.2 class="slider" id="ratemax" onInput="raterfilter('max');" onChange="raterfilter('max');" autocomplete="off"><label id="ratemaxvald" for="ratemax" class="desklab">10.0</label><br/>
 </form>
-<table class="collect"><tr><td>Game</td><td style="text-decoration:underline;" onClick="playform = !playform; document.getElementById('playform').style.display = playform ? 'inline' : 'none'; if(!playform) {document.getElementById('playmin').value=1;document.getElementById('playmax').value=10;playerfilter();}">Players</td><td style="text-decoration:underline;" onClick="timeform = !timeform; document.getElementById('timeform').style.display = timeform ? 'inline' : 'none'; if(!timeform) {document.getElementById('timemin').value=0;document.getElementById('timemax').value=12;timerfilter();}">Time</td><td id="BGGrat">BGG Rating</td><td>Rules</td></tr>
+<table class="collect"><tr><td>Game</td><td style="text-decoration:underline;" onClick="playform = !playform; document.getElementById('playform').style.display = playform ? 'inline' : 'none'; if(!playform) {document.getElementById('playmin').value=1;document.getElementById('playmax').value=10;playerfilter();}">Players</td><td style="text-decoration:underline;" onClick="timeform = !timeform; document.getElementById('timeform').style.display = timeform ? 'inline' : 'none'; if(!timeform) {document.getElementById('timemin').value=0;document.getElementById('timemax').value=12;timerfilter();}">Time</td><td id="BGGrat">BGG Rating</td><td>Rules</td><td>Apps</td></tr>
 <?php echo $table;?>
 </table>
 <h2>Maintenance Requests</h2>

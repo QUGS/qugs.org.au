@@ -237,6 +237,7 @@ ul
 <li><a href="wargamer/QW55_Feb03.pdf">Issue Fifty-Five (February, 2003)</a></li>
 <li><a href="wargamer/QW56_Sep04.pdf">Issue Fifty-Six (September, 2004)</a></li></div></ul>
 <br/><h2>&nbsp;</h2>
-This website is managed through <a href="https://github.com/QUGS/QUGS">GitHub</a>.<br/>&nbsp;
+This website is managed through <a href="https://github.com/QUGS/QUGS">GitHub</a>.<br/>
+Icons from <a href="https://game-icons.net/">https://game-icons.net/</a><br/>&nbsp;
 </body>
 </html>
