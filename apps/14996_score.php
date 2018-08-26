@@ -47,12 +47,35 @@ img {
 	width:224px;
 	height:224px;
 	font-size:100%;
+	background-color:#0000FF;
+	color:#FFFFFF;
 }
-#dialog input
+#dialog input[type="button"]
 {
 	height:256px;
 	width:1536px;
 	font-size:100%;
+	background-color:#0000FF;
+	color:#FFFFFF;
+}
+#dialog input[type="number"]
+{
+	height:224px;
+	width:1504px;
+	font-size:100%;
+	background-color:#FFFFFF;
+	color:#0000FF;
+	border:16px solid #0000FF;
+}
+::placeholder
+{
+	color:#FFFFFF; 
+	font-size:80%;
+	text-shadow:
+		-4px -4px 0 #0000FF,
+		 4px -4px 0 #0000FF,
+		-4px 4px 0 #0000FF,
+		 4px 4px 0 #0000FF;
 }
 </style>
 <script language="javascript">
