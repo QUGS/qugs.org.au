@@ -8,6 +8,15 @@
 <meta name="version" content="v1.4"/>
 <link rel="icon" href="images/fave<?php echo intval(date("z")) % 6 ?>.png"/>
 <style>
+html {
+	margin:0;
+	padding:0;
+}
+body
+{
+	margin:0;
+	padding:8px;
+}
 table {
 	border-collapse:collapse;
 }
