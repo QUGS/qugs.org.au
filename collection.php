@@ -58,7 +58,7 @@ while($game = mysqli_fetch_assoc($games_l))
 <meta content="utf-8" http-equiv="encoding"/>
 <meta name="author" content="Bradley Stone"/>
 <meta name="version" content="v1.3"/>
-<link rel="icon" href="fave<?php echo intval(date("z")) % 6 ?>.png"/>
+<link rel="icon" href="images/fave<?php echo intval(date("z")) % 6 ?>.png"/>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <style>
 .collect tr:nth-child(odd)
@@ -561,7 +561,7 @@ function maintsub()
 	}
 	</script>
     <div class="navbar"><table><tr>
-    <td><img src="logosmall.png" height="50px" width="88px"/></td>
+    <td><img src="images/logosmall.png" height="50px" width="88px"/></td>
     <td>Queensland University Games Society</td>
     <td style="width:100%">&nbsp;</td>
     <td class="navdesk"><a href="./">Home</a></td>
