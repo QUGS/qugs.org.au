@@ -108,7 +108,7 @@ function updatescore()
 		stock -= i * track[i];
 		score += delta[i] * track[i];
 	});
-	document.getElementById("trains_remaining").innerHTML = (stock <= 2 ? '<img width="96" height="96" style="width:96px;height:96px;display:inline;vertical-align:text-bottom;" src="images/14996_clock.png"/>&nbsp;' : '') + stock + " Train"+(stock == 1 ? "" : "s")+" Remaining";
+	document.getElementById("trains_remaining").innerHTML = (stock <= 2 ? '<img width="96" height="96" style="width:96px;height:96px;display:inline;vertical-align:text-bottom;" src="clock.png"/>&nbsp;' : '') + stock + " Train"+(stock == 1 ? "" : "s")+" Remaining";
 	
 	for (var key in desti) 
 	{
@@ -143,11 +143,11 @@ function ticket(v)
 		}
 		ticks++;
 		desti[String(ticks)] = v * points;
-		document.getElementById("newticket").outerHTML = '<tr height="512" id="ticket_'+ticks+'"><td><img src="images/14996_ticket_'+(v==1 ? 'pass' : 'fail')+'.png" width="512" height="512"/></td> \
-			<td colspan="2"><img src="images/14996_ticket_destroy.png" width="512" height="512" onClick="destroy('+ticks+')"/></td> \
+		document.getElementById("newticket").outerHTML = '<tr height="512" id="ticket_'+ticks+'"><td><img src="ticket_'+(v==1 ? 'pass' : 'fail')+'.png" width="512" height="512"/></td> \
+			<td colspan="2"><img src="ticket_destroy.png" width="512" height="512" onClick="destroy('+ticks+')"/></td> \
 			<td>=&nbsp;'+(v==1 ? '+' : '&minus;')+points+'</td></tr>\
 			<tr height="512" id="newticket"><td>&nbsp;</td> \
-			<td colspan="2"><img src="images/14996_ticket_plus.png" width="512" height="512" onClick="newticket()"/></td> \
+			<td colspan="2"><img src="ticket_plus.png" width="512" height="512" onClick="newticket()"/></td> \
 			<td>&nbsp;</td>';
 	}
 	document.getElementById("table").style.display = "table";
@@ -176,48 +176,48 @@ function station(s)
 function longest()
 {
 	longg = !longg;
-	document.getElementById("longest_thumb").src = longg ? "images/14996_longest_lose.png" : "images/14996_longest_get.png";
+	document.getElementById("longest_thumb").src = longg ? "longest_lose.png" : "longest_get.png";
 	document.getElementById("longest_score").innerHTML = longg ? "=&nbsp;+10" : "=&nbsp;+0";
 	updatescore();
 }
 </script>
 </head>
 <body>
-<table id="table"><tr height="512"><td width="512"><img src="images/14996_train_1.png" width="512" height="512"/></td>
+<table id="table"><tr height="512"><td width="512"><img src="train_1.png" width="512" height="512"/></td>
 	<td id="train_1_count" width="256">&times;0</td>
     <td width="256"><input type="button" value="+" onClick="train(1, 1);"/><br/><input type="button" value="&minus;" onClick="train(1, -1);"/></td>
     <td id="train_1_score" width="512">=&nbsp;+0</td></tr>
-<tr height="512"><td><img src="images/14996_train_2.png" width="512" height="512"/></td>
+<tr height="512"><td><img src="train_2.png" width="512" height="512"/></td>
 	<td id="train_2_count">&times;0</td>
     <td><input type="button" value="+" onClick="train(2, 1);"/><br/><input type="button" value="&minus;" onClick="train(2, -1);"/></td>
     <td id="train_2_score">=&nbsp;+0</td></tr>
-<tr height="512"><td><img src="images/14996_train_3.png" width="512" height="512"/></td>
+<tr height="512"><td><img src="train_3.png" width="512" height="512"/></td>
 	<td id="train_3_count">&times;0</td>
     <td><input type="button" value="+" onClick="train(3, 1);"/><br/><input type="button" value="&minus;" onClick="train(3, -1);"/></td>
     <td id="train_3_score">=&nbsp;+0</td></tr>
-<tr height="512"><td><img src="images/14996_train_4.png" width="512" height="512"/></td>
+<tr height="512"><td><img src="train_4.png" width="512" height="512"/></td>
 	<td id="train_4_count">&times;0</td>
     <td><input type="button" value="+" onClick="train(4, 1);"/><br/><input type="button" value="&minus;" onClick="train(4, -1);"/></td>
     <td id="train_4_score">=&nbsp;+0</td></tr>
-<tr height="512"><td><img src="images/14996_train_6.png" width="512" height="512"/></td>
+<tr height="512"><td><img src="train_6.png" width="512" height="512"/></td>
 	<td id="train_6_count">&times;0</td>
     <td><input type="button" value="+" onClick="train(6, 1);"/><br/><input type="button" value="&minus;" onClick="train(6, -1);"/></td>
     <td id="train_6_score">=&nbsp;+0</td></tr>
-<tr height="512"><td><img src="images/14996_train_8.png" width="512" height="512"/></td>
+<tr height="512"><td><img src="train_8.png" width="512" height="512"/></td>
 	<td id="train_8_count">&times;0</td>
     <td><input type="button" value="+" onClick="train(8, 1);"/><br/><input type="button" value="&minus;" onClick="train(8, -1);"/></td>
     <td id="train_8_score">=&nbsp;+0</td></tr>
 <tr><td colspan="4" id="trains_remaining" style="font-size:96px; height:96px">45 Trains Remaining</td>
 <tr height="512" id="newticket"><td>&nbsp;</td>
-	<td colspan="2"><img src="images/14996_ticket_plus.png" width="512" height="512" onClick="newticket()"/></td>
+	<td colspan="2"><img src="ticket_plus.png" width="512" height="512" onClick="newticket()"/></td>
     <td>&nbsp;</td></tr>
 <tr><td colspan="4" id="ticket_complete" style="font-size:96px; height:96px">0 Tickets Complete (0 &amp; 0)</td>
-<tr height="512"><td><img src="images/14996_stations.png" width="512" height="512"/></td>
+<tr height="512"><td><img src="stations.png" width="512" height="512"/></td>
 	<td id="station_count">&times;3</td>
     <td><input type="button" value="+" onClick="station(1);"/><br/><input type="button" value="&minus;" onClick="station(-1);"/></td>
     <td id="station_score">=&nbsp;+12</td></tr>
-<tr height="512"><td><img src="images/14996_longest.png" width="512" height="512"/></td>
-	<td colspan="2"><img src="images/14996_longest_get.png" width="512" height="512" onClick="longest();" id="longest_thumb" /></td>
+<tr height="512"><td><img src="longest.png" width="512" height="512"/></td>
+	<td colspan="2"><img src="longest_get.png" width="512" height="512" onClick="longest();" id="longest_thumb" /></td>
     <td id="longest_score">=&nbsp;+0</td></tr>
 <tr style="border-top:4px solid black;"><td style="font-size:384px;text-align:right;">&Sigma;</td><td colspan="3" id="score" style="font-size:384px;">+12</td></tr></table>
 <div id="dialog" style="font-size:192px;display:none;text-align:center;width:1536px;">New Ticket<br/>
