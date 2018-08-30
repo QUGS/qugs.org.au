@@ -199,7 +199,7 @@ var blackmarket = [];
 function chose(s)
 {
 	choice[s] = !choice[s];
-	document.getElementById(s.toLowerCase()).innerHTML = '<img height="12vw" width="18vw" src="'+s.toLowerCase()+'.png"/>&nbsp;'+(choice[s] ? '' : '<s>')+s+(choice[s] ? '' : '</s>')+'</a>';
+	document.getElementById(s.toLowerCase()).innerHTML = '<img height="8vw" width="12vw" src="'+s.toLowerCase()+'.png"/>&nbsp;'+(choice[s] ? '' : '<s>')+s+(choice[s] ? '' : '</s>')+'</a>';
 }
 function minim(s, v)
 {
@@ -353,44 +353,44 @@ function DoTheThing()
 	}
 	document.getElementById("options").style.display = "none";
 	var prosp = kingdoms[Math.floor(Math.random() * 10)].expand == "Prosperity";
-	txt = '<table><tr><td><img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="treasure.png"/> Copper<br/>\
-		<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="treasure.png"/> Silver<br/>\
-		<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="treasure.png"/> Gold<br/>\
-		' + (prosp ? '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="treasure.png"/> Platinum<br/>' : "") + '\
-		<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="victory.png"/> Estate<br/>\
-		<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="victory.png"/> Duchy<br/>\
-		<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="victory.png"/> Province<br/>\
-		' + (prosp ? '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="victory.png"/> Colony<br/>' : "") + '\
-		' + (potion ? '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="potion.png"/> Potion<br/>' : "") + '\
-		<img height="12vw" width="18vw" src="spacer.png"/>' + (curse ? '<img height="12vw" width="18vw" src="curse.png"/> Curse<br/>' : '<img height="12vw" width="18vw" src="nocurse.png"/> <s>Curse</s><br/>');
+	txt = '<table><tr><td><img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="treasure.png"/> Copper<br/>\
+		<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="treasure.png"/> Silver<br/>\
+		<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="treasure.png"/> Gold<br/>\
+		' + (prosp ? '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="treasure.png"/> Platinum<br/>' : "") + '\
+		<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="victory.png"/> Estate<br/>\
+		<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="victory.png"/> Duchy<br/>\
+		<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="victory.png"/> Province<br/>\
+		' + (prosp ? '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="victory.png"/> Colony<br/>' : "") + '\
+		' + (potion ? '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="potion.png"/> Potion<br/>' : "") + '\
+		<img height="8vw" width="12vw" src="spacer.png"/>' + (curse ? '<img height="8vw" width="12vw" src="curse.png"/> Curse<br/>' : '<img height="8vw" width="12vw" src="nocurse.png"/> <s>Curse</s><br/>');
 	kingdoms.sort(compare);
 	kingdoms.forEach(function(i)
 	{
-		txt += '<img height="12vw" width="18vw" src="locked.png" onClick="lock(\''+i.name+'\', 1)" id="'+i.name.toLowerCase()+'ll"/>\
-			<img height="12vw" width="18vw" src="unlocked.png" onClick="lock(\''+i.name+'\', 0)" id="'+i.name.toLowerCase()+'uu" hidden/>\
-			<img height="12vw" width="18vw" src="'+i.expand.toLowerCase()+'.png"/> '+i.name+'<br/>';
+		txt += '<img height="8vw" width="12vw" src="locked.png" onClick="lock(\''+i.name+'\', 1)" id="'+i.name.toLowerCase()+'ll"/>\
+			<img height="8vw" width="12vw" src="unlocked.png" onClick="lock(\''+i.name+'\', 0)" id="'+i.name.toLowerCase()+'uu" hidden/>\
+			<img height="8vw" width="12vw" src="'+i.expand.toLowerCase()+'.png"/> '+i.name+'<br/>';
 		switch (i.name)
 		{
 			case "Young Witch":
-				txt += '<img height="12vw" width="18vw" src="spacer.png"/>\
-					<img height="12vw" width="18vw" src="locked.png" onClick="lock(\''+bane.name+'\', 1)" id="'+bane.name.toLowerCase()+'ll"/>\
-					<img height="12vw" width="18vw" src="unlocked.png" onClick="lock(\''+bane.name+'\', 0)" id="'+bane.name.toLowerCase()+'uu" hidden/>\
-					&#11208;<img height="12vw" width="18vw" src="'+bane.expand.toLowerCase()+'.png"/> '+bane.name+'<br/>';
+				txt += '<img height="8vw" width="12vw" src="spacer.png"/>\
+					<img height="8vw" width="12vw" src="locked.png" onClick="lock(\''+bane.name+'\', 1)" id="'+bane.name.toLowerCase()+'ll"/>\
+					<img height="8vw" width="12vw" src="unlocked.png" onClick="lock(\''+bane.name+'\', 0)" id="'+bane.name.toLowerCase()+'uu" hidden/>\
+					&#11208;<img height="8vw" width="12vw" src="'+bane.expand.toLowerCase()+'.png"/> '+bane.name+'<br/>';
 				switch (bane.name)
 					{
 						case "Black Market":
 							blackmarket.sort(compare);
 							blackmarket.forEach(function(j)
 							{
-								txt += '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="spacer.png"/>\
-									<img height="12vw" width="18vw" src="locked.png" onClick="lock(\''+j.name+'\', 1)" id="'+j.name.toLowerCase()+'ll"/>\
-									<img height="12vw" width="18vw" src="unlocked.png" onClick="lock(\''+j.name+'\', 0)" id="'+j.name.toLowerCase()+'uu" hidden/>\
-									&#11208;<img height="12vw" width="18vw" src="'+j.expand.toLowerCase()+'.png"/> '+j.name+'<br/>';
+								txt += '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="spacer.png"/>\
+									<img height="8vw" width="12vw" src="locked.png" onClick="lock(\''+j.name+'\', 1)" id="'+j.name.toLowerCase()+'ll"/>\
+									<img height="8vw" width="12vw" src="unlocked.png" onClick="lock(\''+j.name+'\', 0)" id="'+j.name.toLowerCase()+'uu" hidden/>\
+									&#11208;<img height="8vw" width="12vw" src="'+j.expand.toLowerCase()+'.png"/> '+j.name+'<br/>';
 								switch (j.name)
 								{
 									case "Tournament":
-										txt += '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="spacer.png"/>\
-											&#11208;<img height="12vw" width="18vw" src="cornucopia.png"/> <i>Prizes (5)</i><br/>';
+										txt += '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="spacer.png"/>\
+											&#11208;<img height="8vw" width="12vw" src="cornucopia.png"/> <i>Prizes (5)</i><br/>';
 										break;
 								}
 							});
@@ -401,28 +401,28 @@ function DoTheThing()
 				blackmarket.sort(compare);
 				blackmarket.forEach(function(j)
 				{
-					txt += '<img height="12vw" width="18vw" src="spacer.png"/>\
-						<img height="12vw" width="18vw" src="locked.png" onClick="lock(\''+j.name+'\', 1)" id="'+j.name.toLowerCase()+'ll"/>\
-						<img height="12vw" width="18vw" src="unlocked.png" onClick="lock(\''+j.name+'\', 0)" id="'+j.name.toLowerCase()+'uu" hidden/>\
-						&#11208;<img height="12vw" width="18vw" src="'+j.expand.toLowerCase()+'.png"/> '+j.name+'<br/>';
+					txt += '<img height="8vw" width="12vw" src="spacer.png"/>\
+						<img height="8vw" width="12vw" src="locked.png" onClick="lock(\''+j.name+'\', 1)" id="'+j.name.toLowerCase()+'ll"/>\
+						<img height="8vw" width="12vw" src="unlocked.png" onClick="lock(\''+j.name+'\', 0)" id="'+j.name.toLowerCase()+'uu" hidden/>\
+						&#11208;<img height="8vw" width="12vw" src="'+j.expand.toLowerCase()+'.png"/> '+j.name+'<br/>';
 					switch (j.name)
 					{
 						case "Young Witch":
-							txt += '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="spacer.png"/>\
-								<img height="12vw" width="18vw" src="locked.png" onClick="lock(\''+bane.name+'\', 1)" id="'+bane.name.toLowerCase()+'ll"/>\
-								<img height="12vw" width="18vw" src="unlocked.png" onClick="lock(\''+bane.name+'\', 0)" id="'+bane.name.toLowerCase()+'uu" hidden/>\
-								&#11208;<img height="12vw" width="18vw" src="'+bane.expand.toLowerCase()+'.png"/> '+bane.name+'<br/>';
+							txt += '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="spacer.png"/>\
+								<img height="8vw" width="12vw" src="locked.png" onClick="lock(\''+bane.name+'\', 1)" id="'+bane.name.toLowerCase()+'ll"/>\
+								<img height="8vw" width="12vw" src="unlocked.png" onClick="lock(\''+bane.name+'\', 0)" id="'+bane.name.toLowerCase()+'uu" hidden/>\
+								&#11208;<img height="8vw" width="12vw" src="'+bane.expand.toLowerCase()+'.png"/> '+bane.name+'<br/>';
 							break;
 						case "Tournament":
-							txt += '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="spacer.png"/>\
-								&#11208;<img height="12vw" width="18vw" src="cornucopia.png"/> <i>Prizes (5)</i><br/>';
+							txt += '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="spacer.png"/>\
+								&#11208;<img height="8vw" width="12vw" src="cornucopia.png"/> <i>Prizes (5)</i><br/>';
 							break;
 					}
 				});
 				break;
 			case "Tournament":
-				txt += '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="spacer.png"/>\
-					&#11208;<img height="12vw" width="18vw" src="cornucopia.png"/> <i>Prizes (5)</i><br/>';
+				txt += '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="spacer.png"/>\
+					&#11208;<img height="8vw" width="12vw" src="cornucopia.png"/> <i>Prizes (5)</i><br/>';
 				break;
 		}
 	});
@@ -614,44 +614,44 @@ function ReDoTheThing()
 		}
 	}
 	var prosp = kingdoms[Math.floor(Math.random() * 10)].expand == "Prosperity";
-	txt = '<table><tr><td><img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="treasure.png"/> Copper<br/>\
-		<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="treasure.png"/> Silver<br/>\
-		<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="treasure.png"/> Gold<br/>\
-		' + (prosp ? '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="treasure.png"/> Platinum<br/>' : "") + '\
-		<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="victory.png"/> Estate<br/>\
-		<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="victory.png"/> Duchy<br/>\
-		<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="victory.png"/> Province<br/>\
-		' + (prosp ? '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="victory.png"/> Colony<br/>' : "") + '\
-		' + (potion ? '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="potion.png"/> Potion<br/>' : "") + '\
-		<img height="12vw" width="18vw" src="spacer.png"/>' + (curse ? '<img height="12vw" width="18vw" src="curse.png"/> Curse<br/>' : '<img height="12vw" width="18vw" src="nocurse.png"/> <s>Curse</s><br/>');
+	txt = '<table><tr><td><img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="treasure.png"/> Copper<br/>\
+		<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="treasure.png"/> Silver<br/>\
+		<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="treasure.png"/> Gold<br/>\
+		' + (prosp ? '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="treasure.png"/> Platinum<br/>' : "") + '\
+		<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="victory.png"/> Estate<br/>\
+		<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="victory.png"/> Duchy<br/>\
+		<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="victory.png"/> Province<br/>\
+		' + (prosp ? '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="victory.png"/> Colony<br/>' : "") + '\
+		' + (potion ? '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="potion.png"/> Potion<br/>' : "") + '\
+		<img height="8vw" width="12vw" src="spacer.png"/>' + (curse ? '<img height="8vw" width="12vw" src="curse.png"/> Curse<br/>' : '<img height="8vw" width="12vw" src="nocurse.png"/> <s>Curse</s><br/>');
 	kingdoms.sort(compare);
 	kingdoms.forEach(function(i)
 	{
-		txt += '<img height="12vw" width="18vw" src="locked.png" onClick="lock(\''+i.name+'\', 1)" id="'+i.name.toLowerCase()+'ll"/>\
-			<img height="12vw" width="18vw" src="unlocked.png" onClick="lock(\''+i.name+'\', 0)" id="'+i.name.toLowerCase()+'uu" hidden/>\
-			<img height="12vw" width="18vw" src="'+i.expand.toLowerCase()+'.png"/> '+i.name+'<br/>';
+		txt += '<img height="8vw" width="12vw" src="locked.png" onClick="lock(\''+i.name+'\', 1)" id="'+i.name.toLowerCase()+'ll"/>\
+			<img height="8vw" width="12vw" src="unlocked.png" onClick="lock(\''+i.name+'\', 0)" id="'+i.name.toLowerCase()+'uu" hidden/>\
+			<img height="8vw" width="12vw" src="'+i.expand.toLowerCase()+'.png"/> '+i.name+'<br/>';
 		switch (i.name)
 		{
 			case "Young Witch":
-				txt += '<img height="12vw" width="18vw" src="spacer.png"/>\
-					<img height="12vw" width="18vw" src="locked.png" onClick="lock(\''+bane.name+'\', 1)" id="'+bane.name.toLowerCase()+'ll"/>\
-					<img height="12vw" width="18vw" src="unlocked.png" onClick="lock(\''+bane.name+'\', 0)" id="'+bane.name.toLowerCase()+'uu" hidden/>\
-					&#11208;<img height="12vw" width="18vw" src="'+bane.expand.toLowerCase()+'.png"/> '+bane.name+'<br/>';
+				txt += '<img height="8vw" width="12vw" src="spacer.png"/>\
+					<img height="8vw" width="12vw" src="locked.png" onClick="lock(\''+bane.name+'\', 1)" id="'+bane.name.toLowerCase()+'ll"/>\
+					<img height="8vw" width="12vw" src="unlocked.png" onClick="lock(\''+bane.name+'\', 0)" id="'+bane.name.toLowerCase()+'uu" hidden/>\
+					&#11208;<img height="8vw" width="12vw" src="'+bane.expand.toLowerCase()+'.png"/> '+bane.name+'<br/>';
 				switch (bane.name)
 					{
 						case "Black Market":
 							blackmarket.sort(compare);
 							blackmarket.forEach(function(j)
 							{
-								txt += '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="spacer.png"/>\
-									<img height="12vw" width="18vw" src="locked.png" onClick="lock(\''+j.name+'\', 1)" id="'+j.name.toLowerCase()+'ll"/>\
-									<img height="12vw" width="18vw" src="unlocked.png" onClick="lock(\''+j.name+'\', 0)" id="'+j.name.toLowerCase()+'uu" hidden/>\
-									&#11208;<img height="12vw" width="18vw" src="'+j.expand.toLowerCase()+'.png"/> '+j.name+'<br/>';
+								txt += '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="spacer.png"/>\
+									<img height="8vw" width="12vw" src="locked.png" onClick="lock(\''+j.name+'\', 1)" id="'+j.name.toLowerCase()+'ll"/>\
+									<img height="8vw" width="12vw" src="unlocked.png" onClick="lock(\''+j.name+'\', 0)" id="'+j.name.toLowerCase()+'uu" hidden/>\
+									&#11208;<img height="8vw" width="12vw" src="'+j.expand.toLowerCase()+'.png"/> '+j.name+'<br/>';
 								switch (j.name)
 								{
 									case "Tournament":
-										txt += '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="spacer.png"/>\
-											&#11208;<img height="12vw" width="18vw" src="cornucopia.png"/> <i>Prizes (5)</i><br/>';
+										txt += '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="spacer.png"/>\
+											&#11208;<img height="8vw" width="12vw" src="cornucopia.png"/> <i>Prizes (5)</i><br/>';
 										break;
 								}
 							});
@@ -662,28 +662,28 @@ function ReDoTheThing()
 				blackmarket.sort(compare);
 				blackmarket.forEach(function(j)
 				{
-					txt += '<img height="12vw" width="18vw" src="spacer.png"/>\
-						<img height="12vw" width="18vw" src="locked.png" onClick="lock(\''+j.name+'\', 1)" id="'+j.name.toLowerCase()+'ll"/>\
-						<img height="12vw" width="18vw" src="unlocked.png" onClick="lock(\''+j.name+'\', 0)" id="'+j.name.toLowerCase()+'uu" hidden/>\
-						&#11208;<img height="12vw" width="18vw" src="'+j.expand.toLowerCase()+'.png"/> '+j.name+'<br/>';
+					txt += '<img height="8vw" width="12vw" src="spacer.png"/>\
+						<img height="8vw" width="12vw" src="locked.png" onClick="lock(\''+j.name+'\', 1)" id="'+j.name.toLowerCase()+'ll"/>\
+						<img height="8vw" width="12vw" src="unlocked.png" onClick="lock(\''+j.name+'\', 0)" id="'+j.name.toLowerCase()+'uu" hidden/>\
+						&#11208;<img height="8vw" width="12vw" src="'+j.expand.toLowerCase()+'.png"/> '+j.name+'<br/>';
 					switch (j.name)
 					{
 						case "Young Witch":
-							txt += '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="spacer.png"/>\
-								<img height="12vw" width="18vw" src="locked.png" onClick="lock(\''+bane.name+'\', 1)" id="'+bane.name.toLowerCase()+'ll"/>\
-								<img height="12vw" width="18vw" src="unlocked.png" onClick="lock(\''+bane.name+'\', 0)" id="'+bane.name.toLowerCase()+'uu" hidden/>\
-								&#11208;<img height="12vw" width="18vw" src="'+bane.expand.toLowerCase()+'.png"/> '+bane.name+'<br/>';
+							txt += '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="spacer.png"/>\
+								<img height="8vw" width="12vw" src="locked.png" onClick="lock(\''+bane.name+'\', 1)" id="'+bane.name.toLowerCase()+'ll"/>\
+								<img height="8vw" width="12vw" src="unlocked.png" onClick="lock(\''+bane.name+'\', 0)" id="'+bane.name.toLowerCase()+'uu" hidden/>\
+								&#11208;<img height="8vw" width="12vw" src="'+bane.expand.toLowerCase()+'.png"/> '+bane.name+'<br/>';
 							break;
 						case "Tournament":
-							txt += '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="spacer.png"/>\
-								&#11208;<img height="12vw" width="18vw" src="cornucopia.png"/> <i>Prizes (5)</i><br/>';
+							txt += '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="spacer.png"/>\
+								&#11208;<img height="8vw" width="12vw" src="cornucopia.png"/> <i>Prizes (5)</i><br/>';
 							break;
 					}
 				});
 				break;
 			case "Tournament":
-				txt += '<img height="12vw" width="18vw" src="spacer.png"/><img height="12vw" width="18vw" src="spacer.png"/>\
-					&#11208;<img height="12vw" width="18vw" src="cornucopia.png"/> <i>Prizes (5)</i><br/>';
+				txt += '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="spacer.png"/>\
+					&#11208;<img height="8vw" width="12vw" src="cornucopia.png"/> <i>Prizes (5)</i><br/>';
 				break;
 		}
 	});
@@ -696,11 +696,11 @@ function ReDoTheThing()
 </head>
 <body>
 <div id="options">
-<a id="base" onClick="chose('Base');"><img height="12vw" width="18vw" src="base.png"/>&nbsp;Base</a><br/>
-<a id="alchemy" onClick="chose('Alchemy');"><img height="12vw" width="18vw" src="alchemy.png"/>&nbsp;Alchemy</a><br/>
-<a id="prosperity" onClick="chose('Prosperity');"><img height="12vw" width="18vw" src="prosperity.png"/>&nbsp;Prosperity</a><br/>
-<a id="cornucopia" onClick="chose('Cornucopia');"><img height="12vw" width="18vw" src="cornucopia.png"/>&nbsp;Cornucopia</a><br/>
-<a id="hinterlands" onClick="chose('Hinterlands');"><img height="12vw" width="18vw" src="hinterlands.png"/>&nbsp;Hinterlands</a><br/>
+<a id="base" onClick="chose('Base');"><img height="8vw" width="12vw" src="base.png"/>&nbsp;Base</a><br/>
+<a id="alchemy" onClick="chose('Alchemy');"><img height="8vw" width="12vw" src="alchemy.png"/>&nbsp;Alchemy</a><br/>
+<a id="prosperity" onClick="chose('Prosperity');"><img height="8vw" width="12vw" src="prosperity.png"/>&nbsp;Prosperity</a><br/>
+<a id="cornucopia" onClick="chose('Cornucopia');"><img height="8vw" width="12vw" src="cornucopia.png"/>&nbsp;Cornucopia</a><br/>
+<a id="hinterlands" onClick="chose('Hinterlands');"><img height="8vw" width="12vw" src="hinterlands.png"/>&nbsp;Hinterlands</a><br/>
 <table><tr><td>Action</td>
 	<td><input type="button" value="0+" onClick="minim('Action', 0)" class="have" id="action0"/> 
     <input type="button" value="1+" onClick="minim('Action', 1)" id="action1"/> 
