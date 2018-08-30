@@ -701,6 +701,7 @@ function ReDoTheThing()
 <a id="prosperity" onClick="chose('Prosperity');"><img height="8vw" width="12vw" src="prosperity.png"/>&nbsp;Prosperity</a><br/>
 <a id="cornucopia" onClick="chose('Cornucopia');"><img height="8vw" width="12vw" src="cornucopia.png"/>&nbsp;Cornucopia</a><br/>
 <a id="hinterlands" onClick="chose('Hinterlands');"><img height="8vw" width="12vw" src="hinterlands.png"/>&nbsp;Hinterlands</a><br/>
+<a id="promo" onClick="chose('Promo');"><img height="8vw" width="12vw" src="promo.png"/>&nbsp;Promo</a><br/>
 <table><tr><td>Action</td>
 	<td><input type="button" value="0+" onClick="minim('Action', 0)" class="have" id="action0"/> 
     <input type="button" value="1+" onClick="minim('Action', 1)" id="action1"/> 
