@@ -84,10 +84,14 @@ img
 #skul
 {
 	position: absolute;
-	height: 16vw;
-	width: 16vw;
-	left: 41.5vw;
-	top: 17.5vw;
+	height: 20vw;
+	width: 20vw;
+	left: 39vw;
+	top: 15vw;
+	filter: drop-shadow(1px 1px 0 white) 
+		drop-shadow(-1px 1px 0 white)
+		drop-shadow(1px -1px 0 white)
+		drop-shadow(-1px -1px 0 white);
 }
 </style>
 <script language="javascript">
