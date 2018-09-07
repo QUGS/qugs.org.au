@@ -123,7 +123,7 @@ function updatescore()
 		stock -= i * track[i];
 		score += delta[i] * track[i];
 	});
-	document.getElementById("trains_remaining").innerHTML = (stock <= 2 ? '<img width="96" height="96" style="width:4vw;height:4vw;display:inline;vertical-align:text-bottom;" src="clock.png"/>&nbsp;' : '') + stock + " Train"+(stock == 1 ? "" : "s")+" Remaining";
+	document.getElementById("trains_remaining").innerHTML = (stock <= 2 ? '&#x23F3;&#xFE0E;&#8199;' : '') + stock + " Train"+(stock == 1 ? "" : "s")+" Remaining";
 	
 	for (var key in desti) 
 	{
