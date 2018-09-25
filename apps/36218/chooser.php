@@ -109,6 +109,32 @@ var cards = [
 	{name: "Spy", cat: ["Action", "Attack"], expand: "Base"}, 
 	{name: "Thief", cat: ["Action", "Attack"], expand: "Base"}, 
 	{name: "Adventurer", cat: ["Action"], expand: "Base"}, 
+	{name: "Courtyard", cat: ["Action"], expand: "Intrigue"}, 
+	{name: "Lurker", cat: ["Action"], expand: "Intrigue", ywcost: true}, 
+	{name: "Pawn", cat: ["Action"], expand: "Intrigue", ywcost: true}, 
+	{name: "Masquerade", cat: ["Action"], expand: "Intrigue", ywcost: true}, 
+	{name: "Shanty Town", cat: ["Action"], expand: "Intrigue", ywcost: true}, 
+	{name: "Steward", cat: ["Action"], expand: "Intrigue", ywcost: true}, 
+	{name: "Swindler", cat: ["Action", "Attack"], expand: "Intrigue", ywcost: true, curser: true}, 
+	{name: "Wishing Well", cat: ["Action"], expand: "Intrigue", ywcost: true}, 
+	{name: "Baron", cat: ["Action"], expand: "Intrigue"}, 
+	{name: "Bridge", cat: ["Action"], expand: "Intrigue"}, 
+	{name: "Conspirator", cat: ["Action"], expand: "Intrigue"}, 
+	{name: "Diplomat", cat: ["Action", "Reaction"], expand: "Intrigue"}, 
+	{name: "Ironworks", cat: ["Action"], expand: "Intrigue"}, 
+	{name: "Mill", cat: ["Action", "Victory"], expand: "Intrigue"}, 
+	{name: "Mining Village", cat: ["Action"], expand: "Intrigue"}, 
+	{name: "Secret Passage", cat: ["Action"], expand: "Intrigue"}, 
+	{name: "Courtier", cat: ["Action"], expand: "Intrigue"}, 
+	{name: "Duke", cat: ["Victory"], expand: "Intrigue"}, 
+	{name: "Minion", cat: ["Action", "Attack"], expand: "Intrigue"}, 
+	{name: "Patrol", cat: ["Action"], expand: "Intrigue"}, 
+	{name: "Replace", cat: ["Action", "Attack"], expand: "Intrigue", curser: true}, 
+	{name: "Torturer", cat: ["Action", "Attack"], expand: "Intrigue", curser: true}, 
+	{name: "Trading Post", cat: ["Action"], expand: "Intrigue"}, 
+	{name: "Upgrade", cat: ["Action"], expand: "Intrigue"}, 
+	{name: "Harem", cat: ["Treasure", "Victory"], expand: "Intrigue"}, 
+	{name: "Nobels", cat: ["Action", "Victory"], expand: "Intrigue"}, 
 	{name: "Transmute", cat: ["Action"], expand: "Alchemy"}, 
 	{name: "Vineyard", cat: ["Victory"], expand: "Alchemy"}, 
 	{name: "Herbalist", cat: ["Action"], expand: "Alchemy", ywcost: true}, 
@@ -188,8 +214,9 @@ var cards = [
 	{name: "Black Market", cat: ["Action"], expand: "Promo", setup: true, ywcost: true}, 
 	{name: "Envoy", cat: ["Action"], expand: "Promo"}, 
 	{name: "Prince", cat: ["Action"], expand: "Promo"}, 
+	{name: "Sauna/Avanto", cat: ["Action"], expand: "Promo"}, 
 ];
-var choice = {"Base": true, "Alchemy": true, "Prosperity": true, "Cornucopia": true, "Hinterlands": true, "Promo": true};
+var choice = {"Base": true, "Intrigue": true, "Alchemy": true, "Prosperity": true, "Cornucopia": true, "Hinterlands": true, "Promo": true};
 var catags = {"Attack": 0, "Treasure": 0, "Victory": 0, "Reaction": 0, "Action": 0};
 var kingdoms = [];
 var remove = [];
@@ -224,7 +251,7 @@ function compare(a, b)
 	{
 		return a.name.localeCompare(b.name);
 	}
-	var expord = {"Base": 0, "Alchemy": 3, "Prosperity": 4, "Cornucopia": 5, "Hinterlands": 6, "Promo": 999};
+	var expord = {"Base": 0, "Intrigue": 1, "Alchemy": 3, "Prosperity": 4, "Cornucopia": 5, "Hinterlands": 6, "Promo": 999};
 	return expord[a.expand] - expord[b.expand];
 }
 
@@ -698,6 +725,7 @@ function ReDoTheThing()
 <div id="options">
 <a id="base" onClick="chose('Base');"><img height="8vw" width="12vw" src="base.png"/>&nbsp;Base</a><br/>
 <a id="alchemy" onClick="chose('Alchemy');"><img height="8vw" width="12vw" src="alchemy.png"/>&nbsp;Alchemy</a><br/>
+<a id="intrigue" onClick="chose('Intrigue');"><img height="8vw" width="12vw" src="intrigue.png"/>&nbsp;Intrigue</a><br/>
 <a id="prosperity" onClick="chose('Prosperity');"><img height="8vw" width="12vw" src="prosperity.png"/>&nbsp;Prosperity</a><br/>
 <a id="cornucopia" onClick="chose('Cornucopia');"><img height="8vw" width="12vw" src="cornucopia.png"/>&nbsp;Cornucopia</a><br/>
 <a id="hinterlands" onClick="chose('Hinterlands');"><img height="8vw" width="12vw" src="hinterlands.png"/>&nbsp;Hinterlands</a><br/>
