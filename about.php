@@ -98,7 +98,8 @@ ul
     <td class="navdesk"><a href="collection">Collection</a></td>
     <td class="navdesk"><a href="about">About</a></td>
     <td class="navmob"><select autocomplete="off" onChange="navig();" id="navig"><option selected hidden value=0>Menu</option><option value="./">Home</option><option value="collection">Collection</option><option value="about">About</option></select></td></tr></table></div>
-<h1>A Brief History of the Society</h1>
+<h1>About the Society</h1>
+<strong><a href="constitution.pdf">Constituion</a></strong>
 <h2>Executive</h2>
 <table class="exec"><tr><td>Year</td><td>President</td><td>Secretary</td><td>Treasurer</td><td colspan="2">Other</td></tr>
 <tr><td>1979</td><td>Ken Toohey <sup>P</sup></td><td>&nbsp;</td><td>&nbsp;</td><td>David Bugler <sup>E</sup></td><td>&nbsp;</td></tr>
@@ -141,6 +142,7 @@ ul
 <tr><td>2016</td><td>Natasha Steiger</td><td>Thomas Bremner</td><td>Catherine Shield</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr><td>2017</td><td>Lee Phillips</td><td>Harvey Kay-Burman<br/>Bradley Stone <sup>A</sup></td><td>Catherine Shield<br/>Rob Copel <sup>A</sup></td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr><td>2018</td><td>Lee Phillips</td><td>Dakota Edwards<sup>A</sup></td><td>Bradley Stone</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2019</td><td>Bradley Stone</td><td>Samuel Parchert</td><td>Lee Phillips</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 </table>
 <div class="column_"><sup>A</sup> Acting officer.<br/>
 <sup>C</sup> Custodian.<br/>
@@ -148,7 +150,11 @@ ul
 <sup>J</sup> Joint position.<br/>
 <div class="column_"><sup>P</sup> The President was originally titled &ldquo;Chairman&rdquo;.<br/>
 <sup>V</sup> Vice-President.</div>
-<h2>General Meetings</h2>
+<h2>Life Members</h2>
+<ul><li>Jack Ford (1999)</li>
+<li>Gary Johnson (2003)</li>
+<li>Simon Brown (2018)</li></ul>
+<h2>General Meeting Minutes</h2>
 <ul><div class="column"><li><strong><a href="minutes/m1997.txt">1997 AGM</a></strong></li>
 <li><strong><a href="minutes/m1998.txt">1998 AGM</a></strong></li>
 <li><a href="minutes/m1999_apr.txt">1999 April SGM</a></li>
@@ -176,7 +182,8 @@ ul
 <li><strong><a href="minutes/m2014.txt">2014 AGM</a></strong></li>
 <li><strong><a href="minutes/m2015.txt">2015 AGM</a></strong></li>
 <li><strong><a href="minutes/m2016.pdf">2016 AGM</a></strong></li>
-<li><strong><a href="minutes/m2017.pdf">2017 AGM</a></strong></li><br/><br/></div></ul>
+<li><strong><a href="minutes/m2017.pdf">2017 AGM</a></strong></li>
+<li><strong><a href="minutes/m2018.pdf">2018 AGM</a></strong></li><br/></div></ul>
 <h2>Queensland Wargamer</h2>
 <ul><div class="column_"><li><a href="wargamer/QW01_Feb79.pdf">Issue One (February, 1979)</a></li>
 <li><a href="wargamer/QW02_May79.pdf">Issue Two (May, 1979)</a></li>
