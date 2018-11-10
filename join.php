@@ -28,7 +28,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			if ($_POST['student']) // if student
 			{
 				$q = 'INSERT INTO Membership (
-					member,
+					fname,
+					lname,
 					email,
 					gender,
 					student,
@@ -39,7 +40,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					international,
 					receipt
 				) VALUES (
-					"'.mysqli_escape_string($db,$_POST['name']).'",
+					"'.mysqli_escape_string($db,$_POST['fname']).'",
+					"'.mysqli_escape_string($db,$_POST['lname']).'",
 					"'.mysqli_escape_string($db,$_POST['email']).'",
 					"'.mysqli_escape_string($db,$_POST['gender']).'",
 					TRUE,
@@ -54,13 +56,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			else // if not student
 			{
 				$q = 'INSERT INTO Membership (
-					member,
+					fname,
+					lname,
 					email,
 					gender,
 					student,
 					receipt
 				) VALUES (
-					"'.mysqli_escape_string($db,$_POST['name']).'",
+					"'.mysqli_escape_string($db,$_POST['fname']).'",
+					"'.mysqli_escape_string($db,$_POST['lname']).'",
 					"'.mysqli_escape_string($db,$_POST['email']).'",
 					"'.mysqli_escape_string($db,$_POST['gender']).'",
 					FALSE,
@@ -86,7 +90,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		else if ($_POST['student']) // if not stripe error and student
 		{
 			$q = 'INSERT INTO Membership (
-				member,
+				fname,
+				lname,
 				email,
 				gender,
 				student,
@@ -98,7 +103,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				stripe,
 				s_email
 			) VALUES (
-				"'.mysqli_escape_string($db,$_POST['name']).'",
+				"'.mysqli_escape_string($db,$_POST['fname']).'",
+				"'.mysqli_escape_string($db,$_POST['lname']).'",
 				"'.mysqli_escape_string($db,$_POST['email']).'",
 				"'.mysqli_escape_string($db,$_POST['gender']).'",
 				TRUE,'.mysqli_escape_string($db,$_POST['stuid']).',
@@ -113,14 +119,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		else // if not stripe error and not student
 		{
 			$q = 'INSERT INTO Membership (
-				member,
+				fname,
+				lname,
 				email,
 				gender,
 				student,
 				stripe,
 				s_email
 			) VALUES (
-				"'.mysqli_escape_string($db,$_POST['name']).'",
+				"'.mysqli_escape_string($db,$_POST['fname']).'",
+				"'.mysqli_escape_string($db,$_POST['lname']).'",
 				"'.mysqli_escape_string($db,$_POST['email']).'",
 				"'.mysqli_escape_string($db,$_POST['gender']).'",
 				FALSE,
@@ -132,9 +140,41 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 }
 if ($q) // if query created
 {
-	mysqli_query($db, $q) or die(mysqli_error($db));	
+	mysqli_query($db, $q) or die(mysqli_error($db));
+	$m = -1;
+	
+		include("mc.php");
+		$j = json_encode(array(
+			'email_address' => $_POST['email'],
+			'status' => 'subscribed',
+        	'merge_fields'  => array(
+            'FNAME'     => $_POST['fname'],
+            'LNAME'     => $_POST['lname']
+        	)
+    	));
+		$c = curl_init('https://'.substr($mailc,strpos($mailc,'-')+1).'.api.mailchimp.com/3.0/lists/9f83c50635/members/'.md5(strtolower($_POST['email'])));
+		curl_setopt($c, CURLOPT_USERPWD, 'user:'.$mailc);
+		curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+		curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($c, CURLOPT_TIMEOUT, 10);
+		curl_setopt($c, CURLOPT_CUSTOMREQUEST, 'PUT');
+		curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($c, CURLOPT_POSTFIELDS, 
+			json_encode(array(
+				'email_address' => $_POST['email'],
+				'status' => 'subscribed',
+				'merge_fields'  => array(
+					'FNAME'     => $_POST['fname'],
+					'LNAME'     => $_POST['lname']
+        		)
+			))
+		);
+		curl_exec($c);
+		$m = curl_getinfo($c, CURLINFO_HTTP_CODE);
+		curl_close($c);
+	
 	mail("president@qugs.org.au", "New Member", 
-		"Name: ".($_POST['name'] ? $_POST['name'] : "N/A").
+		"Name: ".($_POST['fname'] ? $_POST['fname'] : "N/A")." ".($_POST['lname'] ? $_POST['lname'] : "N/A").
 		"\nEmail: ".($_POST['email'] ? $_POST['email'] : "N/A").
 		"\nGender: ".($_POST['gender'] ? $_POST['gender'] : "N/A").
 		"\nStudent: ".($_POST['student'] ? ("Yes".
@@ -147,12 +187,13 @@ if ($q) // if query created
 		($_POST['payment'] == "cash" ? (
 			"\nReceipt: ".($_POST['receipt'] ? $_POST['receipt'] : "N/A")):(
 			"\nStripe Token: ".($_POST['stripeToken'] ? $_POST['stripeToken'] : "N/A").
-			"\nStripe Email: ".($_POST['stripeEmail'] ? $_POST['stripeEmail'] : "N/A"))),
+			"\nStripe Email: ".($_POST['stripeEmail'] ? $_POST['stripeEmail'] : "N/A"))).
+		"\nMailChimp: ".$m,
 		"From: membership@qugs.org.au");
 	echo "<style>@font-face{font-family: helv;src: url(Helv.otf);}
 		a{color: #000000;text-decoration: underline;cursor: pointer;}
 		body {font-size:8vmin;font-family: helv; padding: 8vmin;}</style>
-		<body>Thank You, ".$_POST['name'].", For Joining The Queensland University Games Society<br/>
+		<body>Thank You, ".$_POST['fname'].", For Joining The Queensland University Games Society<br/>
 		<a href='/join'>Click Here</a> Return To The Membership Form<br/>
 		<a href='/'>Click Here</a> To Go To The Home Page</body></html>";
 	exit();
@@ -332,7 +373,8 @@ function cash()
 		document.getElementById("form").submit();
 	}
 	// by "updating" the form inputs, they are checked for validitty, and highlighted if not
-	document.getElementById("name").value = document.getElementById("name").value;
+	document.getElementById("fname").value = document.getElementById("fname").value;
+	document.getElementById("lname").value = document.getElementById("lname").value;
 	document.getElementById("email").value = document.getElementById("email").value;
 	document.getElementById("gender").value = document.getElementById("gender").value;
 	document.getElementById("stuid").value = document.getElementById("stuid").value;
@@ -382,7 +424,8 @@ function entre(e)
 <form id="form" method="post" action="join.php">
 <table align="center" class="tabform">
 	<tr><td>Name:</td>
-    	<td><input name="name" id="name" onKeyPress="entre(event)" placeholder="First &amp; Last" required/></td></tr>
+    	<td><span style="float:left; width:48%;"><input name="fname" id="fname" onKeyPress="entre(event)" placeholder="First Name" required/></span>
+        <span style="float:right; width:48%;"><input name="lname" id="lname" onKeyPress="entre(event)" placeholder="Last Name" required/></span></td></tr>
     <tr><td>E&ndash;Mail:</td>
     	<td><input type="email" name="email" id="email" onKeyPress="entre(event)" placeholder="Student E&ndash;Mail or Not" required/></td></tr>
     <?php $gen = random_int(0,1);?>
@@ -429,7 +472,8 @@ function entre(e)
 </form>
 <?php
 echo $b ? "" : '<script>
-	document.getElementById("name").value = "'.$_POST['name'].'";
+	document.getElementById("fname").value = "'.$_POST['fname'].'";
+	document.getElementById("lname").value = "'.$_POST['lname'].'";
 	document.getElementById("email").value = "'.$_POST['email'].'";
 	document.getElementById("gender").value = "'.$_POST['gender'].'";
 	document.getElementById("stuid").value = "'.$_POST['stuid'].'";
