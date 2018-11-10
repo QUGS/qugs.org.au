@@ -141,37 +141,30 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 if ($q) // if query created
 {
 	mysqli_query($db, $q) or die(mysqli_error($db));
-	$m = -1;
 	
-		include("mc.php");
-		$j = json_encode(array(
+	//Mail Chimp
+	$m = -1;	
+	include("mc.php");
+	$c = curl_init('https://'.substr($mailc,strpos($mailc,'-')+1).'.api.mailchimp.com/3.0/lists/9f83c50635/members/'.md5(strtolower($_POST['email'])));
+	curl_setopt($c, CURLOPT_USERPWD, 'user:'.$mailc);
+	curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+	curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($c, CURLOPT_TIMEOUT, 10);
+	curl_setopt($c, CURLOPT_CUSTOMREQUEST, 'PUT');
+	curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($c, CURLOPT_POSTFIELDS, 
+		json_encode(array(
 			'email_address' => $_POST['email'],
 			'status' => 'subscribed',
-        	'merge_fields'  => array(
-            'FNAME'     => $_POST['fname'],
-            'LNAME'     => $_POST['lname']
-        	)
-    	));
-		$c = curl_init('https://'.substr($mailc,strpos($mailc,'-')+1).'.api.mailchimp.com/3.0/lists/9f83c50635/members/'.md5(strtolower($_POST['email'])));
-		curl_setopt($c, CURLOPT_USERPWD, 'user:'.$mailc);
-		curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-		curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($c, CURLOPT_TIMEOUT, 10);
-		curl_setopt($c, CURLOPT_CUSTOMREQUEST, 'PUT');
-		curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($c, CURLOPT_POSTFIELDS, 
-			json_encode(array(
-				'email_address' => $_POST['email'],
-				'status' => 'subscribed',
-				'merge_fields'  => array(
-					'FNAME'     => $_POST['fname'],
-					'LNAME'     => $_POST['lname']
-        		)
-			))
-		);
-		curl_exec($c);
-		$m = curl_getinfo($c, CURLINFO_HTTP_CODE);
-		curl_close($c);
+			'merge_fields'  => array(
+				'FNAME'     => $_POST['fname'],
+				'LNAME'     => $_POST['lname']
+			)
+		))
+	);
+	curl_exec($c);
+	$m = curl_getinfo($c, CURLINFO_HTTP_CODE);
+	curl_close($c);
 	
 	mail("president@qugs.org.au", "New Member", 
 		"Name: ".($_POST['fname'] ? $_POST['fname'] : "N/A")." ".($_POST['lname'] ? $_POST['lname'] : "N/A").
