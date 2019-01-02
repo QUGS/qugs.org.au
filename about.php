@@ -97,7 +97,15 @@ ul
     <td class="navdesk"><a href="./">Home</a></td>
     <td class="navdesk"><a href="collection">Collection</a></td>
     <td class="navdesk"><a href="about">About</a></td>
-    <td class="navmob"><select autocomplete="off" onChange="navig();" id="navig"><option selected hidden value=0>Menu</option><option value="./">Home</option><option value="collection">Collection</option><option value="about">About</option></select></td></tr></table></div>
+    <td class="navdesk"><a href="join">Join</a></td>
+    <td class="navmob">
+    <select autocomplete="off" onChange="navig();" id="navig">
+    	<option selected hidden value=0>Menu</option>
+        <option value="./">Home</option>
+        <option value="collection">Collection</option>
+        <option value="about">About</option>
+        <option value="join">Join</option>
+    </select></td></tr></table></div>
 <h1>About the Society</h1>
 <strong><a href="constitution.pdf">Constituion</a></strong>
 <h2>Executive</h2>

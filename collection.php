@@ -43,7 +43,7 @@ while($game = mysqli_fetch_assoc($games_l))
 		<td id=s".$game['bgg'].">[Loading]</td>
 		<td><a href=\"rules/r".$game['bgg'].".pdf\">Link</a></td>
 		".($game['app'] ? "<td>".$game['app']."</td>" : "<td style='color:#808080;'>N/A</td>")."</tr>\n";
-	
+
 	$table .= $row;
 	$select .= "<option value='".$game['bgg']."|".$game['name']."'>".$game['name']."</option>\n";
 	$option .= "{name:'".$game['name']."', numb:".$game['bgg']."}, ";
@@ -199,7 +199,7 @@ function collect()
 	// Perform a BGG API call on the first member
 	var m = memb.shift();
 	var bgg_req = new XMLHttpRequest();
-	// Get the abbreviated details of games the member owns, excluding expansions, 
+	// Get the abbreviated details of games the member owns, excluding expansions,
 	bgg_req.open("GET", "https://www.boardgamegeek.com/xmlapi2/collection?username="+m.bgg+"&brief=1&own=1&excludesubtype=boardgameexpansion");
 	bgg_req.onreadystatechange=function()
 	{
@@ -311,15 +311,15 @@ function table()
 			}
 			out += "</table>";
 			document.getElementById("tab").innerHTML = out;
-			
+
 		}
 		// If BGG gives the "try again later" status, try again later
 		else if (bgg_gam.readyState==4 && bgg_gam.status==202)
 		{
-			bgg_gam.send();	
+			bgg_gam.send();
 		}
 	}
-	bgg_gam.send();	
+	bgg_gam.send();
 }
 
 // Compares the name of two games, dropping "the" and "a "
@@ -366,7 +366,7 @@ function ratings()
 		}
 	}
 	bgg_rat.send();
-	
+
 }
 
 // Filter forms visibilities
@@ -381,7 +381,7 @@ function playerfilter(m)
 	var playmax = document.getElementById('playmax');
 	var pmin = parseInt(playmin.value);
 	var pmax = parseInt(playmax.value);
-	
+
 	// If sliders overlap, move non-clicked slider to clicked slider's value
 	if (pmin > pmax && m == "min")
 	{
@@ -393,13 +393,13 @@ function playerfilter(m)
 		playmin.value = pmax;
 		pmin = pmax;
 	}
-	
+
 	// Update slider labels
 	document.getElementById('playminvald').innerHTML = pmin;
 	document.getElementById('playminvalm').innerHTML = "&emsp;" + pmin;
 	document.getElementById('playmaxvald').innerHTML = pmax;
 	document.getElementById('playmaxvalm').innerHTML = "&emsp;" + pmax;
-	
+
 	// Apply filter
 	filterfilter();
 }
@@ -411,7 +411,7 @@ function timerfilter(m)
 	var timemax = document.getElementById('timemax');
 	var tmin = parseInt(timemin.value);
 	var tmax = parseInt(timemax.value);
-	
+
 	// If sliders overlap, move non-clicked slider to clicked slider's value
 	if (tmin > tmax && m=="min")
 	{
@@ -423,14 +423,14 @@ function timerfilter(m)
 		timemin.value = tmax;
 		tmin = tmax;
 	}
-	
+
 	// Update slider labels
 	var tlabs = ["15 min", "30 min", "45 min", "1 hr", "1 hr 30 min", "2 hr", "2 hr 30 min", "3 hr", "4 hr", "5 hr", "6 hr"];
 	document.getElementById('timeminvald').innerHTML = tlabs[tmin];
 	document.getElementById('timeminvalm').innerHTML = "&emsp;" + tlabs[tmin];
 	document.getElementById('timemaxvald').innerHTML = tlabs[tmax];
 	document.getElementById('timemaxvalm').innerHTML = "&emsp;" + tlabs[tmax];
-	
+
 	// Apply filter
 	filterfilter();
 }
@@ -442,7 +442,7 @@ function raterfilter(m)
 	var ratemax = document.getElementById('ratemax');
 	var rmin = parseFloat(ratemin.value);
 	var rmax = parseFloat(ratemax.value);
-	
+
 	// If sliders overlap, move non-clicked slider to clicked slider's value
 	if (rmin > rmax && m=="min")
 	{
@@ -454,20 +454,20 @@ function raterfilter(m)
 		ratemin.value = rmax;
 		rmin = rmax;
 	}
-	
-	// Update slider labels	
+
+	// Update slider labels
 	document.getElementById('rateminvald').innerHTML = rmin.toFixed(1);
 	document.getElementById('rateminvalm').innerHTML = "&emsp;" + rmin.toFixed(1);
 	document.getElementById('ratemaxvald').innerHTML = rmax.toFixed(1);
 	document.getElementById('ratemaxvalm').innerHTML = "&emsp;" + rmax.toFixed(1);
-	
+
 	// Apply filter
 	filterfilter();
 }
 
 function filterfilter()
 {
-	
+
 	var pmin = parseInt(document.getElementById('playmin').value);
 	var pmax = parseInt(document.getElementById('playmax').value);
 	var tmin = parseInt(document.getElementById('timemin').value);
@@ -475,18 +475,18 @@ function filterfilter()
 	var tvals = [15, 30, 45, 60, 90, 120, 150, 180, 240, 300, 360];
 	var rmin = parseFloat(document.getElementById('ratemin').value);
 	var rmax = parseFloat(document.getElementById('ratemax').value);
-	
-	var rows = document.getElementsByClassName("gamerow");	
-	
+
+	var rows = document.getElementsByClassName("gamerow");
+
 	for (var i = 0; i < rows.length; i++)
 	{
 		var grate = ratfilt[rows[i].dataset.bggid];
 		var gtime = rows[i].dataset.time;
 		var gmin = rows[i].dataset.minp;
 		var gmax = rows[i].dataset.maxp;
-		
+
 		rows[i].style.display = (gtime >= tvals[tmin] && gtime <= tvals[tmax] && gmax >= pmin && gmin <= pmax && grate >= rmin && grate <= rmax) ? "table-row" : "none";
-	}	
+	}
 }
 
 var mainthidd = true;
@@ -542,7 +542,7 @@ function maintsub()
 		alert("Please select a game");
 		return;
 	}
-	
+
 	if (document.getElementById("maintdesrip").value.length < 20)
 	{
 		alert("Please describe the issue");
@@ -568,7 +568,15 @@ function maintsub()
     <td class="navdesk"><a href="./">Home</a></td>
     <td class="navdesk"><a href="collection">Collection</a></td>
     <td class="navdesk"><a href="about">About</a></td>
-    <td class="navmob"><select autocomplete="off" onChange="navig();" id="navig"><option selected hidden value=0>Menu</option><option value="./">Home</option><option value="collection">Collection</option><option value="about">About</option></select></td></tr></table></div>
+    <td class="navdesk"><a href="join">Join</a></td>
+    <td class="navmob">
+    <select autocomplete="off" onChange="navig();" id="navig">
+    	<option selected hidden value=0>Menu</option>
+        <option value="./">Home</option>
+        <option value="collection">Collection</option>
+        <option value="about">About</option>
+        <option value="join">Join</option>
+    </select></td></tr></table></div>
 <h1>Game Collections</h1>
 <h2>Games Owned By The Society</h2>
 <form id="playform" style="display:none;">
