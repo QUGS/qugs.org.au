@@ -80,7 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		$card = false;
 		try
 		{
-			$c = \Stripe\Charge::create(array('amount' => 550,'currency' => 'aud','description' => 'Example charge','source' => $_POST['stripeToken']));
+			$c = \Stripe\Charge::create(array('amount' => 550,'currency' => 'aud','description' => 'QUGS Membership','source' => $_POST['stripeToken']));
 			$card = $c['paid'];
 		}
 		catch (\Stripe\Error\Card $e)
@@ -141,32 +141,39 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 if ($q) // if query created
 {
 	mysqli_query($db, $q) or die(mysqli_error($db));
-	
-	//Mail Chimp
-	$m = -1;	
-	include("mc.php");
-	$c = curl_init('https://'.substr($mailc,strpos($mailc,'-')+1).'.api.mailchimp.com/3.0/lists/9f83c50635/members/'.md5(strtolower($_POST['email'])));
-	curl_setopt($c, CURLOPT_USERPWD, 'user:'.$mailc);
-	curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-	curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($c, CURLOPT_TIMEOUT, 10);
-	curl_setopt($c, CURLOPT_CUSTOMREQUEST, 'PUT');
-	curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
-	curl_setopt($c, CURLOPT_POSTFIELDS, 
-		json_encode(array(
+	$m = -1;
+
+		include("mc.php");
+		$j = json_encode(array(
 			'email_address' => $_POST['email'],
 			'status' => 'subscribed',
-			'merge_fields'  => array(
-				'FNAME'     => $_POST['fname'],
-				'LNAME'     => $_POST['lname']
-			)
-		))
-	);
-	curl_exec($c);
-	$m = curl_getinfo($c, CURLINFO_HTTP_CODE);
-	curl_close($c);
-	
-	mail("president@qugs.org.au", "New Member", 
+        	'merge_fields'  => array(
+            'FNAME'     => $_POST['fname'],
+            'LNAME'     => $_POST['lname']
+        	)
+    	));
+		$c = curl_init('https://'.substr($mailc,strpos($mailc,'-')+1).'.api.mailchimp.com/3.0/lists/faba794f30/members/'.md5(strtolower($_POST['email'])));
+		curl_setopt($c, CURLOPT_USERPWD, 'user:'.$mailc);
+		curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+		curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($c, CURLOPT_TIMEOUT, 10);
+		curl_setopt($c, CURLOPT_CUSTOMREQUEST, 'PUT');
+		curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($c, CURLOPT_POSTFIELDS,
+			json_encode(array(
+				'email_address' => $_POST['email'],
+				'status' => 'subscribed',
+				'merge_fields'  => array(
+					'FNAME'     => $_POST['fname'],
+					'LNAME'     => $_POST['lname']
+        		)
+			))
+		);
+		curl_exec($c);
+		$m = curl_getinfo($c, CURLINFO_HTTP_CODE);
+		curl_close($c);
+
+	mail("president@qugs.org.au", "New Member",
 		"Name: ".($_POST['fname'] ? $_POST['fname'] : "N/A")." ".($_POST['lname'] ? $_POST['lname'] : "N/A").
 		"\nEmail: ".($_POST['email'] ? $_POST['email'] : "N/A").
 		"\nGender: ".($_POST['gender'] ? $_POST['gender'] : "N/A").
@@ -175,7 +182,7 @@ if ($q) // if query created
 			"\nYear: ".($_POST['year'] ? $_POST['year'] : "N/A").
 			"\nFaculty: ".($_POST['faculty'] ? $_POST['faculty'] : "N/A").
 			"\nSchool: ".($_POST['school'] ? $_POST['school'] : "N/A").
-			"\nInternational: ".($_POST['international'] ? "Yes" : "No")) 
+			"\nInternational: ".($_POST['international'] ? "Yes" : "No"))
 		: "No").
 		($_POST['payment'] == "cash" ? (
 			"\nReceipt: ".($_POST['receipt'] ? $_POST['receipt'] : "N/A")):(
@@ -383,14 +390,14 @@ function entre(e)
 {
 	if (e.keyCode == 13)
 	{
-		e.preventDefault();	
+		e.preventDefault();
 		if (document.getElementById("payment").value == "cash")
 		{
 			document.getElementById("cashbutton").click();
 		}
 		else if (document.getElementById("payment").value == "stripe")
 		{
-			document.getElementById("stripebutton").click();			
+			document.getElementById("stripebutton").click();
 		}
 	}
 }
@@ -413,7 +420,15 @@ function entre(e)
     <td class="navdesk"><a href="./">Home</a></td>
     <td class="navdesk"><a href="collection">Collection</a></td>
     <td class="navdesk"><a href="about">About</a></td>
-    <td class="navmob"><select autocomplete="off" onChange="navig();" id="navig"><option selected hidden value=0>Menu</option><option value="./">Home</option><option value="collection">Collection</option><option value="about">About</option></select></td></tr></table></div>
+    <td class="navdesk"><a href="join">Join</a></td>
+    <td class="navmob">
+    <select autocomplete="off" onChange="navig();" id="navig">
+    	<option selected hidden value=0>Menu</option>
+        <option value="./">Home</option>
+        <option value="collection">Collection</option>
+        <option value="about">About</option>
+        <option value="join">Join</option>
+    </select></td></tr></table></div>
 <form id="form" method="post" action="join.php">
 <table align="center" class="tabform">
 	<tr><td>Name:</td>
@@ -451,7 +466,7 @@ function entre(e)
 	<script
         src="https://checkout.stripe.com/checkout.js"
         class="stripe-button"
-        data-key="pk_test_vOUvPxmfmfK5CkEzDPvfvwDK"
+        data-key="pk_live_zc0mNj1XbIEoAkDvFAtDnDSQ"
         data-amount="550"
         data-name="Queensland University Games Society"
         data-description="QUGS Membership"
