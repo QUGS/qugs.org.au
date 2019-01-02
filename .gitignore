@@ -119,3 +119,14 @@ stripe-php-6.21.0/LICENSE
 stripe-php-6.21.0/README.md
 stripe-php-6.21.0/update_certs.php
 stripe-php-6.21.0/VERSION
+stripe-php-6.21.0/data/_notes/dwsync.xml
+stripe-php-6.21.0/lib/_notes/dwsync.xml
+stripe-php-6.21.0/lib/ApiOperations/_notes/dwsync.xml
+stripe-php-6.21.0/lib/Error/_notes/dwsync.xml
+stripe-php-6.21.0/lib/Error/OAuth/_notes/dwsync.xml
+stripe-php-6.21.0/lib/HttpClient/_notes/dwsync.xml
+stripe-php-6.21.0/lib/Issuing/_notes/dwsync.xml
+stripe-php-6.21.0/lib/Reporting/_notes/dwsync.xml
+stripe-php-6.21.0/lib/Sigma/_notes/dwsync.xml
+stripe-php-6.21.0/lib/Terminal/_notes/dwsync.xml
+stripe-php-6.21.0/lib/Util/_notes/dwsync.xml
