@@ -180,7 +180,8 @@ input[type=range]::-moz-range-thumb
 // Array of members' BGG username, and Discord user IDs
 memb = [
 	{bgg:"BradleySigma", disc:"@BradleySigma#7868"},
-	{bgg:"lsenjov"     , disc:"@lsenjov#4288"     }
+	{bgg:"lsenjov"     , disc:"@lsenjov#4288"     },
+	{bgg:"_Exist"      , disc:"@Exist#8869"       }
 ];
 // Array of games, and who owns them
 games = [];
