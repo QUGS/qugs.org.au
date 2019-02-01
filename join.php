@@ -435,7 +435,7 @@ function entre(e)
     	<td><span style="float:left; width:48%;"><input name="fname" id="fname" onKeyPress="entre(event)" placeholder="First Name" required/></span>
         <span style="float:right; width:48%;"><input name="lname" id="lname" onKeyPress="entre(event)" placeholder="Last Name" required/></span></td></tr>
     <tr><td>E&ndash;Mail:</td>
-    	<td><input type="email" name="email" id="email" onKeyPress="entre(event)" placeholder="Student E&ndash;Mail or Not" required/></td></tr>
+    	<td><input type="email" name="email" id="email" onKeyPress="entre(event)" placeholder="Student E&ndash;Mail or Other" required/></td></tr>
     <?php $gen = random_int(0,1);?>
     <tr><td>Gender:</td>
     	<td><select name="gender" id="gender" required><option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option><option value="<?php echo $gen ? "m" : "f";?>"><?php echo $gen ? "Male" : "Female";?></option><option value="<?php echo $gen ? "f" : "m";?>"><?php echo $gen ? "Female" : "Male";?></option><option value="o">Other</option></select></td></tr>
