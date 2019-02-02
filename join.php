@@ -201,38 +201,49 @@ if ($q) // if query created
 ?>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <style>
-body {
+body
+{
 	font-size:4vmin;
 	font-family: helv;
 }
-input {
+input
+{
 	width:100%;
 	font-size:4vmin;
 	font-family: helv;
 	vertical-align:middle;
-                -moz-box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                box-sizing: border-box;
+    	-moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
 }
-select {
+select
+{
 	width:100%;
 	font-size:4vmin;
 	font-family: helv;
 }
-option {
+option
+{
 	font-size:4vmin;
 	font-family: helv;
 }
-input[type="checkbox"]{
+input[type=checkbox]
+{
 	height:4vmin;
 	width:4vmin;
 	text-align:left;
 }
-table.tabform > tbody > tr > td:first-child {
+input[type=button]
+{
+	cursor: pointer;
+}
+table.tabform > tbody > tr > td:first-child
+{
 	text-align:right;
 	padding-right:1vmin;
 }
-table.tabform > tbody > tr > td:last-child {
+table.tabform > tbody > tr > td:last-child
+{
 	text-align:left;
 	padding-left:1vmin;
 }
