@@ -193,7 +193,7 @@ if ($q) // if query created
 	echo "<style>@font-face{font-family: helv;src: url(Helv.otf);}
 		a{color: #000000;text-decoration: underline;cursor: pointer;}
 		body {font-size:8vmin;font-family: helv; padding: 8vmin;}</style>
-		<body>Thank You, ".$_POST['fname'].", For Joining The Queensland University Games Society<br/>
+		<body>Thank You, ".$_POST['fname']." ".$_POST['lname'].", For Joining The Queensland University Games Society<br/>
 		<a href='/join'>Click Here</a> Return To The Membership Form<br/>
 		<a href='/'>Click Here</a> To Go To The Home Page</body></html>";
 	exit();
