@@ -455,7 +455,7 @@ function entre(e)
     <tr class="studrow"><td>Student Number:</td>
     	<td><input type="number" name="stuid" id="stuid" onKeyPress="entre(event)" placeholder="Eight Digits, No &ldquo;s&rdquo;" required onChange="idcheck()"/></td></tr>
     <tr class="studrow"><td>Year:</td>
-    	<td><select name="year" id="year" required><option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option><option value="1">First</option><option value="2">Second</option><option value="3">Third</option><option value="4">Fourth</option><option value="5+">Fifth+</option><option value="post">Post&ndash;Graduate</option></select></td></tr>
+    	<td><select name="year" id="year" required><option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option><option value="1">First</option><option value="2">Second</option><option value="3">Third</option><option value="4">Fourth</option><option value="5+">Fifth+</option><option value="pg">Post&ndash;Graduate</option></select></td></tr>
     <tr class="studrow"><td>Faculty:</td>
     	<td><select name="faculty" id="faculty" onChange="fac_details()" required><option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option><option value="bel">Business, Economics and Law</option><option value="eait">Engineering, Architecture and Information Technology</option><option value="hbs">Health and Behavioural Sciences</option><option value="hss">Humanities and Social Sciences</option><option value="med">Medicine</option><option value="sci">Science</option><option value="oth">Other</option></select></td></tr>
     <tr class="studrow">
