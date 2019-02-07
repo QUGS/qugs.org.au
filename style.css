@@ -2,6 +2,11 @@
 
 @font-face
 {
+	font-family: toro;
+	src: url(Toro.otf);
+}
+@font-face
+{
 	font-family: helv;
 	src: url(Helv.otf);
 }
@@ -84,6 +89,10 @@ table
 	font-size: 24px;
     background-color: #D3D3D3;
 	text-align-last: right; 
+}
+h1, h2, h3
+{
+	font-family:helv;
 }
 @media screen and (max-width: 1440px)
 {
