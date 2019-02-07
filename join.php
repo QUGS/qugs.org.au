@@ -426,7 +426,7 @@ function entre(e)
 	</script>
     <div class="navbar"><table><tr>
     <td><img src="images/logosmall.png" height="50px" width="88px"/></td>
-    <td style="font-family:toro;">Queensland University Games Society</td>
+    <td style="font-family:toro; font-size: 30px;">Queensland University Games Society</td>
     <td style="width:100%">&nbsp;</td>
     <td class="navdesk"><a href="./">Home</a></td>
     <td class="navdesk"><a href="collection">Collection</a></td>
