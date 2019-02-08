@@ -144,14 +144,6 @@ if ($q) // if query created
 	$m = -1;
 
 		include("mc.php");
-		$j = json_encode(array(
-			'email_address' => $_POST['email'],
-			'status' => 'subscribed',
-        	'merge_fields'  => array(
-            'FNAME'     => $_POST['fname'],
-            'LNAME'     => $_POST['lname']
-        	)
-    	));
 		$c = curl_init('https://'.substr($mailc,strpos($mailc,'-')+1).'.api.mailchimp.com/3.0/lists/faba794f30/members/'.md5(strtolower($_POST['email'])));
 		curl_setopt($c, CURLOPT_USERPWD, 'user:'.$mailc);
 		curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
@@ -166,11 +158,14 @@ if ($q) // if query created
 				'merge_fields'  => array(
 					'FNAME'     => $_POST['fname'],
 					'LNAME'     => $_POST['lname']
-        		)
+        		),
+				'interests' => array(
+					'75c72277e8'  => true
+				)
 			))
 		);
-		curl_exec($c);
-		$m = curl_getinfo($c, CURLINFO_HTTP_CODE);
+		$m = curl_exec($c);
+		$m = curl_getinfo($c, CURLINFO_HTTP_CODE) == 200 ? "200" : $m;
 		curl_close($c);
 
 	mail("president@qugs.org.au", "New Member",
