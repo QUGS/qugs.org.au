@@ -165,7 +165,7 @@ if ($q) // if query created
 			))
 		);
 		$m = curl_exec($c);
-		$m = curl_getinfo($c, CURLINFO_HTTP_CODE) == 200 ? "200" : $m;
+		$m = (curl_getinfo($c, CURLINFO_HTTP_CODE) == 200 ? "200" : $m);
 		curl_close($c);
 
 	mail("president@qugs.org.au", "New Member",
@@ -242,6 +242,10 @@ table.tabform > tbody > tr > td:last-child
 	text-align:left;
 	padding-left:1vmin;
 }
+.verif:invalid
+{
+	background-color: pink;
+}
 </style>
 <script language="javascript">
 // shows/hides the row for a uq student
@@ -251,7 +255,7 @@ function uq_details()
 	var r = document.getElementsByClassName("studrow");
 	for (var i = 0; i < r.length; i++)
 	{
-		r.item(i).style.visibility = s ? "visible" : "collapse";
+		r.item(i).style.visibility = (s ? "visible" : "collapse");
 	}
 	document.getElementById("stuid").required = s;
 	document.getElementById("year").required = s;
@@ -274,19 +278,19 @@ function pay_details()
 	var r = document.getElementsByClassName("payrow");
 	for (var i = 0; i < r.length; i++)
 	{
-		r.item(i).style.visibility = s ? "visible" : "collapse";
+		r.item(i).style.visibility = (s ? "visible" : "collapse");
 	}
 	document.getElementById("receipt").required = s;
 	document.getElementById("exec").required = s;
-	document.getElementById("cashbuttonrow").style.visibility = s ? "visible" : "collapse";
-	document.getElementById("stripebuttonrow").style.visibility = !s ? "visible" : "collapse";
+	document.getElementById("cashbuttonrow").style.visibility = (s ? "visible" : "collapse");
+	document.getElementById("stripebuttonrow").style.visibility = (!s ? "visible" : "collapse");
 }
 
 // verifies the checksum of the student number
 function idcheck()
 {
 	var n = parseInt(document.getElementById("stuid").value);
-	if (isNaN(n) || n / Math.pow(10,7) < 1 || n / Math.pow(10,7) >= 10)
+	if (isNaN(n) || n < Math.pow(10,7) || n >= Math.pow(10,8))
 	{
 		document.getElementById("stuid").setCustomValidity("Student Number Incorrect");
 		return;
@@ -297,7 +301,7 @@ function idcheck()
 	{
 		k += c[i-1] * (n / Math.pow(10,i) | 0) % 10;
 	}
-	if ((k % 10) != (n%10))
+	if ((k % 10) != (n % 10))
 	{
 		document.getElementById("stuid").setCustomValidity("Student Number Incorrect");
 		return;
@@ -380,14 +384,27 @@ function cash()
 	}
 	// by "updating" the form inputs, they are checked for validitty, and highlighted if not
 	document.getElementById("fname").value = document.getElementById("fname").value;
+	document.getElementById("fname").classList.add("verif");
 	document.getElementById("lname").value = document.getElementById("lname").value;
+	document.getElementById("lname").classList.add("verif");
 	document.getElementById("email").value = document.getElementById("email").value;
+	document.getElementById("email").classList.add("verif");
 	document.getElementById("gender").value = document.getElementById("gender").value;
+	document.getElementById("gender").classList.add("verif");
 	document.getElementById("stuid").value = document.getElementById("stuid").value;
+	document.getElementById("stuid").classList.add("verif");
 	document.getElementById("year").value = document.getElementById("year").value;
+	document.getElementById("year").classList.add("verif");
 	document.getElementById("faculty").value = document.getElementById("faculty").value;
+	document.getElementById("faculty").classList.add("verif");
 	document.getElementById("school").value = document.getElementById("school").value;
+	document.getElementById("school").classList.add("verif");
 	document.getElementById("payment").value = document.getElementById("payment").value;
+	document.getElementById("payment").classList.add("verif");
+	document.getElementById("receipt").value = document.getElementById("receipt").value;
+	document.getElementById("receipt").classList.add("verif");
+	document.getElementById("exec").value = document.getElementById("exec").value;
+	document.getElementById("exec").classList.add("verif");
 }
 
 // pressing "enter" by default submits the form
@@ -444,7 +461,7 @@ function entre(e)
     	<td><input type="email" name="email" id="email" onKeyPress="entre(event)" placeholder="Student E&ndash;Mail or Other" required/></td></tr>
     <?php $gen = random_int(0,1);?>
     <tr><td>Gender:</td>
-    	<td><select name="gender" id="gender" required><option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option><option value="<?php echo $gen ? "m" : "f";?>"><?php echo $gen ? "Male" : "Female";?></option><option value="<?php echo $gen ? "f" : "m";?>"><?php echo $gen ? "Female" : "Male";?></option><option value="o">Other</option></select></td></tr>
+    	<td><select name="gender" id="gender" required><option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option><option value="<?php echo ($gen ? "m" : "f");?>"><?php echo ($gen ? "Male" : "Female");?></option><option value="<?php echo ($gen ? "f" : "m");?>"><?php echo ($gen ? "Female" : "Male");?></option><option value="o">Other</option></select></td></tr>
     <tr><td>UQ Student:</td>
     	<td><input type="checkbox" name="student" id="student" checked onChange="uq_details()" value="1"/></td></tr>
     <tr class="studrow"><td>Student Number:</td>
@@ -485,7 +502,7 @@ function entre(e)
 </div>
 </form>
 <?php
-echo $b ? "" : '<script>
+echo ($b ? "" : '<script>
 	document.getElementById("fname").value = "'.$_POST['fname'].'";
 	document.getElementById("lname").value = "'.$_POST['lname'].'";
 	document.getElementById("email").value = "'.$_POST['email'].'";
@@ -501,9 +518,9 @@ echo $b ? "" : '<script>
 	document.getElementById("payment").value = "'.$_POST['payment'].'";
 	pay_details();
 	document.getElementById("receipt").value = "'.$_POST['receipt'].'";
-</script>';
-echo $cash ? "" : '<script>alert("Executive Password Incorrect.");</script>';
-echo $card ? "" : '<script>alert("An Error Occured With Payment.\nPlease Try Again, Or Pay With Cash (In Person).");</script>';
+</script>');
+echo ($cash ? "" : '<script>alert("Executive Password Incorrect.");</script>');
+echo ($card ? "" : '<script>alert("An Error Occured With Payment.\nPlease Try Again, Or Pay With Cash (In Person).");</script>');
 ?>
 </body>
 </html>
