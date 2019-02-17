@@ -31,6 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					fname,
 					lname,
 					email,
+					phone,
 					gender,
 					student,
 					number,
@@ -43,6 +44,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					"'.mysqli_escape_string($db,$_POST['fname']).'",
 					"'.mysqli_escape_string($db,$_POST['lname']).'",
 					"'.mysqli_escape_string($db,$_POST['email']).'",
+					'.($_POST['phone'] ? '"'.mysqli_escape_string($db,$_POST['phone']).'"' : 'NULL').',
 					"'.mysqli_escape_string($db,$_POST['gender']).'",
 					TRUE,
 					'.mysqli_escape_string($db,$_POST['stuid']).',
@@ -59,6 +61,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					fname,
 					lname,
 					email,
+					phone,
 					gender,
 					student,
 					receipt
@@ -66,6 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					"'.mysqli_escape_string($db,$_POST['fname']).'",
 					"'.mysqli_escape_string($db,$_POST['lname']).'",
 					"'.mysqli_escape_string($db,$_POST['email']).'",
+					'.($_POST['phone'] ? '"'.mysqli_escape_string($db,$_POST['phone']).'"' : 'NULL').',
 					"'.mysqli_escape_string($db,$_POST['gender']).'",
 					FALSE,
 					"'.mysqli_escape_string($db,$_POST['receipt']).'"
@@ -93,6 +97,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				fname,
 				lname,
 				email,
+				phone,
 				gender,
 				student,
 				number,
@@ -106,6 +111,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				"'.mysqli_escape_string($db,$_POST['fname']).'",
 				"'.mysqli_escape_string($db,$_POST['lname']).'",
 				"'.mysqli_escape_string($db,$_POST['email']).'",
+				'.($_POST['phone'] ? '"'.mysqli_escape_string($db,$_POST['phone']).'"' : 'NULL').',
 				"'.mysqli_escape_string($db,$_POST['gender']).'",
 				TRUE,'.mysqli_escape_string($db,$_POST['stuid']).',
 				"'.mysqli_escape_string($db,$_POST['year']).'",
@@ -122,6 +128,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				fname,
 				lname,
 				email,
+				phone,
 				gender,
 				student,
 				stripe,
@@ -130,6 +137,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				"'.mysqli_escape_string($db,$_POST['fname']).'",
 				"'.mysqli_escape_string($db,$_POST['lname']).'",
 				"'.mysqli_escape_string($db,$_POST['email']).'",
+				'.($_POST['phone'] ? '"'.mysqli_escape_string($db,$_POST['phone']).'"' : 'NULL').',
 				"'.mysqli_escape_string($db,$_POST['gender']).'",
 				FALSE,
 				"'.mysqli_escape_string($db,$_POST['stripeToken']).'",
@@ -171,6 +179,7 @@ if ($q) // if query created
 	mail("president@qugs.org.au", "New Member",
 		"Name: ".($_POST['fname'] ? $_POST['fname'] : "N/A")." ".($_POST['lname'] ? $_POST['lname'] : "N/A").
 		"\nEmail: ".($_POST['email'] ? $_POST['email'] : "N/A").
+		"\nPhone: ".($_POST['phone'] ? $_POST['phone'] : "N/A").
 		"\nGender: ".($_POST['gender'] ? $_POST['gender'] : "N/A").
 		"\nStudent: ".($_POST['student'] ? ("Yes".
 			"\nNumber: ".($_POST['stuid'] ? $_POST['stuid'] : "N/A").
@@ -459,6 +468,8 @@ function entre(e)
         <span style="float:right; width:48%;"><input name="lname" id="lname" onKeyPress="entre(event)" placeholder="Last Name" required/></span></td></tr>
     <tr><td>E&ndash;Mail:</td>
     	<td><input type="email" name="email" id="email" onKeyPress="entre(event)" placeholder="Student E&ndash;Mail or Other" required/></td></tr>
+    <tr><td>Phone:</td>
+    	<td><input type="tel" name="phone" id="phone" onKeyPress="entre(event)" placeholder="Optional" required/></td></tr>
     <?php $gen = random_int(0,1);?>
     <tr><td>Gender:</td>
     	<td><select name="gender" id="gender" required><option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option><option value="<?php echo ($gen ? "m" : "f");?>"><?php echo ($gen ? "Male" : "Female");?></option><option value="<?php echo ($gen ? "f" : "m");?>"><?php echo ($gen ? "Female" : "Male");?></option><option value="o">Other</option></select></td></tr>
@@ -506,6 +517,7 @@ echo ($b ? "" : '<script>
 	document.getElementById("fname").value = "'.$_POST['fname'].'";
 	document.getElementById("lname").value = "'.$_POST['lname'].'";
 	document.getElementById("email").value = "'.$_POST['email'].'";
+	document.getElementById("phone").value = "'.$_POST['phone'].'";
 	document.getElementById("gender").value = "'.$_POST['gender'].'";
 	document.getElementById("stuid").value = "'.$_POST['stuid'].'";
 	document.getElementById("student").checked = '.($_POST['student'] ? 'true' : 'false').';
