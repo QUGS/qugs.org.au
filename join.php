@@ -469,7 +469,7 @@ function entre(e)
     <tr><td>E&ndash;Mail:</td>
     	<td><input type="email" name="email" id="email" onKeyPress="entre(event)" placeholder="Student E&ndash;Mail or Other" required/></td></tr>
     <tr><td>Phone:</td>
-    	<td><input type="tel" name="phone" id="phone" onKeyPress="entre(event)" placeholder="Optional" required/></td></tr>
+    	<td><input type="tel" name="phone" id="phone" onKeyPress="entre(event)" placeholder="Optional"/></td></tr>
     <?php $gen = random_int(0,1);?>
     <tr><td>Gender:</td>
     	<td><select name="gender" id="gender" required><option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option><option value="<?php echo ($gen ? "m" : "f");?>"><?php echo ($gen ? "Male" : "Female");?></option><option value="<?php echo ($gen ? "f" : "m");?>"><?php echo ($gen ? "Female" : "Male");?></option><option value="o">Other</option></select></td></tr>
