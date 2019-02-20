@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					"'.mysqli_escape_string($db,$_POST['faculty']).'",
 					"'.mysqli_escape_string($db,$_POST['school']).'",
 					'.($_POST['international'] ? 'TRUE' : 'FALSE').',
-					"'.mysqli_escape_string($db,$_POST['receipt']).'"
+					""
 				)';
 			}
 			else // if not student
@@ -72,7 +72,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					'.($_POST['phone'] ? '"'.mysqli_escape_string($db,$_POST['phone']).'"' : 'NULL').',
 					"'.mysqli_escape_string($db,$_POST['gender']).'",
 					FALSE,
-					"'.mysqli_escape_string($db,$_POST['receipt']).'"
+					""
 				)';
 			} // end if student
 		} // end if password correct
@@ -188,8 +188,7 @@ if ($q) // if query created
 			"\nSchool: ".($_POST['school'] ? $_POST['school'] : "N/A").
 			"\nInternational: ".($_POST['international'] ? "Yes" : "No"))
 		: "No").
-		($_POST['payment'] == "cash" ? (
-			"\nReceipt: ".($_POST['receipt'] ? $_POST['receipt'] : "N/A")):(
+		($_POST['payment'] == "cash" ? "":(
 			"\nStripe Token: ".($_POST['stripeToken'] ? $_POST['stripeToken'] : "N/A").
 			"\nStripe Email: ".($_POST['stripeEmail'] ? $_POST['stripeEmail'] : "N/A"))).
 		"\nMailChimp: ".$m,
@@ -264,6 +263,7 @@ function uq_details()
 	var r = document.getElementsByClassName("studrow");
 	for (var i = 0; i < r.length; i++)
 	{
+		r.item(i).style.display = (s ? "table-row" : "none");
 		r.item(i).style.visibility = (s ? "visible" : "collapse");
 	}
 	document.getElementById("stuid").required = s;
@@ -287,11 +287,13 @@ function pay_details()
 	var r = document.getElementsByClassName("payrow");
 	for (var i = 0; i < r.length; i++)
 	{
+		r.item(i).style.display = (s ? "table-row" : "none");
 		r.item(i).style.visibility = (s ? "visible" : "collapse");
 	}
-	document.getElementById("receipt").required = s;
 	document.getElementById("exec").required = s;
+	document.getElementById("cashbuttonrow").style.display = (s ? "table-row" : "none");
 	document.getElementById("cashbuttonrow").style.visibility = (s ? "visible" : "collapse");
+	document.getElementById("stripebuttonrow").style.display = (!s ? "table-row" : "none");
 	document.getElementById("stripebuttonrow").style.visibility = (!s ? "visible" : "collapse");
 }
 
@@ -410,8 +412,6 @@ function cash()
 	document.getElementById("school").classList.add("verif");
 	document.getElementById("payment").value = document.getElementById("payment").value;
 	document.getElementById("payment").classList.add("verif");
-	document.getElementById("receipt").value = document.getElementById("receipt").value;
-	document.getElementById("receipt").classList.add("verif");
 	document.getElementById("exec").value = document.getElementById("exec").value;
 	document.getElementById("exec").classList.add("verif");
 }
@@ -429,9 +429,36 @@ function entre(e)
 		}
 		else if (document.getElementById("payment").value == "stripe")
 		{
-			document.getElementById("stripebutton").click();
+			stripecheck();
 		}
 	}
+}
+
+function stripecheck()
+{
+	if(document.getElementById("form").checkValidity())
+	{
+		document.getElementById("stripesubmit").click();
+	}
+	// by "updating" the form inputs, they are checked for validitty, and highlighted if not
+	document.getElementById("fname").value = document.getElementById("fname").value;
+	document.getElementById("fname").classList.add("verif");
+	document.getElementById("lname").value = document.getElementById("lname").value;
+	document.getElementById("lname").classList.add("verif");
+	document.getElementById("email").value = document.getElementById("email").value;
+	document.getElementById("email").classList.add("verif");
+	document.getElementById("gender").value = document.getElementById("gender").value;
+	document.getElementById("gender").classList.add("verif");
+	document.getElementById("stuid").value = document.getElementById("stuid").value;
+	document.getElementById("stuid").classList.add("verif");
+	document.getElementById("year").value = document.getElementById("year").value;
+	document.getElementById("year").classList.add("verif");
+	document.getElementById("faculty").value = document.getElementById("faculty").value;
+	document.getElementById("faculty").classList.add("verif");
+	document.getElementById("school").value = document.getElementById("school").value;
+	document.getElementById("school").classList.add("verif");
+	document.getElementById("payment").value = document.getElementById("payment").value;
+	document.getElementById("payment").classList.add("verif");
 }
 
 </script>
@@ -487,16 +514,14 @@ function entre(e)
     	<td><input type="checkbox" name="international" id="international" value="1"/></td></tr>
     <tr><td>Payment:</td>
     	<td><select name="payment" id="payment" onChange="pay_details()" required><option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option><option value="cash">Cash</option><option value="stripe">Online (via <i>Stripe</i>)</option></select></td></tr>
-    <tr class="payrow" style="visibility:collapse;"><td>Receipt Number:</td>
-    	<td><input type="text" name="receipt" id="receipt" onKeyPress="entre(event)"/></td></tr>
-    <tr class="payrow" style="visibility:collapse;"><td>Executive Password:</td>
+    <tr class="payrow" style="display:none;visibility:collapse;"><td>Executive Password:</td>
     	<td><input type="password" name="exec" id="exec" onKeyPress="entre(event)"/></td></tr>
     <tr id="cashbuttonrow"><td>&nbsp;</td>
     	<td><input type="button" value="Join!" id="cashbutton" onClick="cash();" /></td></tr>
-    <tr id="stripebuttonrow" style="visibility:collapse;"><td>&nbsp;</td>
-    	<td><input type="submit" value="Pay &amp; Join!" id="stripebutton"/></td></tr>
+    <tr id="stripebuttonrow" style="display:none;visibility:collapse;"><td>&nbsp;</td>
+    	<td><input type="button" value="Pay &amp; Join!" id="stripebutton" onClick="stripecheck()"/><input type="submit" value="" id="stripesubmit" style="display:none;visibility:collapse;"/></td></tr>
 </table>
-<div style="display:none;">
+<div style="display:none;visibility:hidden;">
 	<script
         src="https://checkout.stripe.com/checkout.js"
         class="stripe-button"
@@ -529,7 +554,6 @@ echo ($b ? "" : '<script>
 	document.getElementById("international").value = '.($_POST['international'] ? 'true' : 'false').';
 	document.getElementById("payment").value = "'.$_POST['payment'].'";
 	pay_details();
-	document.getElementById("receipt").value = "'.$_POST['receipt'].'";
 </script>');
 echo ($cash ? "" : '<script>alert("Executive Password Incorrect.");</script>');
 echo ($card ? "" : '<script>alert("An Error Occured With Payment.\nPlease Try Again, Or Pay With Cash (In Person).");</script>');
