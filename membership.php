@@ -339,13 +339,6 @@ table tr > td:first-child
 {
 	font-weight: bold;
 }
-@media screen and (max-width: 1440px)
-{
-	table
-	{
-		width: 100%;
-	}
-}
 
 </style>
 <script>

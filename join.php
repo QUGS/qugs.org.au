@@ -525,7 +525,7 @@ function stripecheck()
 	<script
         src="https://checkout.stripe.com/checkout.js"
         class="stripe-button"
-        data-key="pk_live_zc0mNj1XbIEoAkDvFAtDnDSQ"
+		data-key="pk_live_zc0mNj1XbIEoAkDvFAtDnDSQ"
         data-amount="550"
         data-name="Queensland University Games Society"
         data-description="QUGS Membership"
@@ -534,6 +534,7 @@ function stripecheck()
         data-zip-code="true"
         data-currency="AUD"
         data-allow-remember-me="false">
+<!--        data-key="pk_test_vOUvPxmfmfK5CkEzDPvfvwDK" -->
     </script>
 </div>
 </form>
