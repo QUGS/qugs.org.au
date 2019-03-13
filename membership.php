@@ -297,7 +297,8 @@ while($int_r = mysqli_fetch_assoc($int_l))
 $quo_q = "SELECT COUNT(membid) AS c FROM Membership WHERE receipt != 'Life Member' OR receipt IS NULL;";
 $quo_l = mysqli_query($db, $quo_q) or die(mysqli_error($db));
 $quo_r = mysqli_fetch_assoc($quo_l);
-$q = ceil(sqrt( $quo_r['c'] + 125));
+$q = ceil(sqrt($quo_r['c'] + 125));
+$p = round(100*$q/$n,2);
 
 ?>
 <!DOCTYPE html>
@@ -401,6 +402,6 @@ table tr > td:first-child
 </tr><?php echo $int_t;?></table>
 <br/>
 
-Quorum: <?php echo $q;?>
+Quorum: <?php echo $q;?> (<?php echo $p;?>%)
 </body>
 </html>
