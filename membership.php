@@ -90,7 +90,7 @@ while($gen_r = mysqli_fetch_assoc($gen_l))
 	$gen_t .= "\t<tr>
 		<td>".($gen_r['gender'] == "m" ? "Male" : ($gen_r['gender'] == "f" ? "Female" : "Other"))."</td>
 		<td>".$gen_r['c']."</td>
-		<td>".round(100*$gen_r['c']/$n,0)."%</td></tr>\n";
+		<td>".round(100*$gen_r['c']/$n, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>\n";
 }
 
 $stud_q = "SELECT student, COUNT(membid) AS c FROM Membership GROUP BY student ORDER BY student DESC;";
@@ -99,13 +99,13 @@ $stud_r = mysqli_fetch_assoc($stud_l);
 $stud_t = "\t<tr>
 		<td>UQ Student</td>
 		<td>".$stud_r['c']."</td>
-		<td>".round(100*$stud_r['c']/$n,0)."%</td></tr>\n";
+		<td>".round(100*$stud_r['c']/$n, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>\n";
 $s = $stud_r['c'];
 $stud_r = mysqli_fetch_assoc($stud_l);
 $stud_t .= "\t<tr>
 		<td>Non&ndash;Student</td>
 		<td>".$stud_r['c']." (&or;".floor(3*$s/7).")</td>
-		<td>".round(100*$stud_r['c']/$s,0)."% (&or;30%)</td></tr>\n";
+		<td>".round(100*$stud_r['c']/$s, 0, PHP_ROUND_HALF_EVEN)."% (&or;30%)</td></tr>\n";
 
 $year_q = "SELECT year, COUNT(membid) AS c FROM Membership WHERE year IS NOT NULL GROUP BY year ORDER BY year ASC;";
 $year_l = mysqli_query($db, $year_q) or die(mysqli_error($db));
@@ -137,7 +137,7 @@ while($year_r = mysqli_fetch_assoc($year_l))
 		}
 		$year_t .= "</td>
 		<td>".$year_r['c']."</td>
-		<td>".round(100*$year_r['c']/$s,0)."%</td></tr>\n";
+		<td>".round(100*$year_r['c']/$s, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>\n";
 }
 
 $fac_q = "SELECT faculty, COUNT(membid) AS c FROM Membership WHERE faculty IS NOT NULL GROUP BY faculty ORDER BY faculty = 'oth' ASC, c DESC;";
@@ -174,7 +174,7 @@ while($fac_r = mysqli_fetch_assoc($fac_l))
 	}
 	$fac_t .= "</td>
 		<td>".$fac_r['c']."</td>
-		<td>".round(100*$fac_r['c']/$s,0)."%</td></tr>\n";
+		<td>".round(100*$fac_r['c']/$s, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>\n";
 	$f = $fac_r['c'];
 	
 	$scho_q = "SELECT school, COUNT(membid) AS c FROM Membership WHERE faculty = '".$fac_r['faculty']."' GROUP BY school ORDER BY school = 'oth_' ASC, c DESC;";
@@ -279,7 +279,7 @@ while($fac_r = mysqli_fetch_assoc($fac_l))
 		}
 		$fac_t .= "</td>
 			<td>".$scho_r['c']."</td>
-		<td>".round(100*$scho_r['c']/$s,0)."%&ensp;&bull;&ensp;".round(100*$scho_r['c']/$f,0)."%</td></tr>\n";
+		<td>".round(100*$scho_r['c']/$s, 0, PHP_ROUND_HALF_EVEN)."%&ensp;&bull;&ensp;".round(100*$scho_r['c']/$f, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>\n";
 	}
 }
 
@@ -291,14 +291,14 @@ while($int_r = mysqli_fetch_assoc($int_l))
 	$int_t .= "\t<tr>
 		<td>".($int_r['international'] ? "International" : "Domestic")."</td>
 		<td>".$int_r['c']."</td>
-		<td>".round(100*$int_r['c']/$s,0)."%</td></tr>\n";
+		<td>".round(100*$int_r['c']/$s, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>\n";
 }
 
 $quo_q = "SELECT COUNT(membid) AS c FROM Membership WHERE receipt != 'Life Member' OR receipt IS NULL;";
 $quo_l = mysqli_query($db, $quo_q) or die(mysqli_error($db));
 $quo_r = mysqli_fetch_assoc($quo_l);
 $q = ceil(sqrt($quo_r['c'] + 125));
-$p = round(100*$q/$n,2);
+$p = round(100*$q/$n, 2, PHP_ROUND_HALF_EVEN);
 
 ?>
 <!DOCTYPE html>
