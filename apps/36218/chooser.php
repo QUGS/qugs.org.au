@@ -765,9 +765,9 @@ function ReDoTheThing()
     <input type="button" value="1+" onClick="minim('Victory', 1)" id="victory1"/> 
     <input type="button" value="2+" onClick="minim('Victory', 2)" id="victory2"/></td></tr>
 <tr><td style="font-size:8vw; line-height:0.8;">Duplicate</br>Costs</td>
-	<td><input type="button" value="∞-" onClick="minim('Cost', 99)" class="have" id="cost99"/> 
-    <input type="button" value="3-" onClick="minim('Cost', 3)" id="cost3"/> 
-    <input type="button" value="2-" onClick="minim('Cost', 2)" id="cost2"/></td></tr>
+	<td><input type="button" value="&infin;&minus;" onClick="minim('Cost', 99)" class="have" id="cost99"/> 
+    <input type="button" value="3&minus;" onClick="minim('Cost', 3)" id="cost3"/> 
+    <input type="button" value="2&minus;" onClick="minim('Cost', 2)" id="cost2"/></td></tr>
 <tr><td colspan="2" style="text-align:center;"><input type="button" style="width:48vw;" value="Choose" onClick="DoTheThing()"/></td></tr></table>
 </div>
 <div id="kingdoms"></div>
