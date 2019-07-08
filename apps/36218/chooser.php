@@ -77,147 +77,148 @@ s
 </style>
 <script language="javascript">
 var cards = [
-	{name: "Cellar", cat: ["Action"], expand: "Base", ywcost: true},  
-	{name: "Chapel", cat: ["Action"], expand: "Base", ywcost: true}, 
-	{name: "Moat", cat: ["Action", "Reaction"], expand: "Base", ywcost: true}, 
-	{name: "Harbinger", cat: ["Action"], expand: "Base", ywcost: true}, 
-	{name: "Merchant", cat: ["Action"], expand: "Base", ywcost: true}, 
-	{name: "Vassal", cat: ["Action"], expand: "Base", ywcost: true}, 
-	{name: "Village", cat: ["Action"], expand: "Base", ywcost: true}, 
-	{name: "Workshop", cat: ["Action"], expand: "Base", ywcost: true}, 
-	{name: "Bureaucrat", cat: ["Action", "Attack"], expand: "Base"}, 
-	{name: "Gardens", cat: ["Victory"], expand: "Base"}, 
-	{name: "Militia", cat: ["Action", "Attack"], expand: "Base"}, 
-	{name: "Moneylender", cat: ["Action"], expand: "Base"}, 
-	{name: "Poacher", cat: ["Action"], expand: "Base"}, 
-	{name: "Remodel", cat: ["Action"], expand: "Base"}, 
-	{name: "Smithy", cat: ["Action"], expand: "Base"}, 
-	{name: "Throne Room", cat: ["Action"], expand: "Base"}, 
-	{name: "Bandit", cat: ["Action", "Attack"], expand: "Base"}, 
-	{name: "Council Room", cat: ["Action"], expand: "Base"}, 
-	{name: "Festival", cat: ["Action"], expand: "Base"}, 
-	{name: "Laboratory", cat: ["Action"], expand: "Base"}, 
-	{name: "Library", cat: ["Action"], expand: "Base"}, 
-	{name: "Market", cat: ["Action"], expand: "Base"}, 
-	{name: "Mine", cat: ["Action"], expand: "Base"}, 
-	{name: "Senty", cat: ["Action"], expand: "Base"}, 
-	{name: "Witch", cat: ["Action", "Attack"], expand: "Base", curser: true}, 
-	{name: "Artisan", cat: ["Action"], expand: "Base"}, 
-	{name: "Chancellor", cat: ["Action"], expand: "Base", ywcost: true}, 
-	{name: "Woodcutter", cat: ["Action"], expand: "Base", ywcost: true}, 
-	{name: "Feast", cat: ["Action"], expand: "Base"}, 
-	{name: "Spy", cat: ["Action", "Attack"], expand: "Base"}, 
-	{name: "Thief", cat: ["Action", "Attack"], expand: "Base"}, 
-	{name: "Adventurer", cat: ["Action"], expand: "Base"}, 
-	{name: "Courtyard", cat: ["Action"], expand: "Intrigue"}, 
-	{name: "Lurker", cat: ["Action"], expand: "Intrigue", ywcost: true}, 
-	{name: "Pawn", cat: ["Action"], expand: "Intrigue", ywcost: true}, 
-	{name: "Masquerade", cat: ["Action"], expand: "Intrigue", ywcost: true}, 
-	{name: "Shanty Town", cat: ["Action"], expand: "Intrigue", ywcost: true}, 
-	{name: "Steward", cat: ["Action"], expand: "Intrigue", ywcost: true}, 
-	{name: "Swindler", cat: ["Action", "Attack"], expand: "Intrigue", ywcost: true, curser: true}, 
-	{name: "Wishing Well", cat: ["Action"], expand: "Intrigue", ywcost: true}, 
-	{name: "Baron", cat: ["Action"], expand: "Intrigue"}, 
-	{name: "Bridge", cat: ["Action"], expand: "Intrigue"}, 
-	{name: "Conspirator", cat: ["Action"], expand: "Intrigue"}, 
-	{name: "Diplomat", cat: ["Action", "Reaction"], expand: "Intrigue"}, 
-	{name: "Ironworks", cat: ["Action"], expand: "Intrigue"}, 
-	{name: "Mill", cat: ["Action", "Victory"], expand: "Intrigue"}, 
-	{name: "Mining Village", cat: ["Action"], expand: "Intrigue"}, 
-	{name: "Secret Passage", cat: ["Action"], expand: "Intrigue"}, 
-	{name: "Courtier", cat: ["Action"], expand: "Intrigue"}, 
-	{name: "Duke", cat: ["Victory"], expand: "Intrigue"}, 
-	{name: "Minion", cat: ["Action", "Attack"], expand: "Intrigue"}, 
-	{name: "Patrol", cat: ["Action"], expand: "Intrigue"}, 
-	{name: "Replace", cat: ["Action", "Attack"], expand: "Intrigue", curser: true}, 
-	{name: "Torturer", cat: ["Action", "Attack"], expand: "Intrigue", curser: true}, 
-	{name: "Trading Post", cat: ["Action"], expand: "Intrigue"}, 
-	{name: "Upgrade", cat: ["Action"], expand: "Intrigue"}, 
-	{name: "Harem", cat: ["Treasure", "Victory"], expand: "Intrigue"}, 
-	{name: "Nobels", cat: ["Action", "Victory"], expand: "Intrigue"}, 
-	{name: "Transmute", cat: ["Action"], expand: "Alchemy"}, 
-	{name: "Vineyard", cat: ["Victory"], expand: "Alchemy"}, 
-	{name: "Herbalist", cat: ["Action"], expand: "Alchemy", ywcost: true}, 
-	{name: "Apothecary", cat: ["Action"], expand: "Alchemy"}, 
-	{name: "Scrying Pool", cat: ["Action", "Attack"], expand: "Alchemy"}, 
-	{name: "University", cat: ["Action"], expand: "Alchemy"}, 
-	{name: "Alchemist", cat: ["Action"], expand: "Alchemy"}, 
-	{name: "Familiar", cat: ["Action", "Attack"], expand: "Alchemy", curser: true}, 
-	{name: "Philosopher’s Stone", cat: ["Treasure"], expand: "Alchemy"}, 
-	{name: "Golem", cat: ["Action"], expand: "Alchemy"}, 
-	{name: "Apprentice", cat: ["Action"], expand: "Alchemy"}, 
-	{name: "Possession", cat: ["Action"], expand: "Alchemy"}, 
-	{name: "Loan", cat: ["Treasure"], expand: "Prosperity", ywcost: true}, 
-	{name: "Trade Route", cat: ["Action"], expand: "Prosperity", ywcost: true}, 
-	{name: "Watchtower", cat: ["Action", "Reaction"], expand: "Prosperity", ywcost: true}, 
-	{name: "Bishop", cat: ["Action"], expand: "Prosperity"}, 
-	{name: "Monument", cat: ["Action"], expand: "Prosperity"}, 
-	{name: "Quarry", cat: ["Treasure"], expand: "Prosperity"}, 
-	{name: "Talisman", cat: ["Treasure"], expand: "Prosperity"}, 
-	{name: "Worker’s Village", cat: ["Action"], expand: "Prosperity"}, 
-	{name: "City", cat: ["Action"], expand: "Prosperity"}, 
-	{name: "Contraband", cat: ["Treasure"], expand: "Prosperity"}, 
-	{name: "Counting House", cat: ["Action"], expand: "Prosperity"}, 
-	{name: "Mint", cat: ["Action"], expand: "Prosperity"}, 
-	{name: "Mountebank", cat: ["Action", "Attack"], expand: "Prosperity", curser: true}, 
-	{name: "Rabble", cat: ["Action", "Attack"], expand: "Prosperity"}, 
-	{name: "Royal Seal", cat: ["Treasure"], expand: "Prosperity"}, 
-	{name: "Vault", cat: ["Action"], expand: "Prosperity"}, 
-	{name: "Venture", cat: ["Treasure"], expand: "Prosperity"}, 
-	{name: "Goons", cat: ["Action", "Attack"], expand: "Prosperity"}, 
-	{name: "Grand Market", cat: ["Action"], expand: "Prosperity"}, 
-	{name: "Hoard", cat: ["Treasure"], expand: "Prosperity"}, 
-	{name: "Bank", cat: ["Treasure"], expand: "Prosperity"}, 
-	{name: "Expand", cat: ["Action"], expand: "Prosperity"}, 
-	{name: "Forge", cat: ["Action"], expand: "Prosperity"}, 
-	{name: "King’s Court", cat: ["Action"], expand: "Prosperity"}, 
-	{name: "Peddler", cat: ["Action"], expand: "Prosperity"}, 
-	{name: "Hamlet", cat: ["Action"], expand: "Cornucopia", ywcost: true}, 
-	{name: "Forture Teller", cat: ["Action", "Attack"], expand: "Cornucopia", ywcost: true}, 
-	{name: "Menagerie", cat: ["Action"], expand: "Cornucopia", ywcost: true}, 
-	{name: "Farming Village", cat: ["Action"], expand: "Cornucopia"}, 
-	{name: "Horse Traders", cat: ["Action", "Reaction"], expand: "Cornucopia"}, 
-	{name: "Remake", cat: ["Action"], expand: "Cornucopia"}, 
-	{name: "Tournament", cat: ["Action"], expand: "Cornucopia", curser: true, setup: true}, 
-	{name: "Young Witch", cat: ["Action", "Attack"], expand: "Cornucopia", curser: true, setup: true}, 
-	{name: "Harvest", cat: ["Action"], expand: "Cornucopia"}, 
-	{name: "Horn of Plenty", cat: ["Treasure"], expand: "Cornucopia"}, 
-	{name: "Hunting Party", cat: ["Action", "Attack"], expand: "Cornucopia"}, 
-	{name: "Jester", cat: ["Action"], expand: "Cornucopia", curser: true}, 
-	{name: "Fairgrounds", cat: ["Victory"], expand: "Cornucopia"}, 
-	{name: "Crossroads", cat: ["Action"], expand: "Hinterlands", ywcost: true}, 
-	{name: "Duchess", cat: ["Action"], expand: "Hinterlands", ywcost: true}, 
-	{name: "Fool’s Gold", cat: ["Treasure", "Reaction"], expand: "Hinterlands", ywcost: true}, 
-	{name: "Develop", cat: ["Action"], expand: "Hinterlands", ywcost: true}, 
-	{name: "Oasis", cat: ["Action"], expand: "Hinterlands", ywcost: true}, 
-	{name: "Oracle", cat: ["Action", "Attack"], expand: "Hinterlands", ywcost: true}, 
-	{name: "Scheme", cat: ["Action"], expand: "Hinterlands", ywcost: true}, 
-	{name: "Tunnel", cat: ["Victory", "Reaction"], expand: "Hinterlands", ywcost: true}, 
-	{name: "Jack of All Trades", cat: ["Action"], expand: "Hinterlands"}, 
-	{name: "Noble Brigand", cat: ["Action", "Attack"], expand: "Hinterlands"}, 
-	{name: "Nomad Camp", cat: ["Action"], expand: "Hinterlands"}, 
-	{name: "Silk Road", cat: ["Victory"], expand: "Hinterlands"}, 
-	{name: "Spice Merchant", cat: ["Action"], expand: "Hinterlands"}, 
-	{name: "Trader", cat: ["Action", "Reaction"], expand: "Hinterlands"}, 
-	{name: "Cache", cat: ["Treasure"], expand: "Hinterlands"}, 
-	{name: "Cartographer", cat: ["Action"], expand: "Hinterlands"}, 
-	{name: "Embassy", cat: ["Action"], expand: "Hinterlands"}, 
-	{name: "Haggler", cat: ["Action"], expand: "Hinterlands"}, 
-	{name: "Highway", cat: ["Action"], expand: "Hinterlands"}, 
-	{name: "Ill-Gotten Gains", cat: ["Treasure"], expand: "Hinterlands", curser: true}, 
-	{name: "Inn", cat: ["Action"], expand: "Hinterlands"}, 
-	{name: "Mandarin", cat: ["Action"], expand: "Hinterlands"}, 
-	{name: "Margrave", cat: ["Action", "Attack"], expand: "Hinterlands"}, 
-	{name: "Stables", cat: ["Action"], expand: "Hinterlands"}, 
-	{name: "Border Billage", cat: ["Action"], expand: "Hinterlands"}, 
-	{name: "Farmland", cat: ["Victory"], expand: "Hinterlands"}, 
-	{name: "Black Market", cat: ["Action"], expand: "Promo", setup: true, ywcost: true}, 
-	{name: "Envoy", cat: ["Action"], expand: "Promo"}, 
-	{name: "Prince", cat: ["Action"], expand: "Promo"}, 
-	{name: "Sauna/Avanto", cat: ["Action"], expand: "Promo"}, 
+	{name: "Cellar", cat: ["Action"], expand: "Base", cost: 2},  
+	{name: "Chapel", cat: ["Action"], expand: "Base", cost: 2}, 
+	{name: "Moat", cat: ["Action", "Reaction"], expand: "Base", cost: 2}, 
+	{name: "Harbinger", cat: ["Action"], expand: "Base", cost: 3}, 
+	{name: "Merchant", cat: ["Action"], expand: "Base", cost: 3}, 
+	{name: "Vassal", cat: ["Action"], expand: "Base", cost: 3}, 
+	{name: "Village", cat: ["Action"], expand: "Base", cost: 3}, 
+	{name: "Workshop", cat: ["Action"], expand: "Base", cost: 3}, 
+	{name: "Bureaucrat", cat: ["Action", "Attack"], expand: "Base", cost: 4}, 
+	{name: "Gardens", cat: ["Victory"], expand: "Base", cost: 4}, 
+	{name: "Militia", cat: ["Action", "Attack"], expand: "Base", cost: 4}, 
+	{name: "Moneylender", cat: ["Action"], expand: "Base", cost: 4}, 
+	{name: "Poacher", cat: ["Action"], expand: "Base", cost: 4}, 
+	{name: "Remodel", cat: ["Action"], expand: "Base", cost: 4}, 
+	{name: "Smithy", cat: ["Action"], expand: "Base", cost: 4}, 
+	{name: "Throne Room", cat: ["Action"], expand: "Base", cost: 4}, 
+	{name: "Bandit", cat: ["Action", "Attack"], expand: "Base", cost: 5}, 
+	{name: "Council Room", cat: ["Action"], expand: "Base", cost: 5}, 
+	{name: "Festival", cat: ["Action"], expand: "Base", cost: 5}, 
+	{name: "Laboratory", cat: ["Action"], expand: "Base", cost: 5}, 
+	{name: "Library", cat: ["Action"], expand: "Base", cost: 5}, 
+	{name: "Market", cat: ["Action"], expand: "Base", cost: 5}, 
+	{name: "Mine", cat: ["Action"], expand: "Base", cost: 5}, 
+	{name: "Senty", cat: ["Action"], expand: "Base", cost: 5}, 
+	{name: "Witch", cat: ["Action", "Attack"], expand: "Base", curser: true, cost: 5}, 
+	{name: "Artisan", cat: ["Action"], expand: "Base", cost: 6}, 
+	{name: "Chancellor", cat: ["Action"], expand: "Base", cost: 3}, 
+	{name: "Woodcutter", cat: ["Action"], expand: "Base", cost: 3}, 
+	{name: "Feast", cat: ["Action"], expand: "Base", cost: 4}, 
+	{name: "Spy", cat: ["Action", "Attack"], expand: "Base", cost: 4}, 
+	{name: "Thief", cat: ["Action", "Attack"], expand: "Base", cost: 4}, 
+	{name: "Adventurer", cat: ["Action"], expand: "Base", cost: 6}, 
+	{name: "Courtyard", cat: ["Action"], expand: "Intrigue", cost: 2}, 
+	{name: "Lurker", cat: ["Action"], expand: "Intrigue", cost: 2}, 
+	{name: "Pawn", cat: ["Action"], expand: "Intrigue", cost: 2}, 
+	{name: "Masquerade", cat: ["Action"], expand: "Intrigue", cost: 3}, 
+	{name: "Shanty Town", cat: ["Action"], expand: "Intrigue", cost: 3}, 
+	{name: "Steward", cat: ["Action"], expand: "Intrigue", cost: 3}, 
+	{name: "Swindler", cat: ["Action", "Attack"], expand: "Intrigue", cost: true, curser: 3}, 
+	{name: "Wishing Well", cat: ["Action"], expand: "Intrigue", cost: 3}, 
+	{name: "Baron", cat: ["Action"], expand: "Intrigue", cost: 4}, 
+	{name: "Bridge", cat: ["Action"], expand: "Intrigue", cost: 4}, 
+	{name: "Conspirator", cat: ["Action"], expand: "Intrigue", cost: 4}, 
+	{name: "Diplomat", cat: ["Action", "Reaction"], expand: "Intrigue", cost: 4}, 
+	{name: "Ironworks", cat: ["Action"], expand: "Intrigue", cost: 4}, 
+	{name: "Mill", cat: ["Action", "Victory"], expand: "Intrigue", cost: 4}, 
+	{name: "Mining Village", cat: ["Action"], expand: "Intrigue", cost: 4}, 
+	{name: "Secret Passage", cat: ["Action"], expand: "Intrigue", cost: 4}, 
+	{name: "Courtier", cat: ["Action"], expand: "Intrigue", cost: 5}, 
+	{name: "Duke", cat: ["Victory"], expand: "Intrigue", cost: 5}, 
+	{name: "Minion", cat: ["Action", "Attack"], expand: "Intrigue", cost: 5}, 
+	{name: "Patrol", cat: ["Action"], expand: "Intrigue", cost: 5}, 
+	{name: "Replace", cat: ["Action", "Attack"], expand: "Intrigue", curser: true, cost: 5}, 
+	{name: "Torturer", cat: ["Action", "Attack"], expand: "Intrigue", curser: true, cost: 5}, 
+	{name: "Trading Post", cat: ["Action"], expand: "Intrigue", cost: 5}, 
+	{name: "Upgrade", cat: ["Action"], expand: "Intrigue", cost: 5}, 
+	{name: "Harem", cat: ["Treasure", "Victory"], expand: "Intrigue", cost: 6}, 
+	{name: "Nobels", cat: ["Action", "Victory"], expand: "Intrigue", cost: 6}, 
+	{name: "Transmute", cat: ["Action"], expand: "Alchemy", potion: true, cost: 0}, 
+	{name: "Vineyard", cat: ["Victory"], expand: "Alchemy", potion: true, cost: 0}, 
+	{name: "Herbalist", cat: ["Action"], expand: "Alchemy", cost: 2}, 
+	{name: "Apothecary", cat: ["Action"], expand: "Alchemy", potion: true, cost: 2}, 
+	{name: "Scrying Pool", cat: ["Action", "Attack"], expand: "Alchemy", potion: true, cost: 2}, 
+	{name: "University", cat: ["Action"], expand: "Alchemy", potion: true, cost: 2}, 
+	{name: "Alchemist", cat: ["Action"], expand: "Alchemy", potion: true, cost: 3}, 
+	{name: "Familiar", cat: ["Action", "Attack"], expand: "Alchemy", curser: true, potion: true, cost: 3}, 
+	{name: "Philosopher’s Stone", cat: ["Treasure"], expand: "Alchemy", potion: true, cost: 3}, 
+	{name: "Golem", cat: ["Action"], expand: "Alchemy", potion: true, cost: 4}, 
+	{name: "Apprentice", cat: ["Action"], expand: "Alchemy", cost: 5}, 
+	{name: "Possession", cat: ["Action"], expand: "Alchemy", potion: true, cost: 6}, 
+	{name: "Loan", cat: ["Treasure"], expand: "Prosperity", cost: 3}, 
+	{name: "Trade Route", cat: ["Action"], expand: "Prosperity", cost: 3}, 
+	{name: "Watchtower", cat: ["Action", "Reaction"], expand: "Prosperity", cost: 3}, 
+	{name: "Bishop", cat: ["Action"], expand: "Prosperity", cost: 4}, 
+	{name: "Monument", cat: ["Action"], expand: "Prosperity", cost: 4}, 
+	{name: "Quarry", cat: ["Treasure"], expand: "Prosperity", cost: 4}, 
+	{name: "Talisman", cat: ["Treasure"], expand: "Prosperity", cost: 4}, 
+	{name: "Worker’s Village", cat: ["Action"], expand: "Prosperity", cost: 4}, 
+	{name: "City", cat: ["Action"], expand: "Prosperity", cost: 5}, 
+	{name: "Contraband", cat: ["Treasure"], expand: "Prosperity", cost: 5}, 
+	{name: "Counting House", cat: ["Action"], expand: "Prosperity", cost: 5}, 
+	{name: "Mint", cat: ["Action"], expand: "Prosperity", cost: 5}, 
+	{name: "Mountebank", cat: ["Action", "Attack"], expand: "Prosperity", curser: true, cost: 5}, 
+	{name: "Rabble", cat: ["Action", "Attack"], expand: "Prosperity", cost: 5}, 
+	{name: "Royal Seal", cat: ["Treasure"], expand: "Prosperity", cost: 5}, 
+	{name: "Vault", cat: ["Action"], expand: "Prosperity", cost: 5}, 
+	{name: "Venture", cat: ["Treasure"], expand: "Prosperity", cost: 5}, 
+	{name: "Goons", cat: ["Action", "Attack"], expand: "Prosperity", cost: 6}, 
+	{name: "Grand Market", cat: ["Action"], expand: "Prosperity", cost: 6}, 
+	{name: "Hoard", cat: ["Treasure"], expand: "Prosperity", cost: 6}, 
+	{name: "Bank", cat: ["Treasure"], expand: "Prosperity", cost: 7}, 
+	{name: "Expand", cat: ["Action"], expand: "Prosperity", cost: 7}, 
+	{name: "Forge", cat: ["Action"], expand: "Prosperity", cost: 7}, 
+	{name: "King’s Court", cat: ["Action"], expand: "Prosperity", cost: 7}, 
+	{name: "Peddler", cat: ["Action"], expand: "Prosperity", cost: 8}, 
+	{name: "Hamlet", cat: ["Action"], expand: "Cornucopia", cost: 2}, 
+	{name: "Forture Teller", cat: ["Action", "Attack"], expand: "Cornucopia", cost: 3}, 
+	{name: "Menagerie", cat: ["Action"], expand: "Cornucopia", cost: 3}, 
+	{name: "Farming Village", cat: ["Action"], expand: "Cornucopia", cost: 4}, 
+	{name: "Horse Traders", cat: ["Action", "Reaction"], expand: "Cornucopia", cost: 4}, 
+	{name: "Remake", cat: ["Action"], expand: "Cornucopia", cost: 4}, 
+	{name: "Tournament", cat: ["Action"], expand: "Cornucopia", curser: true, setup: true, cost: 4}, 
+	{name: "Young Witch", cat: ["Action", "Attack"], expand: "Cornucopia", curser: true, setup: true, cost: 4}, 
+	{name: "Harvest", cat: ["Action"], expand: "Cornucopia", cost: 5}, 
+	{name: "Horn of Plenty", cat: ["Treasure"], expand: "Cornucopia", cost: 5}, 
+	{name: "Hunting Party", cat: ["Action", "Attack"], expand: "Cornucopia", cost: 5}, 
+	{name: "Jester", cat: ["Action"], expand: "Cornucopia", curser: true, cost: 5}, 
+	{name: "Fairgrounds", cat: ["Victory"], expand: "Cornucopia", cost: 6}, 
+	{name: "Crossroads", cat: ["Action"], expand: "Hinterlands", cost: 2}, 
+	{name: "Duchess", cat: ["Action"], expand: "Hinterlands", cost: 2}, 
+	{name: "Fool’s Gold", cat: ["Treasure", "Reaction"], expand: "Hinterlands", cost: 2}, 
+	{name: "Develop", cat: ["Action"], expand: "Hinterlands", cost: 3}, 
+	{name: "Oasis", cat: ["Action"], expand: "Hinterlands", cost: 3}, 
+	{name: "Oracle", cat: ["Action", "Attack"], expand: "Hinterlands", cost: 3}, 
+	{name: "Scheme", cat: ["Action"], expand: "Hinterlands", cost: 3}, 
+	{name: "Tunnel", cat: ["Victory", "Reaction"], expand: "Hinterlands", cost: 3}, 
+	{name: "Jack of All Trades", cat: ["Action"], expand: "Hinterlands", cost: 4}, 
+	{name: "Noble Brigand", cat: ["Action", "Attack"], expand: "Hinterlands", cost: 4}, 
+	{name: "Nomad Camp", cat: ["Action"], expand: "Hinterlands", cost: 4}, 
+	{name: "Silk Road", cat: ["Victory"], expand: "Hinterlands", cost: 4}, 
+	{name: "Spice Merchant", cat: ["Action"], expand: "Hinterlands", cost: 4}, 
+	{name: "Trader", cat: ["Action", "Reaction"], expand: "Hinterlands", cost: 4}, 
+	{name: "Cache", cat: ["Treasure"], expand: "Hinterlands", cost: 5}, 
+	{name: "Cartographer", cat: ["Action"], expand: "Hinterlands", cost: 5}, 
+	{name: "Embassy", cat: ["Action"], expand: "Hinterlands", cost: 5}, 
+	{name: "Haggler", cat: ["Action"], expand: "Hinterlands", cost: 5}, 
+	{name: "Highway", cat: ["Action"], expand: "Hinterlands", cost: 5}, 
+	{name: "Ill-Gotten Gains", cat: ["Treasure"], expand: "Hinterlands", curser: true, cost: 5}, 
+	{name: "Inn", cat: ["Action"], expand: "Hinterlands", cost: 5}, 
+	{name: "Mandarin", cat: ["Action"], expand: "Hinterlands", cost: 5}, 
+	{name: "Margrave", cat: ["Action", "Attack"], expand: "Hinterlands", cost: 5}, 
+	{name: "Stables", cat: ["Action"], expand: "Hinterlands", cost: 5}, 
+	{name: "Border Village", cat: ["Action"], expand: "Hinterlands", cost: 6}, 
+	{name: "Farmland", cat: ["Victory"], expand: "Hinterlands", cost: 6}, 
+	{name: "Black Market", cat: ["Action"], expand: "Promo", setup: true, cost: 3}, 
+	{name: "Envoy", cat: ["Action"], expand: "Promo", cost: 4}, 
+	{name: "Prince", cat: ["Action"], expand: "Promo", cost: 8}, 
+	{name: "Sauna/Avanto", cat: ["Action"], expand: "Promo", cost: 4}, 
 ];
 var choice = {"Base": true, "Intrigue": true, "Alchemy": true, "Prosperity": true, "Cornucopia": true, "Hinterlands": true, "Promo": true};
 var catags = {"Attack": 0, "Treasure": 0, "Victory": 0, "Reaction": 0, "Action": 0};
+var cost_limit = 99;
 var kingdoms = [];
 var remove = [];
 var bane = {};
@@ -230,10 +231,20 @@ function chose(s)
 }
 function minim(s, v)
 {
-	catags[s] = v;
-	document.getElementById(s.toLowerCase()+'0').className = "";
-	document.getElementById(s.toLowerCase()+'1').className = "";
-	document.getElementById(s.toLowerCase()+'2').className = "";
+	if (s == "Cost")
+	{
+		cost_limit = v;
+		document.getElementById('cost99').className = "";
+		document.getElementById('cost3').className = "";
+		document.getElementById('cost2').className = "";
+	}
+	else
+	{
+		catags[s] = v;
+		document.getElementById(s.toLowerCase()+'0').className = "";
+		document.getElementById(s.toLowerCase()+'1').className = "";
+		document.getElementById(s.toLowerCase()+'2').className = "";
+	}
 	document.getElementById(s.toLowerCase()+v).className = "have";
 }
 function shuffle(a)
@@ -303,10 +314,12 @@ function DoTheThing()
 		}
 	}
 	n = 0;
+	// costs up to 15 coin, excluding specials (e.g. potions)
+	var cost_chosen = Array(16).fill(0)
 	while (kingdoms.length < 10)
 	{
 		var c = cards.shift();
-		if (!choice[c.expand])
+		if (!choice[c.expand] || cost_chosen[c.cost] >= cost_limit)
 		{
 			cards.push(c);
 			n++;
@@ -321,6 +334,7 @@ function DoTheThing()
 		kingdoms.push(c);
 		if (c.setup) {special.push(c.name);}
 		potion = (c.expand == "Alchemy" ? true : potion);
+		cost_chosen[c.cost] += 1
 		curse = (c.curser ? true : curse);
 	}
 	while (special.length > 0)
@@ -331,7 +345,7 @@ function DoTheThing()
 		{
 			case "Young Witch":
 				var c = cards.shift();
-				while (!choice[c.expand] || !c.ywcost)
+				while (!choice[c.expand] || c.cost < 2 || c.cost > 3 || c.potion)
 				{
 					cards.push(c);
 					n++;
@@ -750,6 +764,10 @@ function ReDoTheThing()
 	<td><input type="button" value="0+" onClick="minim('Victory', 0)" class="have" id="victory0"/> 
     <input type="button" value="1+" onClick="minim('Victory', 1)" id="victory1"/> 
     <input type="button" value="2+" onClick="minim('Victory', 2)" id="victory2"/></td></tr>
+<tr><td style="font-size:8vw; line-height:0.8;">Duplicate</br>Costs</td>
+	<td><input type="button" value="∞-" onClick="minim('Cost', 99)" class="have" id="cost99"/> 
+    <input type="button" value="3-" onClick="minim('Cost', 3)" id="cost3"/> 
+    <input type="button" value="2-" onClick="minim('Cost', 2)" id="cost2"/></td></tr>
 <tr><td colspan="2" style="text-align:center;"><input type="button" style="width:48vw;" value="Choose" onClick="DoTheThing()"/></td></tr></table>
 </div>
 <div id="kingdoms"></div>
