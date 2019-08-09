@@ -598,6 +598,8 @@ Maximum:<label id="ratemaxvalm" for="ratemax" class="moblab">&emsp;10.0</label><
 <table class="collect"><tr><td>Game</td><td style="text-decoration:underline;" onClick="playform = !playform; document.getElementById('playform').style.display = playform ? 'inline' : 'none'; if(!playform) {document.getElementById('playmin').value=1;document.getElementById('playmax').value=10;playerfilter();}">Players</td><td style="text-decoration:underline;" onClick="timeform = !timeform; document.getElementById('timeform').style.display = timeform ? 'inline' : 'none'; if(!timeform) {document.getElementById('timemin').value=0;document.getElementById('timemax').value=12;timerfilter();}">Time</td><td id="BGGrat">BGG Rating</td><td>Rules</td><td>Apps</td></tr>
 <?php echo $table;?>
 </table>
+<h2>Game Collection Hire</h2>
+The QUGS game collection is available to hire by UQU affiliated clubs and societies, and other organisations within the UQ community. The QUGS games collection is stored in two cases, partitioned by approximate complexity. UQU affiliated clubs and societies may hire one case for $15 or both cases for $25, for up to four hours, subject to availability. Please contact us at <a href="mailto:president@qugs.org.au">president@qugs.org.au</a> to for questions and/or bookings.
 <h2>Maintenance Requests</h2>
 Use this form to report broken sleeves, missing pieces or other needed repairs to games in the QUGS collection. <a onclick="maintshow();" id="showhide">Show Form</a><br/>
 <form id="maintform" action="collection" method="post" style="display:none; width:480px;">
