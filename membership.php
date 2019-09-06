@@ -67,7 +67,7 @@ $n = 0;
 while($memb_r = mysqli_fetch_assoc($memb_l))
 {
 	$n += 1;
-	$memb_t .= "\t<tr>
+	$memb_t .= "\n\t<tr>
 		<td>".$n."</td>
 		<td>".$memb_r['fname']." ".$memb_r['lname']."</td>
 		<td>".$memb_r['email']."</td>
@@ -78,8 +78,8 @@ while($memb_r = mysqli_fetch_assoc($memb_l))
 		".($memb_r['student'] ? "<td>".strtoupper($memb_r['faculty'] == "eai" ? "eait" : $memb_r['faculty'])."</td>" : "<td style='color:#808080;'>N/A</td>")."
 		".($memb_r['student'] ? "<td>".strtoupper($memb_r['school'])."</td>" : "<td style='color:#808080;'>N/A</td>")."
 		".($memb_r['student'] ? "<td>".($memb_r['international'] ? "&#x2713;" : "&#x2717;")."</td>" : "<td style='color:#808080;'>N/A</td>")."
-		<td>".$memb_r['receipt'].$memb_r['stripe']."</td>
-		".($memb_r['joined'] ? "<td>".date("H:i&\\e\\m\\sp;jS M, Y", strtotime($memb_r['joined']))."</td>" : "<td style='color:#808080;'>N/A</td>")."</tr>\n";
+		<td>".(($memb_r['receipt'] || $memb_r['stripe']) ? ($memb_r['receipt'].$memb_r['stripe']) : "???")."</td>
+		".($memb_r['joined'] ? "<td>".date("H:i&\\e\\m\\sp;jS M, Y", strtotime($memb_r['joined']))."</td>" : "<td style='color:#808080;'>N/A</td>")."</tr>";
 }
 
 $gen_q = "SELECT gender, COUNT(membid) AS c FROM Membership GROUP BY gender ORDER BY c DESC;";
@@ -87,33 +87,32 @@ $gen_l = mysqli_query($db, $gen_q) or die(mysqli_error($db));
 $gen_t = "";
 while($gen_r = mysqli_fetch_assoc($gen_l))
 {
-	$gen_t .= "\t<tr>
+	$gen_t .= "\n\t<tr>
 		<td>".($gen_r['gender'] == "m" ? "Male" : ($gen_r['gender'] == "f" ? "Female" : "Other"))."</td>
 		<td>".$gen_r['c']."</td>
-		<td>".round(100*$gen_r['c']/$n, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>\n";
+		<td>".round(100*$gen_r['c']/$n, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>";
 }
 
 $stud_q = "SELECT student, COUNT(membid) AS c FROM Membership GROUP BY student ORDER BY student DESC;";
 $stud_l = mysqli_query($db, $stud_q) or die(mysqli_error($db));
 $stud_r = mysqli_fetch_assoc($stud_l);
-$stud_t = "\t<tr>
+$stud_t = "\n\t<tr>
 		<td>UQ Student</td>
 		<td>".$stud_r['c']."</td>
-		<td>".round(100*$stud_r['c']/$n, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>\n";
+		<td>".round(100*$stud_r['c']/$n, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>";
 $s = $stud_r['c'];
 $stud_r = mysqli_fetch_assoc($stud_l);
-$stud_t .= "\t<tr>
+$stud_t .= "\n\t<tr>
 		<td>Non&ndash;Student</td>
 		<td>".$stud_r['c']." (&or;".floor(3*$s/7).")</td>
-		<td>".round(100*$stud_r['c']/$s, 0, PHP_ROUND_HALF_EVEN)."% (&or;30%)</td></tr>\n";
+		<td>".round(100*$stud_r['c']/$n, 0, PHP_ROUND_HALF_EVEN)."% (&or;30%)</td></tr>";
 
 $year_q = "SELECT year, COUNT(membid) AS c FROM Membership WHERE year IS NOT NULL GROUP BY year ORDER BY year ASC;";
 $year_l = mysqli_query($db, $year_q) or die(mysqli_error($db));
 $year_t = "";
 while($year_r = mysqli_fetch_assoc($year_l))
 {
-	$year_t .= "\t<tr>
-		<td>";
+	$year_t .= "\n\t<tr>\t\t<td>";
 		switch ($year_r['year'])
 		{
 			case "1":
@@ -137,7 +136,7 @@ while($year_r = mysqli_fetch_assoc($year_l))
 		}
 		$year_t .= "</td>
 		<td>".$year_r['c']."</td>
-		<td>".round(100*$year_r['c']/$s, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>\n";
+		<td>".round(100*$year_r['c']/$s, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>";
 }
 
 $fac_q = "SELECT faculty, COUNT(membid) AS c FROM Membership WHERE faculty IS NOT NULL GROUP BY faculty ORDER BY faculty = 'oth' ASC, c DESC;";
@@ -145,7 +144,7 @@ $fac_l = mysqli_query($db, $fac_q) or die(mysqli_error($db));
 $fac_t = "";
 while($fac_r = mysqli_fetch_assoc($fac_l))
 {
-	$fac_t .= "\t<tr>
+	$fac_t .= "\n\t<tr>
 		<td>".strtoupper($fac_r['faculty'] == "eai" ? "eait" : $fac_r['faculty'])."</td>
 		<td>";
 	switch ($fac_r['faculty'])
@@ -174,14 +173,14 @@ while($fac_r = mysqli_fetch_assoc($fac_l))
 	}
 	$fac_t .= "</td>
 		<td>".$fac_r['c']."</td>
-		<td>".round(100*$fac_r['c']/$s, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>\n";
+		<td>".round(100*$fac_r['c']/$s, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>";
 	$f = $fac_r['c'];
 	
 	$scho_q = "SELECT school, COUNT(membid) AS c FROM Membership WHERE faculty = '".$fac_r['faculty']."' GROUP BY school ORDER BY school = 'oth_' ASC, c DESC;";
 	$scho_l = mysqli_query($db, $scho_q) or die(mysqli_error($db));
 	while($scho_r = mysqli_fetch_assoc($scho_l))
 	{
-		$fac_t .= "\t<tr style=\"font-style:italic;\">
+		$fac_t .= "\n\t<tr style=\"font-style:italic;\">
 			<td>&emsp;".strtoupper($scho_r['school'])."</td>
 			<td>&emsp;";
 		switch ($scho_r['school'])
@@ -279,7 +278,7 @@ while($fac_r = mysqli_fetch_assoc($fac_l))
 		}
 		$fac_t .= "</td>
 			<td>".$scho_r['c']."</td>
-		<td>".round(100*$scho_r['c']/$s, 0, PHP_ROUND_HALF_EVEN)."%&ensp;&bull;&ensp;".round(100*$scho_r['c']/$f, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>\n";
+		<td>".round(100*$scho_r['c']/$s, 0, PHP_ROUND_HALF_EVEN)."%&ensp;&bull;&ensp;".round(100*$scho_r['c']/$f, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>";
 	}
 }
 
@@ -288,10 +287,21 @@ $int_l = mysqli_query($db, $int_q) or die(mysqli_error($db));
 $int_t = "";
 while($int_r = mysqli_fetch_assoc($int_l))
 {
-	$int_t .= "\t<tr>
+	$int_t .= "\n\t<tr>
 		<td>".($int_r['international'] ? "International" : "Domestic")."</td>
 		<td>".$int_r['c']."</td>
-		<td>".round(100*$int_r['c']/$s, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>\n";
+		<td>".round(100*$int_r['c']/$s, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>";
+}
+
+$pay_q = "SELECT 'Stripe' AS p, COUNT(membid) AS c FROM Membership WHERE stripe IS NOT NULL UNION SELECT 'Life Member' AS p, COUNT(membid) AS c FROM Membership WHERE receipt = 'Life Member' UNION SELECT 'Cash' AS p, COUNT(membid) AS c FROM Membership WHERE receipt != 'Life Member' AND receipt != '' AND stripe IS NULL UNION SELECT '???' AS p, COUNT(membid) AS c FROM Membership WHERE receipt = '' AND stripe IS NULL ORDER BY c DESC";
+$pay_l = mysqli_query($db, $pay_q) or die(mysqli_error($db));
+$pay_t = "";
+while($pay_r = mysqli_fetch_assoc($pay_l))
+{
+	$pay_t .= "\n\t<tr>
+		<td>".$pay_r['p']."</td>
+		<td>".$pay_r['c']."</td>
+		<td>".round(100*$pay_r['c']/$n, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>";
 }
 
 $quo_q = "SELECT COUNT(membid) AS c FROM Membership WHERE receipt != 'Life Member' OR receipt IS NULL;";
@@ -352,55 +362,62 @@ table tr > td:first-child
 </script>
 </head>
 <body>
-<table class="memb"><tr>
-	<td>#</td>
-    <td>Name</td>
-    <td>E&ndash;Mail</td>
-    <td>Phone</td>
-    <td>Gender</td>
-    <td>Student No.</td>
-    <td>Year</td>
-    <td>Faculty</td>
-    <td>School</td>
-    <td>International</td>
-    <td>Receipt</td>
-    <td>Join Date</td>
-</tr><?php echo $memb_t;?></table>
+<table class="memb">
+	<tr>
+        <td>#</td>
+        <td>Name</td>
+        <td>E&ndash;Mail</td>
+        <td>Phone</td>
+        <td>Gender</td>
+        <td>Student No.</td>
+        <td>Year</td>
+        <td>Faculty</td>
+        <td>School</td>
+        <td>International</td>
+        <td>Receipt</td>
+        <td>Join Date</td></tr><?php echo $memb_t;?></table>
 <br/>
 
-<table class="gen"><tr>
-	<td>Gender</td>
-    <td>Number</td>
-    <td>Percentage</td>
-</tr><?php echo $gen_t;?></table>
+<table class="gen">
+	<tr>
+        <td>Gender</td>
+        <td>Number</td>
+        <td>Percentage</td></tr><?php echo $gen_t;?></table>
 <br/>
 
-<table class="stud"><tr>
-	<td>&nbsp;</td>
-    <td>Count</td>
-    <td>Percentage</td>
-</tr><?php echo $stud_t;?></table>
+<table class="stud">
+	<tr>
+        <td>&nbsp;</td>
+        <td>Count</td>
+        <td>Percentage</td></tr><?php echo $stud_t;?></table>
 <br/>
 
-<table class="year"><tr>
-	<td>Year</td>
-    <td>Count</td>
-    <td>Percentage</td>
-</tr><?php echo $year_t;?></table>
+<table class="year">
+	<tr>
+        <td>Year</td>
+        <td>Count</td>
+        <td>Percentage</td></tr><?php echo $year_t;?></table>
 <br/>
 
-<table class="fac"><tr>
-	<td colspan="2">Faculty/School</td>
-    <td>Count</td>
-    <td>Percentage</td>
-</tr><?php echo $fac_t;?></table>
+<table class="fac">
+	<tr>
+        <td colspan="2">Faculty/School</td>
+        <td>Count</td>
+        <td>Percentage</td></tr><?php echo $fac_t;?></table>
 <br/>
 
-<table class="int"><tr>
-	<td>&nbsp;</td>
-    <td>Count</td>
-    <td>Percentage</td>
-</tr><?php echo $int_t;?></table>
+<table class="int">
+	<tr>
+		<td>&nbsp;</td>
+    	<td>Count</td>
+    	<td>Percentage</td></tr><?php echo $int_t;?></table>
+<br/>
+
+<table class="pay">
+	<tr>
+        <td>Payment Method</td>
+        <td>Count</td>
+        <td>Percentage</td></tr><?php echo $pay_t;?></table>
 <br/>
 
 Quorum: <?php echo $quo_n;?> (<?php echo $quo_p;?>%)<br/>
