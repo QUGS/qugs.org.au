@@ -176,7 +176,7 @@ if ($q) // if query created
 		$m = (curl_getinfo($c, CURLINFO_HTTP_CODE) == 200 ? "200" : $m);
 		curl_close($c);
 
-	mail("president@qugs.org.au", "New Member",
+	mail("president@qugs.org.au", (($_POST['fname'] && $_POST['lname']) ? ($_POST['fname']." ".$_POST['lname']) : "Somebody")." has join QUGS",
 		"Name: ".($_POST['fname'] ? $_POST['fname'] : "N/A")." ".($_POST['lname'] ? $_POST['lname'] : "N/A").
 		"\nEmail: ".($_POST['email'] ? $_POST['email'] : "N/A").
 		"\nPhone: ".($_POST['phone'] ? $_POST['phone'] : "N/A").
