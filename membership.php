@@ -298,10 +298,13 @@ $pay_l = mysqli_query($db, $pay_q) or die(mysqli_error($db));
 $pay_t = "";
 while($pay_r = mysqli_fetch_assoc($pay_l))
 {
-	$pay_t .= "\n\t<tr>
-		<td>".$pay_r['p']."</td>
-		<td>".$pay_r['c']."</td>
-		<td>".round(100*$pay_r['c']/$n, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>";
+	if($pay_r['c'])
+	{
+		$pay_t .= "\n\t<tr>
+			<td>".$pay_r['p']."</td>
+			<td>".$pay_r['c']."</td>
+			<td>".round(100*$pay_r['c']/$n, 0, PHP_ROUND_HALF_EVEN)."%</td></tr>";
+	}
 }
 
 $quo_q = "SELECT COUNT(membid) AS c FROM Membership WHERE receipt != 'Life Member' OR receipt IS NULL;";
