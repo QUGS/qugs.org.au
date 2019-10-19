@@ -151,6 +151,7 @@ ul
 <tr><td>2017</td><td>Lee Phillips</td><td>Harvey Kay-Burman<br/>Bradley Stone <sup>A</sup></td><td>Catherine Shield<br/>Rob Copel <sup>A</sup></td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr><td>2018</td><td>Lee Phillips</td><td>Dakota Edwards<sup>A</sup></td><td>Bradley Stone</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr><td>2019</td><td>Bradley Stone</td><td>Samuel Parchert</td><td>Lee Phillips</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2019</td><td>Bradley Stone</td><td>Renee Bonney</td><td>Lee Phillips</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 </table>
 <div class="column_"><sup>A</sup> Acting officer.<br/>
 <sup>C</sup> Custodian.<br/>
@@ -191,7 +192,8 @@ ul
 <li><strong><a href="minutes/m2015.txt">2015 AGM</a></strong></li>
 <li><strong><a href="minutes/m2016.pdf">2016 AGM</a></strong></li>
 <li><strong><a href="minutes/m2017.pdf">2017 AGM</a></strong></li>
-<li><strong><a href="minutes/m2018.pdf">2018 AGM</a></strong></li><br/></div></ul>
+<li><strong><a href="minutes/m2018.pdf">2018 AGM</a></strong></li>
+<li><strong><a href="minutes/m2019.pdf">2019 AGM</a></strong></li></div></ul>
 <h2>Queensland Wargamer</h2>
 <ul><div class="column_"><li><a href="wargamer/QW01_Feb79.pdf">Issue One (February, 1979)</a></li>
 <li><a href="wargamer/QW02_May79.pdf">Issue Two (May, 1979)</a></li>
