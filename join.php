@@ -152,8 +152,7 @@ if ($q) // if query created
 	$m = -1;
 
 		include("mc.php");
-		$y = 'faba794f30'; // current year's mailchimp list_id
-		$c = curl_init('https://'.substr($mailc,strpos($mailc,'-')+1).'.api.mailchimp.com/3.0/lists/'.$y.'/members/'.md5(strtolower($_POST['email'])));
+		$c = curl_init('https://'.substr($mailc,strpos($mailc,'-')+1).'.api.mailchimp.com/3.0/lists/faba794f30/members/'.md5(strtolower($_POST['email'])));
 		curl_setopt($c, CURLOPT_USERPWD, 'user:'.$mailc);
 		curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 		curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
@@ -169,7 +168,7 @@ if ($q) // if query created
 					'LNAME'     => $_POST['lname']
         		),
 				'interests' => array(
-					'75c72277e8'  => true
+					'105c409baa'  => true
 				)
 			))
 		);
