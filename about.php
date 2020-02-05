@@ -1,3 +1,37 @@
+<?php
+include("db.php");
+
+// Select all partners from database (ordered randomly)
+$partner_q = "SELECT sponsor, logo, location, discount, website FROM Partners ORDER BY RAND()";
+$partner_l = mysqli_query($db, $partner_q) or die(mysqli_error($db));
+
+// String to form club's games table
+$table = "";
+
+while($partner = mysqli_fetch_assoc($partner_l))
+{
+	$row = "\t<tr><td><img src=\"images/".$partner['logo']."\"></td>\n"
+		."\t\t<td>".$partner['sponsor']."</td>\n"
+		."\t\t<td>".$partner['location']."</td>\n"
+		."\t\t<td>".$partner['discount']."</td>\n";
+	$web = $partner['website'];
+	if (substr($web, 0, strlen("https://www.")) == "https://www.")
+	{
+   		$web = substr($web, strlen("https://www."));
+	}
+	if (substr($web, 0, strlen("http://www.")) == "http://www.")
+	{
+		$web = substr($web, strlen("http://www."));
+	}
+	if (substr($web, -strlen("/")) == "/")
+	{
+		$web = substr($web, 0, -strlen("/"));
+	}
+	$row .= "\t\t<td><a href=\"".$partner['website']."\">".$web."</a></td></tr>\n";
+	$table .= $row;
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,36 +43,61 @@
 <link rel="icon" href="images/fave<?php echo intval(date("z")) % 6 ?>.png"/>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <style>
-.exec tr:nth-child(odd)
+.exec tr:nth-child(odd), .partn tr:nth-child(odd)
 {
 	background-color: #D3D3D3;
 }
-.exec tr:first-child
+.exec tr:first-child, .partn tr:first-child
 {
 	background-color: #000000;
 	font-weight: bold;
 	color: #FFFFFF;
 }
-.exec tr
+.exec tr, .partn tr
 {
 	border-top: thin solid #000000;
 	border-bottom: thin solid #000000;
+}
+.partn tr:not(:first-child)
+{
+	height: 8vmin;
 }
 .exec td
 {
 	padding: 1px 1em;
     vertical-align: top;
 }
-.collect tr > td:first-child
+.partn td
+{
+    vertical-align: middle;
+}
+.partn tr:not(:first-child) > td
+{
+	padding: 12px 1em;
+}
+.partn tr:first-child > td
+{
+	padding: 1px 1em;
+}
+.exec tr > td:first-child, .partn tr > td:first-child
 {
 	text-indent: -0.5em;
 	padding-left: 1.5em;
+}
+.partn td > img
+{
+	max-width: calc(1vw + 8em);
+	max-height: calc(1vw + 8em);
+}
+.partn td:nth-child(2)
+{
+	font-weight: bold;
 }
 .column
 {
     float: left;
     width: 240px;
-	padding-bottom:24px;
+	padding-bottom: 24px;
 }
 .column:last-of-type
 {
@@ -48,7 +107,7 @@
 {
     float: left;
     width: 360px;
-	padding-bottom:24px;
+	padding-bottom: 24px;
 }
 .column_:last-of-type
 {
@@ -56,26 +115,38 @@
 }
 ul
 {
-	padding-top:0;
-	margin-top:0;
+	padding-top: 0;
+	margin-top: 0;
+}
+p
+{
+	line-height: 1.2;
+	margin-bottom: 0.8em;
+	margin-top: 0;
+}
+h1, h2
+{
+	line-height: 1.5;
+	margin-bottom: 0;
+	margin-top: 0;
 }
 @media screen and (max-width: 1440px)
 {
-	.exec
+	.exec, .part
 	{
 		width: 100%;
 	}
 	.column
 	{
-		float:none;
+		float: none;
 		width: 100%;
-		padding-bottom:0;
+		padding-bottom: 0;
 	}
 	.column_
 	{
-		float:none;
+		float: none;
 		width: 100%;
-		padding-bottom:0;
+		padding-bottom: 0;
 	}
 }
 
@@ -107,7 +178,22 @@ ul
         <option value="join">Join</option>
     </select></td></tr></table></div>
 <h1>About the Society</h1>
-<strong><a href="constitution.pdf">Constituion</a></strong>
+<p>Established 1978, QUGS is the tabletop gaming society of the University of Queensland.</p>
+<p>We enjoy playing a broad range of game genres including abstract strategy, bluffing, cooperative, deck building, drafting, engine building, press your luck, role-playing, set collection, worker placement, and many more.</p>
+<p>Membership costs $5.00 for the year and being a student is not required. Everybody from complete novices to hard-core tabletop gamers are welcome. You are welcome to attend for a few weeks before joining.</p>
+<p>QUGS meets on Mondays, starting at 5:00pm for board games, and on Thursdays, starting at 6:30pm for a <i>Magic: The Gathering</i> draft. We meet throughout the year, including university holidays, and usually only halt for university exam block and <i>force majeure</i>.</p>
+
+<h2>Partners</h2>
+<p>QUGS has partnered with several Brisbane based gaming businesses, who kindly provide our members with discounts and deals upon the presentation of a membership card.</p>
+<p>The followign table lists the QUGS partners in 2020.</p>
+<table class="partn">
+	<tr><td colspan="2" style="width: calc(2vw + 16em);">Partner</td>
+        <td style="width: calc(1vw + 8em);">Location(s)</td>
+        <td style="width: calc(1vw + 8em);">Benefit</td>
+        <td style="width: calc(1vw + 8em);">Website</td></tr>
+<?php echo $table;?>
+</table>
+
 <h2>Executive</h2>
 <table class="exec"><tr><td>Year</td><td>President</td><td>Secretary</td><td>Treasurer</td><td colspan="2">Other</td></tr>
 <tr><td>1979</td><td>Ken Toohey <sup>P</sup></td><td>&nbsp;</td><td>&nbsp;</td><td>David Bugler <sup>E</sup></td><td>&nbsp;</td></tr>
@@ -156,44 +242,48 @@ ul
 <div class="column_"><sup>A</sup> Acting officer.<br/>
 <sup>C</sup> Custodian.<br/>
 <sup>E</sup> Editor.</div>
-<sup>J</sup> Joint position.<br/>
-<div class="column_"><sup>P</sup> The President was originally titled &ldquo;Chairman&rdquo;.<br/>
+<div class="column_"><sup>J</sup> Joint position.<br/>
+<sup>P</sup> The President was originally titled &ldquo;Chairman&rdquo;.<br/>
 <sup>V</sup> Vice-President.</div>
+
 <h2>Life Members</h2>
 <ul><li>Jack Ford (1999)</li>
 <li>Gary Johnson (2003)</li>
 <li>Simon Brown (2018)</li></ul>
+
 <h2>General Meeting Minutes</h2>
-<ul><div class="column"><li><strong><a href="minutes/m1997.txt">1997 AGM</a></strong></li>
-<li><strong><a href="minutes/m1998.txt">1998 AGM</a></strong></li>
+<ul><div class="column"><li style="font-weight:bold;"><a href="minutes/m1997.txt">1997 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m1998.txt">1998 AGM</a></li>
 <li><a href="minutes/m1999_apr.txt">1999 April SGM</a></li>
-<li><strong><a href="minutes/m1999.txt">1999 AGM</a></strong></li>
+<li style="font-weight:bold;"><a href="minutes/m1999.txt">1999 AGM</a></li>
 <li><a href="minutes/m1999_dec.txt">1999 December SGM</a></li>
 <li><a href="minutes/m2000_jun.txt">2000 June SGM</a></li>
-<li><strong><a href="minutes/m2000.txt">2000 AGM</a></strong></li>
+<li style="font-weight:bold;"><a href="minutes/m2000.txt">2000 AGM</a></li>
 <li><a href="minutes/m2000_dec.txt">2000 December SGM</a></li>
 <li><a href="minutes/m2001_mar.txt">2001 March SGM</a></li>
-<li><strong><a href="minutes/m2001.txt">2001 AGM</a></strong></li></div>
-<div class="column"><li><strong><a href="minutes/m2002.txt">2002 AGM</a></strong></li>
+<li style="font-weight:bold;"><a href="minutes/m2001.txt">2001 AGM</a></li></div>
+<div class="column"><li style="font-weight:bold;"><a href="minutes/m2002.txt">2002 AGM</a></li>
 <li><a href="minutes/m2003_apr.txt">2003 April SGM</a></li>
-<li><strong><a href="minutes/m2003.txt">2003 AGM</a></strong></li>
-<li><strong><a href="minutes/m2004.txt">2004 AGM</a></strong></li>
+<li style="font-weight:bold;"><a href="minutes/m2003.txt">2003 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2004.txt">2004 AGM</a></li>
 <li><a href="minutes/m2005_apr.txt">2005 April SGM</a></li>
-<li><strong><a href="minutes/m2005.txt">2005 AGM</a></strong></li>
+<li style="font-weight:bold;"><a href="minutes/m2005.txt">2005 AGM</a></li>
 <li><a href="minutes/m2007_mar.txt">2007 March SGM</a></li>
 <li><a href="minutes/m2007_nov.txt">2007 November SGM</a></li>
 <li><a href="minutes/m2008_oct.txt">2008 October SGM</a></li>
-<li><strong><a href="minutes/m2009.txt">2009 AGM</a></strong></li></div>
+<li style="font-weight:bold;"><a href="minutes/m2009.txt">2009 AGM</a></li></div>
 <div class="column"><li><a href="minutes/m2010_oct.txt">2010 October SGM</a></li>
 <li><a href="minutes/m2011_oct.txt">2011 October SGM</a></li>
-<li><strong><a href="minutes/m2012.txt">2012 AGM</a></strong></li>
+<li style="font-weight:bold;"><a href="minutes/m2012.txt">2012 AGM</a></li>
 <li><a href="minutes/m2014_feb.txt">2014 Feburary SGM</a></li>
-<li><strong><a href="minutes/m2014.txt">2014 AGM</a></strong></li>
-<li><strong><a href="minutes/m2015.txt">2015 AGM</a></strong></li>
-<li><strong><a href="minutes/m2016.pdf">2016 AGM</a></strong></li>
-<li><strong><a href="minutes/m2017.pdf">2017 AGM</a></strong></li>
-<li><strong><a href="minutes/m2018.pdf">2018 AGM</a></strong></li>
-<li><strong><a href="minutes/m2019.pdf">2019 AGM</a></strong></li></div></ul>
+<li style="font-weight:bold;"><a href="minutes/m2014.txt">2014 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2015.txt">2015 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2016.pdf">2016 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2017.pdf">2017 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2018.pdf">2018 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2019.pdf">2019 AGM</a></li></div></ul>
+<p style="font-weight:bold;"><a href="constitution.pdf">Constituion</a></p>
+
 <h2>Queensland Wargamer</h2>
 <ul><div class="column_"><li><a href="wargamer/QW01_Feb79.pdf">Issue One (February, 1979)</a></li>
 <li><a href="wargamer/QW02_May79.pdf">Issue Two (May, 1979)</a></li>
@@ -253,8 +343,9 @@ ul
 <li><a href="wargamer/QW54_Sep02.pdf">Issue Fifty-Four (September, 2002)</a></li>
 <li><a href="wargamer/QW55_Feb03.pdf">Issue Fifty-Five (February, 2003)</a></li>
 <li><a href="wargamer/QW56_Sep04.pdf">Issue Fifty-Six (September, 2004)</a></li></div></ul>
-<br/><h2>&nbsp;</h2>
-This website is managed through <a href="https://github.com/QUGS/QUGS">GitHub</a>.<br/>
-Icons from <a href="https://game-icons.net/">https://game-icons.net/</a><br/>&nbsp;
-</body>
+
+<h2>&nbsp;</h2>
+<p>This website is managed through <a href="https://github.com/QUGS/QUGS">GitHub</a>.</p>
+<p>Icons from <a href="https://game-icons.net/">game-icons.net</a></p>
+<br/></body>
 </html>
