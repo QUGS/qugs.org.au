@@ -288,7 +288,7 @@ function uq_details()
 // shows/hides the rows for cash/card payments
 function pay_details()
 {
-	var s = document.getElementById("payment").value == "cash";
+	var s = document.getElementById("payment").value != "stripe";
 	var r = document.getElementsByClassName("payrow");
 	for (var i = 0; i < r.length; i++)
 	{
