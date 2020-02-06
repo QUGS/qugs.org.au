@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 	$b = false;
 	include("db.php");
-	if ($_POST['payment'] == "cash") // if payment cash
+	if ($_POST['payment'] == "cash" || $_POST['payment'] == "voucher") // if payment cash
 	{
 		$cash = password_verify($_POST['exec'], "$2y$10$1oWCnF.MZLJfq9eUkwwEPeeatxJfbIaYpfUOBs.XvldQywtrv2eai");
 		if ($cash) // if password correct
@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					faculty,
 					school,
 					international,
-					receipt
+					method
 				) VALUES (
 					"'.mysqli_escape_string($db,$_POST['fname']).'",
 					"'.mysqli_escape_string($db,$_POST['lname']).'",
@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					"'.mysqli_escape_string($db,$_POST['faculty']).'",
 					"'.mysqli_escape_string($db,$_POST['school']).'",
 					'.($_POST['international'] ? 'TRUE' : 'FALSE').',
-					""
+					'.($_POST['payment'] == "cash" ? '"Cash"' : "Voucher").'
 				)';
 			}
 			else // if not student
@@ -64,7 +64,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					phone,
 					gender,
 					student,
-					receipt
+					method
 				) VALUES (
 					"'.mysqli_escape_string($db,$_POST['fname']).'",
 					"'.mysqli_escape_string($db,$_POST['lname']).'",
@@ -72,12 +72,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					'.($_POST['phone'] ? '"'.mysqli_escape_string($db,$_POST['phone']).'"' : 'NULL').',
 					"'.mysqli_escape_string($db,$_POST['gender']).'",
 					FALSE,
-					""
+					'.($_POST['payment'] == "cash" ? '"Cash"' : "Voucher").'
 				)';
 			} // end if student
 		} // end if password correct
 	}
-	else // if payment not cash
+	elseif ($_POST['payment'] == "stripe") // if payment stripe
 	{
 		require_once("stripe-php-6.21.0/init.php");
 		include("st.php");
@@ -91,7 +91,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
 		}
 		if (!$card) {} // if stripe error
-		else if ($_POST['student']) // if not stripe error and student
+		elseif ($_POST['student']) // if not stripe error and student
 		{
 			$q = 'INSERT INTO Membership (
 				fname,
@@ -105,8 +105,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				faculty,
 				school,
 				international,
-				stripe,
-				s_email
+				rec_stripe,
+				s_email,
+				method
 			) VALUES (
 				"'.mysqli_escape_string($db,$_POST['fname']).'",
 				"'.mysqli_escape_string($db,$_POST['lname']).'",
@@ -119,7 +120,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				"'.mysqli_escape_string($db,$_POST['school']).'",
 				'.($_POST['international'] ? 'TRUE' : 'FALSE').',
 				"'.mysqli_escape_string($db,$_POST['stripeToken']).'",
-				"'.mysqli_escape_string($db,$_POST['stripeEmail']).'"
+				"'.mysqli_escape_string($db,$_POST['stripeEmail']).'",
+				"Stripe"
 			)';
 		}
 		else // if not stripe error and not student
@@ -131,8 +133,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				phone,
 				gender,
 				student,
-				stripe,
-				s_email
+				rec_stripe,
+				s_email,
+				method
 			) VALUES (
 				"'.mysqli_escape_string($db,$_POST['fname']).'",
 				"'.mysqli_escape_string($db,$_POST['lname']).'",
@@ -141,10 +144,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				"'.mysqli_escape_string($db,$_POST['gender']).'",
 				FALSE,
 				"'.mysqli_escape_string($db,$_POST['stripeToken']).'",
-				"'.mysqli_escape_string($db,$_POST['stripeEmail']).'"
+				"'.mysqli_escape_string($db,$_POST['stripeEmail']).'",
+				"Stripe"
 			)';
 		} // end if stripe error et al.
-	} // end if payment cash
+	} // end payment type
 }
 if ($q) // if query created
 {
@@ -500,21 +504,48 @@ function stripecheck()
     	<td><input type="tel" name="phone" id="phone" onKeyPress="entre(event)" placeholder="Optional"/></td></tr>
     <?php $gen = random_int(0,1);?>
     <tr><td>Gender:</td>
-    	<td><select name="gender" id="gender" required><option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option><option value="<?php echo ($gen ? "m" : "f");?>"><?php echo ($gen ? "Male" : "Female");?></option><option value="<?php echo ($gen ? "f" : "m");?>"><?php echo ($gen ? "Female" : "Male");?></option><option value="o">Other</option></select></td></tr>
+    	<td><select name="gender" id="gender" required>
+        	<option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option>
+            <option value="<?php echo ($gen ? "m" : "f");?>"><?php echo ($gen ? "Male" : "Female");?></option>
+            <option value="<?php echo ($gen ? "f" : "m");?>"><?php echo ($gen ? "Female" : "Male");?></option>
+            <option value="o">Other</option>
+        </select></td></tr>
     <tr><td>UQ Student:</td>
     	<td><input type="checkbox" name="student" id="student" checked onChange="uq_details()" value="1"/></td></tr>
     <tr class="studrow"><td>Student Number:</td>
     	<td><input type="number" name="stuid" id="stuid" onKeyPress="entre(event)" placeholder="Eight Digits, No &ldquo;s&rdquo;" required onChange="idcheck()"/></td></tr>
     <tr class="studrow"><td>Year:</td>
-    	<td><select name="year" id="year" required><option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option><option value="1">First</option><option value="2">Second</option><option value="3">Third</option><option value="4">Fourth</option><option value="5+">Fifth+</option><option value="pg">Post&ndash;Graduate</option></select></td></tr>
+    	<td><select name="year" id="year" required>
+        	<option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option>
+            <option value="1">First</option>
+            <option value="2">Second</option>
+            <option value="3">Third</option>
+            <option value="4">Fourth</option>
+            <option value="5+">Fifth+</option>
+            <option value="pg">Post&ndash;Graduate</option>
+        </select></td></tr>
     <tr class="studrow"><td>Faculty:</td>
-    	<td><select name="faculty" id="faculty" onChange="fac_details()" required><option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option><option value="bel">Business, Economics and Law</option><option value="eait">Engineering, Architecture and Information Technology</option><option value="hbs">Health and Behavioural Sciences</option><option value="hss">Humanities and Social Sciences</option><option value="med">Medicine</option><option value="sci">Science</option><option value="oth">Other</option></select></td></tr>
+    	<td><select name="faculty" id="faculty" onChange="fac_details()" required>
+        	<option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option>
+            <option value="bel">Business, Economics and Law</option>
+            <option value="eait">Engineering, Architecture and Information Technology</option>
+            <option value="hbs">Health and Behavioural Sciences</option>
+            <option value="hss">Humanities and Social Sciences</option>
+            <option value="med">Medicine</option>
+            <option value="sci">Science</option>
+            <option value="oth">Other</option>
+        </select></td></tr>
     <tr class="studrow">
     	<td>School:</td><td><select name="school" id="school" required><option value="" selected>&ensp;&mdash;&ensp;Select a Faculty&ensp;&mdash;&ensp;</option></select></td></tr>
     <tr class="studrow"><td>International:</td>
     	<td><input type="checkbox" name="international" id="international" value="1"/></td></tr>
     <tr><td>Payment:</td>
-    	<td><select name="payment" id="payment" onChange="pay_details()" required><option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option><option value="cash">Cash</option><option value="stripe">Online (via <i>Stripe</i>)</option></select></td></tr>
+    	<td><select name="payment" id="payment" onChange="pay_details()" required>
+        <option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option>
+        <option value="cash">Cash</option>
+        <option value="stripe">Online (via <i>Stripe</i>)</option>
+        <option value="voucher">UQUnion Voucher</option>
+        </select></td></tr>
     <tr class="payrow" style="display:none;visibility:collapse;"><td>Executive Password:</td>
     	<td><input type="password" name="exec" id="exec" onKeyPress="entre(event)"/></td></tr>
     <tr id="cashbuttonrow"><td>&nbsp;</td>
