@@ -185,14 +185,14 @@ h1, h2
 
 <h2>Partners</h2>
 <p>QUGS has partnered with several Brisbane based gaming businesses, who kindly provide our members with discounts and deals upon the presentation of a membership card.</p>
-<p>The followign table lists the QUGS partners in 2020.</p>
+<p>The following table lists the QUGS partners in 2020.</p>
 <table class="partn">
 	<tr><td colspan="2" style="width: calc(2vw + 16em);">Partner</td>
         <td style="width: calc(1vw + 8em);">Location(s)</td>
         <td style="width: calc(1vw + 8em);">Benefit</td>
         <td style="width: calc(1vw + 8em);">Website</td></tr>
 <?php echo $table;?>
-</table>
+</table><br/>
 
 <h2>Executive</h2>
 <table class="exec"><tr><td>Year</td><td>President</td><td>Secretary</td><td>Treasurer</td><td colspan="2">Other</td></tr>
@@ -237,7 +237,7 @@ h1, h2
 <tr><td>2017</td><td>Lee Phillips</td><td>Harvey Kay-Burman<br/>Bradley Stone <sup>A</sup></td><td>Catherine Shield<br/>Rob Copel <sup>A</sup></td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr><td>2018</td><td>Lee Phillips</td><td>Dakota Edwards<sup>A</sup></td><td>Bradley Stone</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr><td>2019</td><td>Bradley Stone</td><td>Samuel Parchert</td><td>Lee Phillips</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><td>2019</td><td>Bradley Stone</td><td>Renee Bonney</td><td>Lee Phillips</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2020</td><td>Bradley Stone</td><td>Renee Bonney</td><td>Lee Phillips</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 </table>
 <div class="column_"><sup>A</sup> Acting officer.<br/>
 <sup>C</sup> Custodian.<br/>
@@ -275,14 +275,15 @@ h1, h2
 <div class="column"><li><a href="minutes/m2010_oct.txt">2010 October SGM</a></li>
 <li><a href="minutes/m2011_oct.txt">2011 October SGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2012.txt">2012 AGM</a></li>
-<li><a href="minutes/m2014_feb.txt">2014 Feburary SGM</a></li>
+<li><a href="minutes/m2014_feb.txt">2014 February SGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2014.txt">2014 AGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2015.txt">2015 AGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2016.pdf">2016 AGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2017.pdf">2017 AGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2018.pdf">2018 AGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2019.pdf">2019 AGM</a></li></div></ul>
-<p style="font-weight:bold;"><a href="constitution.pdf">Constituion</a></p>
+
+<p style="font-weight:bold;"><a href="constitution.pdf">Constitution</a></p>
 
 <h2>Queensland Wargamer</h2>
 <ul><div class="column_"><li><a href="wargamer/QW01_Feb79.pdf">Issue One (February, 1979)</a></li>
@@ -321,7 +322,7 @@ h1, h2
 <li><a href="wargamer/QW33_Aug91.pdf">Issue Thirty-Three (August, 1991)</a></li>
 <li><a href="wargamer/QW34_Jun92.pdf">Issue Thirty-Four (June, 1992)</a></li>
 <li><a href="wargamer/QW35_Nov92.pdf">Issue Thirty-Five (November, 1992)</a></li>
-<li><a href="wargamer/QWbb_Feb93.pdf">Special: Intrigue at Castle Morien (Feburary, 1993)</a></li>
+<li><a href="wargamer/QWbb_Feb93.pdf">Special: Intrigue at Castle Morien (February, 1993)</a></li>
 <li><a href="wargamer/QW36_Jul93.pdf">Issue Thirty-Six (July, 1993)</a></li>
 <li><a href="wargamer/QW37_Feb94.pdf">Issue Thirty-Seven (February, 1994)</a></li>
 <li><a href="wargamer/QW38_Nov94.pdf">Issue Thirty-Eight (November, 1994)</a></li>
