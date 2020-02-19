@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					"'.mysqli_escape_string($db,$_POST['faculty']).'",
 					"'.mysqli_escape_string($db,$_POST['school']).'",
 					'.($_POST['international'] ? 'TRUE' : 'FALSE').',
-					'.($_POST['payment'] == "cash" ? '"Cash"' : "Voucher").'
+					'.($_POST['payment'] == "cash" ? '"Cash"' : '"Voucher"').'
 				)';
 			}
 			else // if not student
@@ -72,7 +72,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					'.($_POST['phone'] ? '"'.mysqli_escape_string($db,$_POST['phone']).'"' : 'NULL').',
 					"'.mysqli_escape_string($db,$_POST['gender']).'",
 					FALSE,
-					'.($_POST['payment'] == "cash" ? '"Cash"' : "Voucher").'
+					'.($_POST['payment'] == "cash" ? '"Cash"' : '"Voucher"').'
 				)';
 			} // end if student
 		} // end if password correct
