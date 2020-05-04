@@ -93,6 +93,26 @@ while($partner = mysqli_fetch_assoc($partner_l))
 {
 	font-weight: bold;
 }
+.column
+{
+    float: left;
+    width: 240px;
+	padding-bottom: 24px;
+}
+.column:last-of-type
+{
+	width: calc(100% - 2 * 240px);
+}
+.column_
+{
+    float: left;
+    width: 360px;
+	padding-bottom: 24px;
+}
+.column_:last-of-type
+{
+	width: calc(100% - 360px);
+}
 ul
 {
 	padding-top: 0;
@@ -110,28 +130,29 @@ h1, h2
 	margin-bottom: 0;
 	margin-top: 0;
 }
-.twi
-{
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	max-width: 59em;
-}
-.twi>li
-{
-	flex-basis: 23.4em;;
-}
-.twi>li>img
+.ti
 {
 	height: 3ex;
 	width: 3ex;
-	vertical-align: middle;
+	vertical-align:middle;
 }
 @media screen and (max-width: 1440px)
 {
 	.exec, .part
 	{
 		width: 100%;
+	}
+	.column
+	{
+		float: none;
+		width: 100%;
+		padding-bottom: 0;
+	}
+	.column_
+	{
+		float: none;
+		width: 100%;
+		padding-bottom: 0;
 	}
 }
 
@@ -224,127 +245,118 @@ h1, h2
 <tr><td>2019</td><td>Bradley Stone</td><td>Samuel Parchert</td><td>Lee Phillips</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr><td>2020</td><td>Bradley Stone</td><td>Renee Bonney</td><td>Lee Phillips</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 </table>
-<ul style="max-width:40em; column-count:2; list-style-type:none;">
-    <li><sup>A</sup> Acting officer.</li>
-    <li><sup>C</sup> Custodian.</li>
-    <li><sup>E</sup> Editor.</li>
-    <li><sup>J</sup> Joint position.</li>
-    <li><sup>P</sup> The President was originally titled &ldquo;Chairman&rdquo;.</li>
-    <li><sup>V</sup> Vice-President.</li>
-</ul>
+<div class="column_"><sup>A</sup> Acting officer.<br/>
+<sup>C</sup> Custodian.<br/>
+<sup>E</sup> Editor.</div>
+<div class="column_"><sup>J</sup> Joint position.<br/>
+<sup>P</sup> The President was originally titled &ldquo;Chairman&rdquo;.<br/>
+<sup>V</sup> Vice-President.</div>
 
 <h2>Life Members</h2>
-<ul style="column-width:920em;">
-    <li>Jack Ford (1999)</li>
-    <li>Gary Johnson (2003)</li>
-    <li>Simon Brown (2018)</li>
-</ul>
+<ul><li>Jack Ford (1999)</li>
+<li>Gary Johnson (2003)</li>
+<li>Simon Brown (2018)</li></ul>
 
 <h2>General Meeting Minutes</h2>
-<ul style="column-width:20em;">
-    <li style="font-weight:bold;"><a href="minutes/m1997.txt">1997 AGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m1998.txt">1998 AGM</a></li>
-    <li><a href="minutes/m1999_apr.txt">1999 April SGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m1999.txt">1999 AGM</a></li>
-    <li><a href="minutes/m1999_dec.txt">1999 December SGM</a></li>
-    <li><a href="minutes/m2000_jun.txt">2000 June SGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m2000.txt">2000 AGM</a></li>
-    <li><a href="minutes/m2000_dec.txt">2000 December SGM</a></li>
-    <li><a href="minutes/m2001_mar.txt">2001 March SGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m2001.txt">2001 AGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m2002.txt">2002 AGM</a></li>
-    <li><a href="minutes/m2003_apr.txt">2003 April SGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m2003.txt">2003 AGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m2004.txt">2004 AGM</a></li>
-    <li><a href="minutes/m2005_apr.txt">2005 April SGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m2005.txt">2005 AGM</a></li>
-    <li><a href="minutes/m2007_mar.txt">2007 March SGM</a></li>
-    <li><a href="minutes/m2007_nov.txt">2007 November SGM</a></li>
-    <li><a href="minutes/m2008_oct.txt">2008 October SGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m2009.txt">2009 AGM</a></li>
-    <li><a href="minutes/m2010_oct.txt">2010 October SGM</a></li>
-    <li><a href="minutes/m2011_oct.txt">2011 October SGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m2012.txt">2012 AGM</a></li>
-    <li><a href="minutes/m2014_feb.txt">2014 February SGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m2014.txt">2014 AGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m2015.txt">2015 AGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m2016.pdf">2016 AGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m2017.pdf">2017 AGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m2018.pdf">2018 AGM</a></li>
-    <li style="font-weight:bold;"><a href="minutes/m2019.pdf">2019 AGM</a></li>
-</ul>
+<ul><div class="column"><li style="font-weight:bold;"><a href="minutes/m1997.txt">1997 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m1998.txt">1998 AGM</a></li>
+<li><a href="minutes/m1999_apr.txt">1999 April SGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m1999.txt">1999 AGM</a></li>
+<li><a href="minutes/m1999_dec.txt">1999 December SGM</a></li>
+<li><a href="minutes/m2000_jun.txt">2000 June SGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2000.txt">2000 AGM</a></li>
+<li><a href="minutes/m2000_dec.txt">2000 December SGM</a></li>
+<li><a href="minutes/m2001_mar.txt">2001 March SGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2001.txt">2001 AGM</a></li></div>
+<div class="column"><li style="font-weight:bold;"><a href="minutes/m2002.txt">2002 AGM</a></li>
+<li><a href="minutes/m2003_apr.txt">2003 April SGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2003.txt">2003 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2004.txt">2004 AGM</a></li>
+<li><a href="minutes/m2005_apr.txt">2005 April SGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2005.txt">2005 AGM</a></li>
+<li><a href="minutes/m2007_mar.txt">2007 March SGM</a></li>
+<li><a href="minutes/m2007_nov.txt">2007 November SGM</a></li>
+<li><a href="minutes/m2008_oct.txt">2008 October SGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2009.txt">2009 AGM</a></li></div>
+<div class="column"><li><a href="minutes/m2010_oct.txt">2010 October SGM</a></li>
+<li><a href="minutes/m2011_oct.txt">2011 October SGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2012.txt">2012 AGM</a></li>
+<li><a href="minutes/m2014_feb.txt">2014 February SGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2014.txt">2014 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2015.txt">2015 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2016.pdf">2016 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2017.pdf">2017 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2018.pdf">2018 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2019.pdf">2019 AGM</a></li></div></ul>
+
 <p style="font-weight:bold;"><a href="constitution.pdf">Constitution</a></p>
 
 <h2>Queensland Wargamer</h2>
-<ul style="column-width:20em;">
-    <li><a href="wargamer/QW01_Feb79.pdf">Issue One (February, 1979)</a></li>
-    <li><a href="wargamer/QW02_May79.pdf">Issue Two (May, 1979)</a></li>
-    <li><a href="wargamer/QW03_Oct79.pdf">Issue Three (October, 1979)</a></li>
-    <li><a href="wargamer/QW04_Mar80.pdf">Issue Four (March, 1980)</a></li>
-    <li><a href="wargamer/QW05_Apr80.pdf">Issue Five (April, 1980)</a></li>
-    <li><a href="wargamer/QW06_Jun80.pdf">Issue Six (June, 1980)</a></li>
-    <li><a href="wargamer/QW07_Oct80.pdf">Issue Seven (October, 1980)</a></li>
-    <li><a href="wargamer/QW08_Mar81.pdf">Issue Eight (March, 1981)</a></li>
-    <li><a href="wargamer/QW09_Apr81.pdf">Issue Nine (April, 1981)</a></li>
-    <li><a href="wargamer/QW10_Jun81.pdf">Issue Ten (June, 1981)</a></li>
-    <li><a href="wargamer/QW11_Oct81.pdf">Issue Eleven (October, 1981)</a></li>
-    <li><a href="wargamer/QW12_Jan82.pdf">Issue Twelve (January, 1982)</a></li>
-    <li><a href="wargamer/QW13_Feb82.pdf">Issue Thirteen (February, 1982)</a></li>
-    <li><a href="wargamer/QW14_May82.pdf">Issue Fourteen (May, 1982)</a></li>
-    <li><a href="wargamer/QW15_Nov82.pdf">Issue Fifteen (November, 1982)</a></li>
-    <li><a href="wargamer/QW16_Apr83.pdf">Issue Sixteen (April, 1983)</a></li>
-    <li><a href="wargamer/QW17_Jun83.pdf">Issue Seventeen (June, 1983)</a></li>
-    <li><a href="wargamer/QW18_Nov83.pdf">Issue Eighteen (November, 1983)</a></li>
-    <li><a href="wargamer/QW19_Sep84.pdf">Issue Nineteen (September, 1984)</a></li>
-    <li><a href="wargamer/QW20_May85.pdf">Issue Twenty (May, 1985)</a></li>
-    <li><a href="wargamer/QW21_Sep85.pdf">Issue Twenty-One (September, 1985)</a></li>
-    <li><a href="wargamer/QW22_May86.pdf">Issue Twenty-Two (May, 1986)</a></li>
-    <li><a href="wargamer/QW23_Aug86.pdf">Issue Twenty-Three (August, 1986)</a></li>
-    <li><a href="wargamer/QW24_Feb87.pdf">Issue Twenty-Four (February, 1987)</a></li>
-    <li><a href="wargamer/QW25_May87.pdf">Issue Twenty-Five (May, 1987)</a></li>
-    <li><a href="wargamer/QW26_Sep87.pdf">Issue Twenty-Six (September, 1987)</a></li>
-    <li><a href="wargamer/QW27_Jun88.pdf">Issue Twenty-Seven (June, 1988)</a></li>
-    <li><a href="wargamer/QW28_Apr89.pdf">Issue Twenty-Eight (April, 1989)</a></li>
-    <li><a href="wargamer/QW29_Feb90.pdf">Issue Twenty-Nine (February, 1990)</a></li>
-    <li><a href="wargamer/QW30_Jun90.pdf">Issue Thirty (June, 1990)</a></li>
-    <li><a href="wargamer/QW31_Nov90.pdf">Issue Thirty-One (November, 1990)</a></li>
-    <li><a href="wargamer/QWaa_Feb91.pdf">Special: The Collected 00? (June, 1991)</a></li>
-    <li><a href="wargamer/QW32_Jun91.pdf">Issue Thirty-Two (June, 1991)</a></li>
-    <li><a href="wargamer/QW33_Aug91.pdf">Issue Thirty-Three (August, 1991)</a></li>
-    <li><a href="wargamer/QW34_Jun92.pdf">Issue Thirty-Four (June, 1992)</a></li>
-    <li><a href="wargamer/QW35_Nov92.pdf">Issue Thirty-Five (November, 1992)</a></li>
-    <li><a href="wargamer/QWbb_Feb93.pdf">Special: Intrigue at Castle Morien (February, 1993)</a></li>
-    <li><a href="wargamer/QW36_Jul93.pdf">Issue Thirty-Six (July, 1993)</a></li>
-    <li><a href="wargamer/QW37_Feb94.pdf">Issue Thirty-Seven (February, 1994)</a></li>
-    <li><a href="wargamer/QW38_Nov94.pdf">Issue Thirty-Eight (November, 1994)</a></li>
-    <li><a href="wargamer/QW39_Feb95.pdf">Issue Thirty-Nine (February, 1995)</a></li>
-    <li><a href="wargamer/QW40_May95.pdf">Issue Forty (May, 1995)</a></li>
-    <li><a href="wargamer/QW41_Sep95.pdf">Issue Forty-One (September, 1995)</a></li>
-    <li><a href="wargamer/QW42_Nov95.pdf">Issue Forty-Two (November, 1995)</a></li>
-    <li><a href="wargamer/QW43_Feb96.pdf">Issue Forty-Three (February, 1996)</a></li>
-    <li><a href="wargamer/QW44_May96.pdf">Issue Forty-Four (May, 1996)</a></li>
-    <li><a href="wargamer/QW45_Sep96.pdf">Issue Forty-Five (September, 1996)</a></li>
-    <li><a href="wargamer/QW46_Dec96.pdf">Issue Forty-Six (Dec, 1996)</a></li>
-    <li><a href="wargamer/QW47_Feb97.pdf">Issue Forty-Seven (February, 1997)</a></li>
-    <li><a href="wargamer/QW48_May97.pdf">Issue Forty-Eight (May, 1997)</a></li>
-    <li><a href="wargamer/QW49_Sep97.pdf">Issue Forty-Nine (September, 1997)</a></li>
-    <li><a href="wargamer/QW50_Sep98.pdf">Issue Fifty (September, 1998)</a></li>
-    <li><a href="wargamer/QW51_Sep99.pdf">Issue Fifty-One (September, 1999)</a></li>
-    <li><a href="wargamer/QW52_Apr00.pdf">Issue Fifty-Two (April, 2000)</a></li>
-    <li><a href="wargamer/QW53_Dec01.pdf">Issue Fifty-Three (Dec, 2001)</a></li>
-    <li><a href="wargamer/QW54_Sep02.pdf">Issue Fifty-Four (September, 2002)</a></li>
-    <li><a href="wargamer/QW55_Feb03.pdf">Issue Fifty-Five (February, 2003)</a></li>
-    <li><a href="wargamer/QW56_Sep04.pdf">Issue Fifty-Six (September, 2004)</a></li>
-</ul>
+<ul><div class="column_"><li><a href="wargamer/QW01_Feb79.pdf">Issue One (February, 1979)</a></li>
+<li><a href="wargamer/QW02_May79.pdf">Issue Two (May, 1979)</a></li>
+<li><a href="wargamer/QW03_Oct79.pdf">Issue Three (October, 1979)</a></li>
+<li><a href="wargamer/QW04_Mar80.pdf">Issue Four (March, 1980)</a></li>
+<li><a href="wargamer/QW05_Apr80.pdf">Issue Five (April, 1980)</a></li>
+<li><a href="wargamer/QW06_Jun80.pdf">Issue Six (June, 1980)</a></li>
+<li><a href="wargamer/QW07_Oct80.pdf">Issue Seven (October, 1980)</a></li>
+<li><a href="wargamer/QW08_Mar81.pdf">Issue Eight (March, 1981)</a></li>
+<li><a href="wargamer/QW09_Apr81.pdf">Issue Nine (April, 1981)</a></li>
+<li><a href="wargamer/QW10_Jun81.pdf">Issue Ten (June, 1981)</a></li>
+<li><a href="wargamer/QW11_Oct81.pdf">Issue Eleven (October, 1981)</a></li>
+<li><a href="wargamer/QW12_Jan82.pdf">Issue Twelve (January, 1982)</a></li>
+<li><a href="wargamer/QW13_Feb82.pdf">Issue Thirteen (February, 1982)</a></li>
+<li><a href="wargamer/QW14_May82.pdf">Issue Fourteen (May, 1982)</a></li>
+<li><a href="wargamer/QW15_Nov82.pdf">Issue Fifteen (November, 1982)</a></li>
+<li><a href="wargamer/QW16_Apr83.pdf">Issue Sixteen (April, 1983)</a></li>
+<li><a href="wargamer/QW17_Jun83.pdf">Issue Seventeen (June, 1983)</a></li>
+<li><a href="wargamer/QW18_Nov83.pdf">Issue Eighteen (November, 1983)</a></li>
+<li><a href="wargamer/QW19_Sep84.pdf">Issue Nineteen (September, 1984)</a></li>
+<li><a href="wargamer/QW20_May85.pdf">Issue Twenty (May, 1985)</a></li>
+<li><a href="wargamer/QW21_Sep85.pdf">Issue Twenty-One (September, 1985)</a></li>
+<li><a href="wargamer/QW22_May86.pdf">Issue Twenty-Two (May, 1986)</a></li>
+<li><a href="wargamer/QW23_Aug86.pdf">Issue Twenty-Three (August, 1986)</a></li>
+<li><a href="wargamer/QW24_Feb87.pdf">Issue Twenty-Four (February, 1987)</a></li>
+<li><a href="wargamer/QW25_May87.pdf">Issue Twenty-Five (May, 1987)</a></li>
+<li><a href="wargamer/QW26_Sep87.pdf">Issue Twenty-Six (September, 1987)</a></li>
+<li><a href="wargamer/QW27_Jun88.pdf">Issue Twenty-Seven (June, 1988)</a></li>
+<li><a href="wargamer/QW28_Apr89.pdf">Issue Twenty-Eight (April, 1989)</a></li>
+<li><a href="wargamer/QW29_Feb90.pdf">Issue Twenty-Nine (February, 1990)</a></li></div>
+<div class="column_"><li><a href="wargamer/QW30_Jun90.pdf">Issue Thirty (June, 1990)</a></li>
+<li><a href="wargamer/QW31_Nov90.pdf">Issue Thirty-One (November, 1990)</a></li>
+<li><a href="wargamer/QWaa_Feb91.pdf">Special: The Collected 00? (June, 1991)</a></li>
+<li><a href="wargamer/QW32_Jun91.pdf">Issue Thirty-Two (June, 1991)</a></li>
+<li><a href="wargamer/QW33_Aug91.pdf">Issue Thirty-Three (August, 1991)</a></li>
+<li><a href="wargamer/QW34_Jun92.pdf">Issue Thirty-Four (June, 1992)</a></li>
+<li><a href="wargamer/QW35_Nov92.pdf">Issue Thirty-Five (November, 1992)</a></li>
+<li><a href="wargamer/QWbb_Feb93.pdf">Special: Intrigue at Castle Morien (February, 1993)</a></li>
+<li><a href="wargamer/QW36_Jul93.pdf">Issue Thirty-Six (July, 1993)</a></li>
+<li><a href="wargamer/QW37_Feb94.pdf">Issue Thirty-Seven (February, 1994)</a></li>
+<li><a href="wargamer/QW38_Nov94.pdf">Issue Thirty-Eight (November, 1994)</a></li>
+<li><a href="wargamer/QW39_Feb95.pdf">Issue Thirty-Nine (February, 1995)</a></li>
+<li><a href="wargamer/QW40_May95.pdf">Issue Forty (May, 1995)</a></li>
+<li><a href="wargamer/QW41_Sep95.pdf">Issue Forty-One (September, 1995)</a></li>
+<li><a href="wargamer/QW42_Nov95.pdf">Issue Forty-Two (November, 1995)</a></li>
+<li><a href="wargamer/QW43_Feb96.pdf">Issue Forty-Three (February, 1996)</a></li>
+<li><a href="wargamer/QW44_May96.pdf">Issue Forty-Four (May, 1996)</a></li>
+<li><a href="wargamer/QW45_Sep96.pdf">Issue Forty-Five (September, 1996)</a></li>
+<li><a href="wargamer/QW46_Dec96.pdf">Issue Forty-Six (Dec, 1996)</a></li>
+<li><a href="wargamer/QW47_Feb97.pdf">Issue Forty-Seven (February, 1997)</a></li>
+<li><a href="wargamer/QW48_May97.pdf">Issue Forty-Eight (May, 1997)</a></li>
+<li><a href="wargamer/QW49_Sep97.pdf">Issue Forty-Nine (September, 1997)</a></li>
+<li><a href="wargamer/QW50_Sep98.pdf">Issue Fifty (September, 1998)</a></li>
+<li><a href="wargamer/QW51_Sep99.pdf">Issue Fifty-One (September, 1999)</a></li>
+<li><a href="wargamer/QW52_Apr00.pdf">Issue Fifty-Two (April, 2000)</a></li>
+<li><a href="wargamer/QW53_Dec01.pdf">Issue Fifty-Three (Dec, 2001)</a></li>
+<li><a href="wargamer/QW54_Sep02.pdf">Issue Fifty-Four (September, 2002)</a></li>
+<li><a href="wargamer/QW55_Feb03.pdf">Issue Fifty-Five (February, 2003)</a></li>
+<li><a href="wargamer/QW56_Sep04.pdf">Issue Fifty-Six (September, 2004)</a></li></div></ul>
 
 <h2>Semi&ndash;Annual QUGS <i>Twilight Imperium</i> Champions</h2>
 Twice each year, on a Monday public holiday, QUGS runs a game of <i><a href="https://boardgamegeek.com/boardgame/233078/twilight-imperium-fourth-edition">Twilight Imperium</a></i>.<br/>
 Since its inception in 2019, the winners have been:
-<ul class="twi">
-<li>Mar 2019: Bradley Stone <img src="images/ti_naalu.png" title="The Naalu Collective"/></li>
-<li>Oct 2019: Logan Senjov <img src="images/ti_hacan.png" title="The Emirates of Hacan"/></li>
-<li>Mar 2020: Rowan Evans <img src="images/ti_yin.png" title="The Yin Brotherhood"/></li>
-</ul>
+<ul><div class="column_"><li>Mar 2019: Bradley Stone <img class="ti" src="images/ti_naalu.png" title="The Naalu Collective"/></li>
+<li>Mar 2020: Rowan Evans <img class="ti" src="images/ti_yin.png" title="The Yin Brotherhood"/></li></div>
+<div class="column_"><li>Oct 2019: Logan Senjov <img class="ti" src="images/ti_hacan.png" title="The Emirates of Hacan"/></li></div></ul>
 
 <h2>&nbsp;</h2>
 <p>This website is managed through <a href="https://github.com/QUGS/QUGS">GitHub</a>.</p>
