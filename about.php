@@ -130,7 +130,6 @@ h1, h2
 	margin-bottom: 0;
 	margin-top: 0;
 }
-
 .twi
 {
 	display: flex;
@@ -172,6 +171,10 @@ h1, h2
 	.column2:last-of-type
 	{
 		width: 100%;
+	}
+	.twi
+	{
+		display: block;
 	}
 }
 
