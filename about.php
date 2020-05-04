@@ -355,7 +355,7 @@ h1, h2
 Twice each year, on a Monday public holiday, QUGS runs a game of <i><a href="https://boardgamegeek.com/boardgame/233078/twilight-imperium-fourth-edition">Twilight Imperium</a></i>.<br/>
 Since its inception in 2019, the winners have been:
 <ul><div class="column_"><li>Mar 2019: Bradley Stone <img class="ti" src="images/ti_naalu.png" title="The Naalu Collective"/></li>
-<li>Mar 2020: Rowan Evans <img class="ti" src="images/ti_yin.png" title="The Nekro Virus"/></li></div>
+<li>Mar 2020: Rowan Evans <img class="ti" src="images/ti_yin.png" title="The Yin Brotherhood"/></li></div>
 <div class="column_"><li>Oct 2019: Logan Senjov <img class="ti" src="images/ti_hacan.png" title="The Emirates of Hacan"/></li></div></ul>
 
 <h2>&nbsp;</h2>
