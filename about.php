@@ -93,23 +93,23 @@ while($partner = mysqli_fetch_assoc($partner_l))
 {
 	font-weight: bold;
 }
-.column
+.column3
 {
     float: left;
     width: 240px;
 	padding-bottom: 24px;
 }
-.column:last-of-type
+.column3:last-of-type
 {
 	width: calc(100% - 2 * 240px);
 }
-.column_
+.column2
 {
     float: left;
     width: 360px;
 	padding-bottom: 24px;
 }
-.column_:last-of-type
+.column2:last-of-type
 {
 	width: calc(100% - 360px);
 }
@@ -130,7 +130,18 @@ h1, h2
 	margin-bottom: 0;
 	margin-top: 0;
 }
-.ti
+
+.twi
+{
+	display: flex;
+	flex-flow: row wrap;
+	max-width: 64em;
+}
+.twi>li
+{
+	flex: 0 0 22.5em;
+}
+.twi>li>img
 {
 	height: 3ex;
 	width: 3ex;
@@ -142,17 +153,25 @@ h1, h2
 	{
 		width: 100%;
 	}
-	.column
+	.column3
 	{
 		float: none;
 		width: 100%;
 		padding-bottom: 0;
 	}
-	.column_
+	.column3:last-of-type
+	{
+		width: 100%;
+	}
+	.column2
 	{
 		float: none;
 		width: 100%;
 		padding-bottom: 0;
+	}
+	.column2:last-of-type
+	{
+		width: 100%;
 	}
 }
 
@@ -245,10 +264,10 @@ h1, h2
 <tr><td>2019</td><td>Bradley Stone</td><td>Samuel Parchert</td><td>Lee Phillips</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr><td>2020</td><td>Bradley Stone</td><td>Renee Bonney</td><td>Lee Phillips</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 </table>
-<div class="column_"><sup>A</sup> Acting officer.<br/>
+<div class="column2"><sup>A</sup> Acting officer.<br/>
 <sup>C</sup> Custodian.<br/>
 <sup>E</sup> Editor.</div>
-<div class="column_"><sup>J</sup> Joint position.<br/>
+<div class="column2"><sup>J</sup> Joint position.<br/>
 <sup>P</sup> The President was originally titled &ldquo;Chairman&rdquo;.<br/>
 <sup>V</sup> Vice-President.</div>
 
@@ -258,7 +277,7 @@ h1, h2
 <li>Simon Brown (2018)</li></ul>
 
 <h2>General Meeting Minutes</h2>
-<ul><div class="column"><li style="font-weight:bold;"><a href="minutes/m1997.txt">1997 AGM</a></li>
+<ul><div class="column3"><li style="font-weight:bold;"><a href="minutes/m1997.txt">1997 AGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m1998.txt">1998 AGM</a></li>
 <li><a href="minutes/m1999_apr.txt">1999 April SGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m1999.txt">1999 AGM</a></li>
@@ -268,7 +287,7 @@ h1, h2
 <li><a href="minutes/m2000_dec.txt">2000 December SGM</a></li>
 <li><a href="minutes/m2001_mar.txt">2001 March SGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2001.txt">2001 AGM</a></li></div>
-<div class="column"><li style="font-weight:bold;"><a href="minutes/m2002.txt">2002 AGM</a></li>
+<div class="column3"><li style="font-weight:bold;"><a href="minutes/m2002.txt">2002 AGM</a></li>
 <li><a href="minutes/m2003_apr.txt">2003 April SGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2003.txt">2003 AGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2004.txt">2004 AGM</a></li>
@@ -278,7 +297,7 @@ h1, h2
 <li><a href="minutes/m2007_nov.txt">2007 November SGM</a></li>
 <li><a href="minutes/m2008_oct.txt">2008 October SGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2009.txt">2009 AGM</a></li></div>
-<div class="column"><li><a href="minutes/m2010_oct.txt">2010 October SGM</a></li>
+<div class="column3"><li><a href="minutes/m2010_oct.txt">2010 October SGM</a></li>
 <li><a href="minutes/m2011_oct.txt">2011 October SGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2012.txt">2012 AGM</a></li>
 <li><a href="minutes/m2014_feb.txt">2014 February SGM</a></li>
@@ -292,7 +311,7 @@ h1, h2
 <p style="font-weight:bold;"><a href="constitution.pdf">Constitution</a></p>
 
 <h2>Queensland Wargamer</h2>
-<ul><div class="column_"><li><a href="wargamer/QW01_Feb79.pdf">Issue One (February, 1979)</a></li>
+<ul><div class="column2"><li><a href="wargamer/QW01_Feb79.pdf">Issue One (February, 1979)</a></li>
 <li><a href="wargamer/QW02_May79.pdf">Issue Two (May, 1979)</a></li>
 <li><a href="wargamer/QW03_Oct79.pdf">Issue Three (October, 1979)</a></li>
 <li><a href="wargamer/QW04_Mar80.pdf">Issue Four (March, 1980)</a></li>
@@ -321,7 +340,7 @@ h1, h2
 <li><a href="wargamer/QW27_Jun88.pdf">Issue Twenty-Seven (June, 1988)</a></li>
 <li><a href="wargamer/QW28_Apr89.pdf">Issue Twenty-Eight (April, 1989)</a></li>
 <li><a href="wargamer/QW29_Feb90.pdf">Issue Twenty-Nine (February, 1990)</a></li></div>
-<div class="column_"><li><a href="wargamer/QW30_Jun90.pdf">Issue Thirty (June, 1990)</a></li>
+<div class="column2"><li><a href="wargamer/QW30_Jun90.pdf">Issue Thirty (June, 1990)</a></li>
 <li><a href="wargamer/QW31_Nov90.pdf">Issue Thirty-One (November, 1990)</a></li>
 <li><a href="wargamer/QWaa_Feb91.pdf">Special: The Collected 00? (June, 1991)</a></li>
 <li><a href="wargamer/QW32_Jun91.pdf">Issue Thirty-Two (June, 1991)</a></li>
@@ -354,9 +373,11 @@ h1, h2
 <h2>Semi&ndash;Annual QUGS <i>Twilight Imperium</i> Champions</h2>
 Twice each year, on a Monday public holiday, QUGS runs a game of <i><a href="https://boardgamegeek.com/boardgame/233078/twilight-imperium-fourth-edition">Twilight Imperium</a></i>.<br/>
 Since its inception in 2019, the winners have been:
-<ul><div class="column_"><li>Mar 2019: Bradley Stone <img class="ti" src="images/ti_naalu.png" title="The Naalu Collective"/></li>
-<li>Mar 2020: Rowan Evans <img class="ti" src="images/ti_yin.png" title="The Yin Brotherhood"/></li></div>
-<div class="column_"><li>Oct 2019: Logan Senjov <img class="ti" src="images/ti_hacan.png" title="The Emirates of Hacan"/></li></div></ul>
+<ul class="twi">
+<li>Mar 2019: Bradley Stone <img class="ti" src="images/ti_naalu.png" title="The Naalu Collective"/></li>
+<li>Oct 2019: Logan Senjov <img class="ti" src="images/ti_hacan.png" title="The Emirates of Hacan"/></li>
+<li>Mar 2020: Rowan Evans <img class="ti" src="images/ti_yin.png" title="The Yin Brotherhood"/></li>
+</ul>
 
 <h2>&nbsp;</h2>
 <p>This website is managed through <a href="https://github.com/QUGS/QUGS">GitHub</a>.</p>
