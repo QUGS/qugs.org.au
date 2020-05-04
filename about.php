@@ -130,6 +130,12 @@ h1, h2
 	margin-bottom: 0;
 	margin-top: 0;
 }
+.ti
+{
+	height: 3ex;
+	width: 3ex;
+	vertical-align:middle;
+}
 @media screen and (max-width: 1440px)
 {
 	.exec, .part
@@ -344,6 +350,13 @@ h1, h2
 <li><a href="wargamer/QW54_Sep02.pdf">Issue Fifty-Four (September, 2002)</a></li>
 <li><a href="wargamer/QW55_Feb03.pdf">Issue Fifty-Five (February, 2003)</a></li>
 <li><a href="wargamer/QW56_Sep04.pdf">Issue Fifty-Six (September, 2004)</a></li></div></ul>
+
+<h2>Semi&ndash;Annual QUGS <i>Twilight Imperium</i> Champions</h2>
+Twice each year, on a Monday public holiday, QUGS runs a game of <i><a href="https://boardgamegeek.com/boardgame/233078/twilight-imperium-fourth-edition">Twilight Imperium</a></i>.<br/>
+Since its inception in 2019, the winners have been:
+<ul><div class="column_"><li>Mar 2019: Bradley Stone <img class="ti" src="images/ti_naalu.png" title="The Naalu Collective"/></li>
+<li>Mar 2020: Rowan Evans <img class="ti" src="images/ti_yin.png" title="The Nekro Virus"/></li></div>
+<div class="column_"><li>Oct 2019: Logan Senjov <img class="ti" src="images/ti_hacan.png" title="The Emirates of Hacan"/></li></div></ul>
 
 <h2>&nbsp;</h2>
 <p>This website is managed through <a href="https://github.com/QUGS/QUGS">GitHub</a>.</p>
