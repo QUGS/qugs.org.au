@@ -219,7 +219,7 @@ function collect()
                 var exist = false;
                 for (var j = 0; j < games.length; j++)
                 {
-                    if (games[j].id === bggid)
+                    if (games[j].id === parseInt(bggid))
                     {
                         exist = true;
                         // If seen, add this member to the array of owners
@@ -288,7 +288,7 @@ function table()
                 // Lists owners of game, with line breaks for two or more owners
                 for (var j = 0; j < games.length; j++)
                 {
-                    if (games[j].id === bgg_list[i].getAttribute("id"))
+                    if (games[j].id === parseInt(bgg_list[i].getAttribute("id")))
                     {
                         g.owner = games[j].owner[0];
                         for (var k = 1; k < games[j].owner.length; k++)
