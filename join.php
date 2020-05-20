@@ -79,12 +79,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	}
 	elseif ($_POST['payment'] == "stripe") // if payment stripe
 	{
-		require_once("stripe-php-6.21.0/init.php");
+		require_once("stripe-php-7.34.0/init.php");
 		include("st.php");
 		$card = false;
 		try
 		{
-			$c = \Stripe\Charge::create(array('amount' => 550,'currency' => 'aud','description' => 'QUGS Membership','source' => $_POST['stripeToken']));
+			$c = \Stripe\Charge::create(array('amount' => 550,
+											  'currency' => 'aud',
+											  'description' => 'QUGS Membership',
+											  'source' => $_POST['stripeToken']
+											  ));
 			$card = $c['paid'];
 		}
 		catch (\Stripe\Error\Card $e)
@@ -166,7 +170,7 @@ if ($q) // if query created
 		curl_setopt($c, CURLOPT_POSTFIELDS,
 			json_encode(array(
 				'email_address' => $_POST['email'],
-				'status' => 'subscribed',
+				'status'        => 'subscribed',
 				'merge_fields'  => array(
 					'FNAME'     => $_POST['fname'],
 					'LNAME'     => $_POST['lname']
@@ -566,7 +570,8 @@ function stripecheck()
         data-zip-code="true"
         data-currency="AUD"
         data-allow-remember-me="false">
-<!--        data-key="pk_test_vOUvPxmfmfK5CkEzDPvfvwDK" -->
+<!--    data-key="pk_live_zc0mNj1XbIEoAkDvFAtDnDSQ" -->
+<!--    data-key="pk_test_vOUvPxmfmfK5CkEzDPvfvwDK" -->
     </script>
 </div>
 </form>
