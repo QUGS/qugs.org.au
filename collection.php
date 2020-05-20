@@ -2,13 +2,13 @@
 include("db.php");
 
 $maint_sub = false;
-if($_SERVER['REQUEST_METHOD'] == 'POST')
+if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
-    $maint_game = explode("|", mysqli_escape_string($db,$_POST['maintgame']), 2);
-    $maint_desc = mysqli_escape_string($db,$_POST['maintdesrip']);
-    $maint_q = 'INSERT INTO Maintenance (game, problem) VALUES ("'.$maint_game[0].'", "'.$maint_desc.'")';
-    $maint_l = mysqli_query($db, $maint_q) or die(mysqli_error($db));
-    mail("president@qugs.org.au", "Maintenance Request", "Game: ".$maint_game[1]."\nIssue: ".$maint_desc, "From: maintenance@qugs.org.au");
+    $maint_game = explode("|", mysqli_escape_string($db, $_POST['maintgame']), 2);
+    $maint_desc = mysqli_escape_string($db, $_POST['maintdesrip']);
+    $maint_q = 'INSERT INTO Maintenance (game, problem) VALUES ("' . $maint_game[0] . '", "' . $maint_desc . '")';
+    mysqli_query($db, $maint_q) or die(mysqli_error($db));
+    mail("president@qugs.org.au", "Maintenance Request", "Game: " . $maint_game[1] . "\nIssue: " . $maint_desc, "From: maintenance@qugs.org.au");
     $maint_sub = true;
 }
 
@@ -23,30 +23,32 @@ $bggid = array();
 $select = "<option value='0'>&ensp;&ndash;&ensp;Select A Game&ensp;&ndash;&ensp;</option>\n";
 $option = "";
 
-while($game = mysqli_fetch_assoc($games_l))
+while (($game = mysqli_fetch_assoc($games_l)))
 {
-    $row = "\t<tr class=\"gamerow\" data-minp=".$game['playmin']." data-maxp=".$game['playmax']." data-time=".$game['timeplay']." data-bggid=".$game['bgg'].">
-        <td><a href=\"".$game['link']."\">".$game['name']."</a>";
+    $row = "\t<tr class=\"gamerow\" data-minp=" . $game['playmin'] . " data-maxp=" . $game['playmax']
+	       . " data-time=" . $game['timeplay'] . " data-bggid=" . $game['bgg'] . ">"
+           . "\n\t<td><a href=\"" . $game['link'] . "\">" . $game['name'] . "</a>";
     // If the game has expansions, add them as a new line to the first cell
     if ($game['expand'])
     {
-        $expand_q = "SELECT name, link FROM Expansions WHERE base = ".$game['bgg']." ORDER BY sort";
+        $expand_q = "SELECT name, link FROM Expansions WHERE base = " . $game['bgg'] . " ORDER BY sort";
         $expand_l = mysqli_query($db, $expand_q) or die(mysqli_error($db));
-        while($exp = mysqli_fetch_assoc($expand_l))
+        while (($exp = mysqli_fetch_assoc($expand_l)))
         {
-            $row .= "<br/>\n\t\t\t+&ensp;<a href=\"".$exp['link']."\">".$exp['name']."</a>";
+            $row .= "<br/>\n\t\t\t+&ensp;<a href=\"" . $exp['link'] . "\">" . $exp['name'] . "</a>";
         }
     }
-    $row .= "</td>
-        <td>".$game['playmin'].($game['playmin']==$game['playmax'] ? "" : "-".$game['playmax'])."</td>
-        <td>".($game['timeplay'] >= 60 ? intval($game['timeplay']/60)." hr ": "").($game['timeplay'] % 60 != 0 ? $game['timeplay']%60 ." min": "")."</td>
-        <td id=s".$game['bgg'].">[Loading]</td>
-        <td><a href=\"rules/r".$game['bgg'].".pdf\">Link</a></td>
-        ".($game['app'] ? "<td>".$game['app']."</td>" : "<td style='color:#808080;'>N/A</td>")."</tr>\n";
+    $row .= "</td>"
+            . "\n<td>" . $game['playmin'] . ($game['playmin'] === $game['playmax'] ? "" : "-" . $game['playmax']) . "</td>"
+            . "\n<td>" . ($game['timeplay'] >= 60 ? intval($game['timeplay'] / 60) . " hr ": "")
+			. ($game['timeplay'] % 60 !== 0 ? $game['timeplay'] % 60 . " min": "") . "</td>"
+            . "\n<td id=s" . $game['bgg'] . ">[Loading]</td>"
+            . "\n<td><a href=\"rules/r" . $game['bgg'] . ".pdf\">Link</a></td>"
+            . "\n" . ($game['app'] ? "<td>" . $game['app'] . "</td>" : "<td style='color:#808080;'>N/A</td>") . "</tr>\n";
 
     $table .= $row;
-    $select .= "<option value='".$game['bgg']."|".$game['name']."'>".$game['name']."</option>\n";
-    $option .= "{name:'".$game['name']."', numb:".$game['bgg']."}, ";
+    $select .= "<option value='" . $game['bgg'] . "|" . $game['name'] . "'>" . $game['name'] . "</option>\n";
+    $option .= "{name:'" . $game['name'] . "', numb:" . $game['bgg'] . "}, ";
     array_push($bggid, $game['bgg']);
 }
 
@@ -190,7 +192,7 @@ QUGSid = [<?php echo implode(", ", $bggid);?>];
 function collect()
 {
     // If no member remains, go to table creation
-    if (memb.length == 0)
+    if (memb.length === 0)
     {
         table();
         return;
@@ -203,7 +205,7 @@ function collect()
     bgg_req.onreadystatechange=function()
     {
         // If API call sucsessful
-        if (bgg_req.readyState==4 && bgg_req.status==200)
+        if (bgg_req.readyState === 4 && bgg_req.status === 200)
         {
             // Create array of games ("items") from API response
             var bgg_list = bgg_req.responseXML.getElementsByTagName("item");
@@ -217,7 +219,7 @@ function collect()
                 var exist = false;
                 for (var j = 0; j < games.length; j++)
                 {
-                    if (games[j].id == bggid)
+                    if (games[j].id === bggid)
                     {
                         exist = true;
                         // If seen, add this member to the array of owners
@@ -234,7 +236,7 @@ function collect()
             collect();
         }
         // If BGG gives the "try again later" status, try again later
-        else if (bgg_req.readyState==4 && bgg_req.status==202)
+        else if (bgg_req.readyState === 4 && bgg_req.status === 202)
         {
             memb.push(m);
             collect();
@@ -264,11 +266,11 @@ function table()
         arg += games[j].id+",";
     }
     // Get all details on all games
-    bgg_gam.open("GET", "https://www.boardgamegeek.com/xmlapi2/thing?id="+arg.slice(0,-1)+"&stats=1");
+    bgg_gam.open("GET", "https://www.boardgamegeek.com/xmlapi2/thing?id="+arg.slice(0, -1)+"&stats=1");
     bgg_gam.onreadystatechange=function()
     {
         // If API call sucsessful
-        if (bgg_gam.readyState==4 && bgg_gam.status==200)
+        if (bgg_gam.readyState === 4 && bgg_gam.status === 200)
         {
             // Create array of games ("items") from API response
             var bgg_list = bgg_gam.responseXML.getElementsByTagName("item");
@@ -286,7 +288,7 @@ function table()
                 // Lists owners of game, with line breaks for two or more owners
                 for (var j = 0; j < games.length; j++)
                 {
-                    if (games[j].id == bgg_list[i].getAttribute("id"))
+                    if (games[j].id === bgg_list[i].getAttribute("id"))
                     {
                         g.owner = games[j].owner[0];
                         for (var k = 1; k < games[j].owner.length; k++)
@@ -307,9 +309,9 @@ function table()
             {
                 var g = details[i];
                 out += "<tr><td><a href=https://boardgamegeek.com/boardgame/"+g.id+">"+g.name+"</a></td>"
-                       + "<td>"+g.minp+(g.minp == g.maxp ? "" : "-"+g.maxp)+"</td>"
-                       + "<td>"+(g.time >= 60 ? ((g.time/60)|0) + " hr " : "")+(g.time%60 == 0 ? "" : g.time%60+ " min")+"</td>"
-                       + (g.rate == 0 ? "<td style='color:#808080;'>N/A</td>" : "<td>"+g.rate.toFixed(2)+"</td>")
+                       + "<td>"+g.minp+(g.minp === g.maxp ? "" : "-"+g.maxp)+"</td>"
+                       + "<td>"+(g.time >= 60 ? ((g.time/60)|0) + " hr " : "")+(g.time%60 === 0 ? "" : g.time%60+ " min")+"</td>"
+                       + (g.rate === 0 ? "<td style='color:#808080;'>N/A</td>" : "<td>"+g.rate.toFixed(2)+"</td>")
                        + "<td>"+g.owner+"</td></tr>\n";
             }
             out += "</table>";
@@ -317,7 +319,7 @@ function table()
 
         }
         // If BGG gives the "try again later" status, try again later
-        else if (bgg_gam.readyState==4 && bgg_gam.status==202)
+        else if (bgg_gam.readyState === 4 && bgg_gam.status === 202)
         {
             bgg_gam.send();
         }
@@ -326,7 +328,7 @@ function table()
 }
 
 // Compares the name of two games, dropping "the" and "a "
-function game_comp(a,b)
+function game_comp(a, b)
 {
     var aa = a.name.replace(/^the /i, "").replace(/^a /i, "");
     var bb = b.name.replace(/^the /i, "").replace(/^a /i, "");
@@ -347,7 +349,7 @@ function ratings()
     bgg_rat.onreadystatechange=function()
     {
         // If API call sucsessful
-        if (bgg_rat.readyState==4 && bgg_rat.status==200)
+        if (bgg_rat.readyState === 4 && bgg_rat.status === 200)
         {
             // Create array of games ("items") from API response
             var bgg_list = bgg_rat.responseXML.getElementsByTagName("item");
@@ -355,15 +357,15 @@ function ratings()
             for (var i = 0; i < bgg_list.length; i++)
             {
                 r = parseFloat(bgg_list[i].getElementsByTagName("bayesaverage")[0].getAttribute("value"))
-                document.getElementById("s"+bgg_list[i].getAttribute("id")).outerHTML = (r == 0 ? "<td style='color:#808080;'>N/A</td>" : "<td>"+r.toFixed(2)+"</td>");
+                document.getElementById("s"+bgg_list[i].getAttribute("id")).outerHTML = (r === 0 ? "<td style='color:#808080;'>N/A</td>" : "<td>"+r.toFixed(2)+"</td>");
                 ratfilt[bgg_list[i].getAttribute("id")] = r;
             }
             ratbypass = false;
             // Make "BGG Rating" clickable to show filter
-            document.getElementById("BGGrat").outerHTML = "<td style=\"text-decoration:underline;\" onClick=\"rateform = !rateform; document.getElementById('rateform').style.display = rateform ? 'inline' : 'none'; if(!rateform) {document.getElementById('ratemin').value=0;document.getElementById('ratemax').value=12;raterfilter();}\">BGG Rating</td>";
+            document.getElementById("BGGrat").outerHTML = "<td style=\"text-decoration:underline;\" onClick=\"rateform = !rateform; document.getElementById('rateform').style.display = rateform ? 'inline' : 'none'; if (!rateform) {document.getElementById('ratemin').value=0;document.getElementById('ratemax').value=12;raterfilter();}\">BGG Rating</td>";
         }
         // If BGG gives the "try again later" status, try again later
-        else if (bgg_rat.readyState==4 && bgg_rat.status==202)
+        else if (bgg_rat.readyState === 4 && bgg_rat.status === 202)
         {
             bgg_rat.send()
         }
@@ -386,12 +388,12 @@ function playerfilter(m)
     var pmax = parseInt(playmax.value);
 
     // If sliders overlap, move non-clicked slider to clicked slider's value
-    if (pmin > pmax && m == "min")
+    if (pmin > pmax && m === "min")
     {
         playmax.value = pmin;
         pmax = pmin;
     }
-    else if (pmax < pmin && m == "max")
+    else if (pmax < pmin && m === "max")
     {
         playmin.value = pmax;
         pmin = pmax;
@@ -416,12 +418,12 @@ function timerfilter(m)
     var tmax = parseInt(timemax.value);
 
     // If sliders overlap, move non-clicked slider to clicked slider's value
-    if (tmin > tmax && m=="min")
+    if (tmin > tmax && m === "min")
     {
         timemax.value = tmin;
         tmax = tmin;
     }
-    else if (tmax < tmin && m=="max")
+    else if (tmax < tmin && m === "max")
     {
         timemin.value = tmax;
         tmin = tmax;
@@ -447,12 +449,12 @@ function raterfilter(m)
     var rmax = parseFloat(ratemax.value);
 
     // If sliders overlap, move non-clicked slider to clicked slider's value
-    if (rmin > rmax && m=="min")
+    if (rmin > rmax && m === "min")
     {
         ratemax.value = rmin;
         rmax = rmin;
     }
-    else if (rmax < rmin && m=="max")
+    else if (rmax < rmin && m === "max")
     {
         ratemin.value = rmax;
         rmin = rmax;
@@ -503,7 +505,7 @@ function maintshow()
 function maintfilt()
 {
     var maintgame = document.getElementById("maintgame");
-    for(var i = maintgame.options.length - 1; i >= 0; i--)
+    for (var i = maintgame.options.length - 1; i >= 0; i--)
     {
         maintgame.remove(i);
     }
@@ -512,7 +514,7 @@ function maintfilt()
     maintgame.options[0].innerHTML = "&ensp;&ndash;&ensp;Select A Game&ensp;&ndash;&ensp;"
     var compare = document.getElementById("maintfilter").value.normalize('NFD').replace(/[^\u0020-\u007e]/g, "").toLowerCase();
     var n = 0;
-    for(var i = 0; i < option.length; i++)
+    for (var i = 0; i < option.length; i++)
     {
         var title = option[i].name;
         if (title.normalize('NFD').replace(/[^\u0020-\u007e]/g, "").toLowerCase().indexOf(compare) != -1)
@@ -529,7 +531,7 @@ function maintfilt()
     else
     {
         maintgame.size = 1;
-        if (n == 0)
+        if (n === 0)
         {
             maintgame.options[0].innerHTML = "&ensp;&ndash;&ensp;No Matching Games&ensp;&ndash;&ensp;";
         }
@@ -540,7 +542,7 @@ function maintfilt()
 
 function maintsub()
 {
-    if (document.getElementById("maintgame").value == 0)
+    if (document.getElementById("maintgame").value === 0)
     {
         alert("Please select a game");
         return;
@@ -597,7 +599,7 @@ Maximum:<label id="timemaxvalm" for="timemax" class="moblab">&emsp;6 hr</label><
 Minimum:<label id="rateminvalm" for="ratemin" class="moblab">&emsp;0.0</label><input type="range" min=0 max=10 value=0 step=0.2 class="slider" id="ratemin" onInput="raterfilter('min');" onChange="raterfilter('min');" autocomplete="off"><label id="rateminvald" for="ratemin" class="desklab">0.0</label><br/>
 Maximum:<label id="ratemaxvalm" for="ratemax" class="moblab">&emsp;10.0</label><input type="range" min=0 max=10 value=10 step=0.2 class="slider" id="ratemax" onInput="raterfilter('max');" onChange="raterfilter('max');" autocomplete="off"><label id="ratemaxvald" for="ratemax" class="desklab">10.0</label><br/>
 </form>
-<table class="collect"><tr><td>Game</td><td style="text-decoration:underline;" onClick="playform = !playform; document.getElementById('playform').style.display = playform ? 'inline' : 'none'; if(!playform) {document.getElementById('playmin').value=1;document.getElementById('playmax').value=10;playerfilter();}">Players</td><td style="text-decoration:underline;" onClick="timeform = !timeform; document.getElementById('timeform').style.display = timeform ? 'inline' : 'none'; if(!timeform) {document.getElementById('timemin').value=0;document.getElementById('timemax').value=12;timerfilter();}">Time</td><td id="BGGrat">BGG Rating</td><td>Rules</td><td>Apps</td></tr>
+<table class="collect"><tr><td>Game</td><td style="text-decoration:underline;" onClick="playform = !playform; document.getElementById('playform').style.display = playform ? 'inline' : 'none'; if (!playform) {document.getElementById('playmin').value=1;document.getElementById('playmax').value=10;playerfilter();}">Players</td><td style="text-decoration:underline;" onClick="timeform = !timeform; document.getElementById('timeform').style.display = timeform ? 'inline' : 'none'; if (!timeform) {document.getElementById('timemin').value=0;document.getElementById('timemax').value=12;timerfilter();}">Time</td><td id="BGGrat">BGG Rating</td><td>Rules</td><td>Apps</td></tr>
 <?php echo $table;?>
 </table>
 <h2>Game Collection Hire</h2>

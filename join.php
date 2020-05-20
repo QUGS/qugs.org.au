@@ -16,11 +16,11 @@ $card = true;
 $q = "";
 // boolean to re-fill form
 $b = true;
-if($_SERVER['REQUEST_METHOD'] == 'POST')
+if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
     $b = false;
     include("db.php");
-    if ($_POST['payment'] == "cash" || $_POST['payment'] == "voucher") // if payment cash
+    if ($_POST['payment'] === "cash" || $_POST['payment'] === "voucher") // if payment cash
     {
         $cash = password_verify($_POST['exec'], "$2y$10$1oWCnF.MZLJfq9eUkwwEPeeatxJfbIaYpfUOBs.XvldQywtrv2eai");
         if ($cash) // if password correct
@@ -44,18 +44,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                       )
                       VALUES
                       (
-                          "'.mysqli_escape_string($db,$_POST['fname']).'",
-                          "'.mysqli_escape_string($db,$_POST['lname']).'",
-                          "'.mysqli_escape_string($db,$_POST['email']).'",
-                          '.($_POST['phone'] ? '"'.mysqli_escape_string($db,$_POST['phone']).'"' : 'NULL').',
-                          "'.mysqli_escape_string($db,$_POST['gender']).'",
+                          "' . mysqli_escape_string($db, $_POST['fname']) . '",
+                          "' . mysqli_escape_string($db, $_POST['lname']) . '",
+                          "' . mysqli_escape_string($db, $_POST['email']) . '",
+                          ' . ($_POST['phone'] ? '"' . mysqli_escape_string($db, $_POST['phone']) . '"' : 'NULL') . ',
+                          "' . mysqli_escape_string($db, $_POST['gender']) . '",
                           TRUE,
-                          '.mysqli_escape_string($db,$_POST['stuid']).',
-                          "'.mysqli_escape_string($db,$_POST['year']).'",
-                          "'.mysqli_escape_string($db,$_POST['faculty']).'",
-                          "'.mysqli_escape_string($db,$_POST['school']).'",
-                          '.($_POST['international'] ? 'TRUE' : 'FALSE').',
-                          '.($_POST['payment'] == "cash" ? '"Cash"' : '"Voucher"').'
+                          ' . mysqli_escape_string($db, $_POST['stuid']) . ',
+                          "' . mysqli_escape_string($db, $_POST['year']) . '",
+                          "' . mysqli_escape_string($db, $_POST['faculty']) . '",
+                          "' . mysqli_escape_string($db, $_POST['school']) . '",
+                          ' . ($_POST['international'] ? 'TRUE' : 'FALSE') . ',
+                          ' . ($_POST['payment'] === "cash" ? '"Cash"' : '"Voucher"') . '
                       )';
             }
             else // if not student
@@ -72,18 +72,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                       )
                       VALUES
                       (
-                          "'.mysqli_escape_string($db,$_POST['fname']).'",
-                          "'.mysqli_escape_string($db,$_POST['lname']).'",
-                          "'.mysqli_escape_string($db,$_POST['email']).'",
-                          '.($_POST['phone'] ? '"'.mysqli_escape_string($db,$_POST['phone']).'"' : 'NULL').',
-                          "'.mysqli_escape_string($db,$_POST['gender']).'",
+                          "' . mysqli_escape_string($db, $_POST['fname']) . '",
+                          "' . mysqli_escape_string($db, $_POST['lname']) . '",
+                          "' . mysqli_escape_string($db, $_POST['email']) . '",
+                          ' . ($_POST['phone'] ? '"' . mysqli_escape_string($db, $_POST['phone']) . '"' : 'NULL') . ',
+                          "' . mysqli_escape_string($db, $_POST['gender']) . '",
                           FALSE,
-                          '.($_POST['payment'] == "cash" ? '"Cash"' : '"Voucher"').'
+                          ' . ($_POST['payment'] === "cash" ? '"Cash"' : '"Voucher"') . '
                       )';
             } // end if student
         } // end if password correct
     }
-    elseif ($_POST['payment'] == "stripe") // if payment stripe
+    elseif ($_POST['payment'] === "stripe") // if payment stripe
     {
         require_once("stripe-php-7.34.0/init.php");
         include("st.php");
@@ -97,9 +97,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                                               ));
             $card = $c['paid'];
         }
-        catch (\Stripe\Error\Card $e)
-        {
-        }
+        catch (\Stripe\Error\Card $e) {}
         if (!$card) {} // if stripe error
         elseif ($_POST['student']) // if not stripe error and student
         {
@@ -122,18 +120,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                   )
                   VALUES
                   (
-                      "'.mysqli_escape_string($db,$_POST['fname']).'",
-                      "'.mysqli_escape_string($db,$_POST['lname']).'",
-                      "'.mysqli_escape_string($db,$_POST['email']).'",
-                      '.($_POST['phone'] ? '"'.mysqli_escape_string($db,$_POST['phone']).'"' : 'NULL').',
-                      "'.mysqli_escape_string($db,$_POST['gender']).'",
-                      TRUE,'.mysqli_escape_string($db,$_POST['stuid']).',
-                      "'.mysqli_escape_string($db,$_POST['year']).'",
-                      "'.mysqli_escape_string($db,$_POST['faculty']).'",
-                      "'.mysqli_escape_string($db,$_POST['school']).'",
-                      '.($_POST['international'] ? 'TRUE' : 'FALSE').',
-                      "'.mysqli_escape_string($db,$_POST['stripeToken']).'",
-                      "'.mysqli_escape_string($db,$_POST['stripeEmail']).'",
+                      "' . mysqli_escape_string($db, $_POST['fname']) . '",
+                      "' . mysqli_escape_string($db, $_POST['lname']) . '",
+                      "' . mysqli_escape_string($db, $_POST['email']) . '",
+                      ' . ($_POST['phone'] ? '"' . mysqli_escape_string($db, $_POST['phone']) . '"' : 'NULL') . ',
+                      "' . mysqli_escape_string($db, $_POST['gender']) . '",
+                      TRUE, ' . mysqli_escape_string($db, $_POST['stuid']) . ',
+                      "' . mysqli_escape_string($db, $_POST['year']) . '",
+                      "' . mysqli_escape_string($db, $_POST['faculty']) . '",
+                      "' . mysqli_escape_string($db, $_POST['school']) . '",
+                      ' . ($_POST['international'] ? 'TRUE' : 'FALSE') . ',
+                      "' . mysqli_escape_string($db, $_POST['stripeToken']) . '",
+                      "' . mysqli_escape_string($db, $_POST['stripeEmail']) . '",
                       "Stripe"
                   )';
         }
@@ -153,14 +151,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                   )
                   VALUES
                   (
-                      "'.mysqli_escape_string($db,$_POST['fname']).'",
-                      "'.mysqli_escape_string($db,$_POST['lname']).'",
-                      "'.mysqli_escape_string($db,$_POST['email']).'",
-                      '.($_POST['phone'] ? '"'.mysqli_escape_string($db,$_POST['phone']).'"' : 'NULL').',
-                      "'.mysqli_escape_string($db,$_POST['gender']).'",
+                      "' . mysqli_escape_string($db, $_POST['fname']) . '",
+                      "' . mysqli_escape_string($db, $_POST['lname']) . '",
+                      "' . mysqli_escape_string($db, $_POST['email']) . '",
+                      ' . ($_POST['phone'] ? '"' . mysqli_escape_string($db, $_POST['phone']) . '"' : 'NULL') . ',
+                      "' . mysqli_escape_string($db, $_POST['gender']) . '",
                       FALSE,
-                      "'.mysqli_escape_string($db,$_POST['stripeToken']).'",
-                      "'.mysqli_escape_string($db,$_POST['stripeEmail']).'",
+                      "' . mysqli_escape_string($db, $_POST['stripeToken']) . '",
+                      "' . mysqli_escape_string($db, $_POST['stripeEmail']) . '",
                       "Stripe"
                   )';
         } // end if stripe error et al.
@@ -172,8 +170,9 @@ if ($q) // if query created
     $m = -1;
 
         include("mc.php");
-        $c = curl_init('https://'.substr($mailc,strpos($mailc,'-')+1).'.api.mailchimp.com/3.0/lists/faba794f30/members/'.md5(strtolower($_POST['email'])));
-        curl_setopt($c, CURLOPT_USERPWD, 'user:'.$mailc);
+        $c = curl_init('https://' . substr($mailc, strpos($mailc, '-') + 1)
+		               . '.api.mailchimp.com/3.0/lists/faba794f30/members/' . md5(strtolower($_POST['email'])));
+        curl_setopt($c, CURLOPT_USERPWD, 'user:' . $mailc);
         curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
         curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($c, CURLOPT_TIMEOUT, 10);
@@ -187,31 +186,31 @@ if ($q) // if query created
                                       'interests'     => array('105c409baa'  => true) // change annually
                     )));
         $m = curl_exec($c);
-        $m = (curl_getinfo($c, CURLINFO_HTTP_CODE) == 200 ? "200" : $m);
+        $m = (curl_getinfo($c, CURLINFO_HTTP_CODE) === 200 ? "200" : $m);
         curl_close($c);
 
-    mail("president@qugs.org.au", (($_POST['fname'] && $_POST['lname']) ? ($_POST['fname']." ".$_POST['lname']) : "Somebody")." has joined QUGS",
-         "First Name: ".($_POST['fname'] ? $_POST['fname'] : "N/A")
-         . "\nLast Name: ".($_POST['lname'] ? $_POST['lname'] : "N/A")
-         . "\nEmail: ".($_POST['email'] ? $_POST['email'] : "N/A")
-         . "\nPhone: ".($_POST['phone'] ? $_POST['phone'] : "N/A")
-         . "\nGender: ".($_POST['gender'] ? $_POST['gender'] : "N/A")
-         . "\nStudent: ".($_POST['student'] ? ("Yes"
-                          . "\nNumber: ".($_POST['stuid'] ? $_POST['stuid'] : "N/A")
-                          . "\nYear: ".($_POST['year'] ? $_POST['year'] : "N/A")
-                          . "\nFaculty: ".($_POST['faculty'] ? $_POST['faculty'] : "N/A")
-                          . "\nSchool: ".($_POST['school'] ? $_POST['school'] : "N/A")
-                          . "\nInternational: ".($_POST['international'] ? "Yes" : "No"))
+    mail("president@qugs.org.au", (($_POST['fname'] && $_POST['lname']) ? ($_POST['fname'] . " " . $_POST['lname']) : "Somebody") . " has joined QUGS",
+         "First Name: " . ($_POST['fname'] ? $_POST['fname'] : "N/A")
+         . "\nLast Name: " . ($_POST['lname'] ? $_POST['lname'] : "N/A")
+         . "\nEmail: " . ($_POST['email'] ? $_POST['email'] : "N/A")
+         . "\nPhone: " . ($_POST['phone'] ? $_POST['phone'] : "N/A")
+         . "\nGender: " . ($_POST['gender'] ? $_POST['gender'] : "N/A")
+         . "\nStudent: " . ($_POST['student'] ? ("Yes"
+                          . "\nNumber: " . ($_POST['stuid'] ? $_POST['stuid'] : "N/A")
+                          . "\nYear: " . ($_POST['year'] ? $_POST['year'] : "N/A")
+                          . "\nFaculty: " . ($_POST['faculty'] ? $_POST['faculty'] : "N/A")
+                          . "\nSchool: " . ($_POST['school'] ? $_POST['school'] : "N/A")
+                          . "\nInternational: " . ($_POST['international'] ? "Yes" : "No"))
                           : "No")
-        . ($_POST['payment'] == "cash" || $_POST['payment'] == "voucher" ? "" :
-           ("\nStripe Token: ".($_POST['stripeToken'] ? $_POST['stripeToken'] : "N/A")
-            . "\nStripe Email: ".($_POST['stripeEmail'] ? $_POST['stripeEmail'] : "N/A")))
-        . "\nMailChimp: ".$m,
+        . ($_POST['payment'] === "cash" || $_POST['payment'] === "voucher" ? "" :
+           ("\nStripe Token: " . ($_POST['stripeToken'] ? $_POST['stripeToken'] : "N/A")
+            . "\nStripe Email: " . ($_POST['stripeEmail'] ? $_POST['stripeEmail'] : "N/A")))
+        . "\nMailChimp: " . $m,
         "From: membership@qugs.org.au");
     echo "<style>@font-face{font-family: helv;src: url(Helv.otf);}"
           . "\na{color: #000000;text-decoration: underline;cursor: pointer;}"
           . "\nbody {font-size:8vmin;font-family: helv; padding: 8vmin;}</style>"
-          . "\n<body>Thank You, ".$_POST['fname']." ".$_POST['lname'].", For Joining The Queensland University Games Society<br/>"
+          . "\n<body>Thank You, " . $_POST['fname'] . " " . $_POST['lname'] . ", For Joining The Queensland University Games Society<br/>"
           . "\n<a href='/join'>Click Here</a> Return To The Membership Form<br/>"
           . "\n<a href='/'>Click Here</a> To Go To The Home Page</body></html>";
     exit();
@@ -316,7 +315,7 @@ function pay_details()
 function idcheck()
 {
     var n = parseInt(document.getElementById("stuid").value);
-    if (isNaN(n) || n < Math.pow(10,7) || n >= Math.pow(10,8))
+    if (isNaN(n) || n < Math.pow(10, 7) || n >= Math.pow(10, 8))
     {
         document.getElementById("stuid").setCustomValidity("Student Number Incorrect");
         return;
@@ -325,7 +324,7 @@ function idcheck()
     var c = [9, 7, 3, 9, 7, 3, 9].reverse();
     for (var i = 7; i > 0; i--)
     {
-        k += c[i-1] * (n / Math.pow(10,i) | 0) % 10;
+        k += c[i-1] * (n / Math.pow(10, i) | 0) % 10;
     }
     if ((k % 10) != (n % 10))
     {
@@ -339,7 +338,7 @@ function idcheck()
 function fac_details()
 {
     var s = document.getElementById("school");
-    switch(document.getElementById("faculty").value)
+    switch (document.getElementById("faculty").value)
     {
         case "bel":
             s.innerHTML = '<option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option>'
@@ -404,7 +403,7 @@ function fac_details()
 // a normal button triggers this, bypassing the stripe form
 function cash()
 {
-    if(document.getElementById("form").checkValidity())
+    if (document.getElementById("form").checkValidity())
     {
         document.getElementById("form").submit();
     }
@@ -435,14 +434,14 @@ function cash()
 // this function instead clicks the cash or stripe button as appropriate
 function entre(e)
 {
-    if (e.keyCode == 13)
+    if (e.keyCode === 13)
     {
         e.preventDefault();
-        if (document.getElementById("payment").value == "cash" || document.getElementById("payment").value == "voucher")
+        if (document.getElementById("payment").value === "cash" || document.getElementById("payment").value === "voucher")
         {
             document.getElementById("cashbutton").click();
         }
-        else if (document.getElementById("payment").value == "stripe")
+        else if (document.getElementById("payment").value === "stripe")
         {
             stripecheck();
         }
@@ -451,7 +450,7 @@ function entre(e)
 
 function stripecheck()
 {
-    if(document.getElementById("form").checkValidity())
+    if (document.getElementById("form").checkValidity())
     {
         document.getElementById("stripesubmit").click();
     }
@@ -512,7 +511,7 @@ function stripecheck()
         <td><input type="email" name="email" id="email" onKeyPress="entre(event)" placeholder="Student E&ndash;Mail or Other" required/></td></tr>
     <tr><td>Phone:</td>
         <td><input type="tel" name="phone" id="phone" onKeyPress="entre(event)" placeholder="Optional"/></td></tr>
-    <?php $gen = random_int(0,1);?>
+    <?php $gen = random_int(0, 1);?>
     <tr><td>Gender:</td>
         <td><select name="gender" id="gender" required>
             <option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option>
@@ -583,20 +582,20 @@ function stripecheck()
 </form>
 <?php
 echo ($b ? "" : '<script>
-    document.getElementById("fname").value = "'.$_POST['fname'].'";
-    document.getElementById("lname").value = "'.$_POST['lname'].'";
-    document.getElementById("email").value = "'.$_POST['email'].'";
-    document.getElementById("phone").value = "'.$_POST['phone'].'";
-    document.getElementById("gender").value = "'.$_POST['gender'].'";
-    document.getElementById("stuid").value = "'.$_POST['stuid'].'";
-    document.getElementById("student").checked = '.($_POST['student'] ? 'true' : 'false').';
+    document.getElementById("fname").value = "' . $_POST['fname'] . '";
+    document.getElementById("lname").value = "' . $_POST['lname'] . '";
+    document.getElementById("email").value = "' . $_POST['email'] . '";
+    document.getElementById("phone").value = "' . $_POST['phone'] . '";
+    document.getElementById("gender").value = "' . $_POST['gender'] . '";
+    document.getElementById("stuid").value = "' . $_POST['stuid'] . '";
+    document.getElementById("student").checked = ' . ($_POST['student'] ? 'true' : 'false') . ';
     uq_details()
-    document.getElementById("year").value = "'.$_POST['year'].'";
-    document.getElementById("faculty").value = "'.$_POST['faculty'].'";
+    document.getElementById("year").value = "' . $_POST['year'] . '";
+    document.getElementById("faculty").value = "' . $_POST['faculty'] . '";
     fac_details();
-    document.getElementById("school").value = "'.$_POST['school'].'";
-    document.getElementById("international").value = '.($_POST['international'] ? 'true' : 'false').';
-    document.getElementById("payment").value = "'.$_POST['payment'].'";
+    document.getElementById("school").value = "' . $_POST['school'] . '";
+    document.getElementById("international").value = ' . ($_POST['international'] ? 'true' : 'false') . ';
+    document.getElementById("payment").value = "' . $_POST['payment'] . '";
     pay_details();
 </script>');
 echo ($cash ? "" : '<script>alert("Executive Password Incorrect.");</script>');

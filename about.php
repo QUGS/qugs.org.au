@@ -8,26 +8,26 @@ $partner_l = mysqli_query($db, $partner_q) or die(mysqli_error($db));
 // String to form club's games table
 $table = "";
 
-while($partner = mysqli_fetch_assoc($partner_l))
+while (($partner = mysqli_fetch_assoc($partner_l)))
 {
-    $row = "\t<tr><td><img src=\"images/".$partner['logo']."\"></td>\n"
-           . "\t\t<td>".$partner['sponsor']."</td>\n"
-           . "\t\t<td>".$partner['location']."</td>\n"
-           . "\t\t<td>".$partner['discount']."</td>\n";
+    $row = "\t<tr><td><img src=\"images/" . $partner['logo'] . "\"></td>\n"
+           . "\t\t<td>" . $partner['sponsor'] . "</td>\n"
+           . "\t\t<td>" . $partner['location'] . "</td>\n"
+           . "\t\t<td>" . $partner['discount'] . "</td>\n";
     $web = $partner['website'];
-    if (substr($web, 0, strlen("https://www.")) == "https://www.")
+    if (substr($web, 0, strlen("https://www.")) === "https://www.")
     {
            $web = substr($web, strlen("https://www."));
     }
-    if (substr($web, 0, strlen("http://www.")) == "http://www.")
+    if (substr($web, 0, strlen("http://www.")) === "http://www.")
     {
         $web = substr($web, strlen("http://www."));
     }
-    if (substr($web, -strlen("/")) == "/")
+    if (substr($web, -strlen("/")) === "/")
     {
         $web = substr($web, 0, -strlen("/"));
     }
-    $row .= "\t\t<td><a href=\"".$partner['website']."\">".$web."</a></td></tr>\n";
+    $row .= "\t\t<td><a href=\"" . $partner['website'] . "\">" . $web . "</a></td></tr>\n";
     $table .= $row;
 }
 ?>
