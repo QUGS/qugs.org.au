@@ -10,25 +10,25 @@ $table = "";
 
 while($partner = mysqli_fetch_assoc($partner_l))
 {
-	$row = "\t<tr><td><img src=\"images/".$partner['logo']."\"></td>\n"
-		."\t\t<td>".$partner['sponsor']."</td>\n"
-		."\t\t<td>".$partner['location']."</td>\n"
-		."\t\t<td>".$partner['discount']."</td>\n";
-	$web = $partner['website'];
-	if (substr($web, 0, strlen("https://www.")) == "https://www.")
-	{
-   		$web = substr($web, strlen("https://www."));
-	}
-	if (substr($web, 0, strlen("http://www.")) == "http://www.")
-	{
-		$web = substr($web, strlen("http://www."));
-	}
-	if (substr($web, -strlen("/")) == "/")
-	{
-		$web = substr($web, 0, -strlen("/"));
-	}
-	$row .= "\t\t<td><a href=\"".$partner['website']."\">".$web."</a></td></tr>\n";
-	$table .= $row;
+    $row = "\t<tr><td><img src=\"images/".$partner['logo']."\"></td>\n"
+           . "\t\t<td>".$partner['sponsor']."</td>\n"
+           . "\t\t<td>".$partner['location']."</td>\n"
+           . "\t\t<td>".$partner['discount']."</td>\n";
+    $web = $partner['website'];
+    if (substr($web, 0, strlen("https://www.")) == "https://www.")
+    {
+           $web = substr($web, strlen("https://www."));
+    }
+    if (substr($web, 0, strlen("http://www.")) == "http://www.")
+    {
+        $web = substr($web, strlen("http://www."));
+    }
+    if (substr($web, -strlen("/")) == "/")
+    {
+        $web = substr($web, 0, -strlen("/"));
+    }
+    $row .= "\t\t<td><a href=\"".$partner['website']."\">".$web."</a></td></tr>\n";
+    $table .= $row;
 }
 ?>
 
@@ -45,26 +45,26 @@ while($partner = mysqli_fetch_assoc($partner_l))
 <style>
 .exec tr:nth-child(odd), .partn tr:nth-child(odd)
 {
-	background-color: #D3D3D3;
+    background-color: #D3D3D3;
 }
 .exec tr:first-child, .partn tr:first-child
 {
-	background-color: #000000;
-	font-weight: bold;
-	color: #FFFFFF;
+    background-color: #000000;
+    font-weight: bold;
+    color: #FFFFFF;
 }
 .exec tr, .partn tr
 {
-	border-top: thin solid #000000;
-	border-bottom: thin solid #000000;
+    border-top: thin solid #000000;
+    border-bottom: thin solid #000000;
 }
 .partn tr:not(:first-child)
 {
-	height: 8vmin;
+    height: 8vmin;
 }
 .exec td
 {
-	padding: 1px 1em;
+    padding: 1px 1em;
     vertical-align: top;
 }
 .partn td
@@ -73,109 +73,109 @@ while($partner = mysqli_fetch_assoc($partner_l))
 }
 .partn tr:not(:first-child) > td
 {
-	padding: 12px 1em;
+    padding: 12px 1em;
 }
 .partn tr:first-child > td
 {
-	padding: 1px 1em;
+    padding: 1px 1em;
 }
 .exec tr > td:first-child, .partn tr > td:first-child
 {
-	text-indent: -0.5em;
-	padding-left: 1.5em;
+    text-indent: -0.5em;
+    padding-left: 1.5em;
 }
 .partn td > img
 {
-	max-width: calc(1vw + 8em);
-	max-height: calc(1vw + 8em);
+    max-width: calc(1vw + 8em);
+    max-height: calc(1vw + 8em);
 }
 .partn td:nth-child(2)
 {
-	font-weight: bold;
+    font-weight: bold;
 }
 .column3
 {
     float: left;
     width: 240px;
-	padding-bottom: 24px;
+    padding-bottom: 24px;
 }
 .column3:last-of-type
 {
-	width: calc(100% - 2 * 240px);
+    width: calc(100% - 2 * 240px);
 }
 .column2
 {
     float: left;
     width: 360px;
-	padding-bottom: 24px;
+    padding-bottom: 24px;
 }
 .column2:last-of-type
 {
-	width: calc(100% - 360px);
+    width: calc(100% - 360px);
 }
 ul
 {
-	padding-top: 0;
-	margin-top: 0;
+    padding-top: 0;
+    margin-top: 0;
 }
 p
 {
-	line-height: 1.2;
-	margin-bottom: 0.8em;
-	margin-top: 0;
+    line-height: 1.2;
+    margin-bottom: 0.8em;
+    margin-top: 0;
 }
 h1, h2
 {
-	line-height: 1.5;
-	margin-bottom: 0;
-	margin-top: 0;
+    line-height: 1.5;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 .twi
 {
-	display: flex;
-	flex-flow: row wrap;
-	max-width: 64em;
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 64em;
 }
 .twi>li
 {
-	flex: 0 0 22.5em;
+    flex: 0 0 22.5em;
 }
 .twi>li>img
 {
-	height: 3ex;
-	width: 3ex;
-	vertical-align:middle;
+    height: 3ex;
+    width: 3ex;
+    vertical-align:middle;
 }
 @media screen and (max-width: 1440px)
 {
-	.exec, .part
-	{
-		width: 100%;
-	}
-	.column3
-	{
-		float: none;
-		width: 100%;
-		padding-bottom: 0;
-	}
-	.column3:last-of-type
-	{
-		width: 100%;
-	}
-	.column2
-	{
-		float: none;
-		width: 100%;
-		padding-bottom: 0;
-	}
-	.column2:last-of-type
-	{
-		width: 100%;
-	}
-	.twi
-	{
-		display: block;
-	}
+    .exec, .part
+    {
+        width: 100%;
+    }
+    .column3
+    {
+        float: none;
+        width: 100%;
+        padding-bottom: 0;
+    }
+    .column3:last-of-type
+    {
+        width: 100%;
+    }
+    .column2
+    {
+        float: none;
+        width: 100%;
+        padding-bottom: 0;
+    }
+    .column2:last-of-type
+    {
+        width: 100%;
+    }
+    .twi
+    {
+        display: block;
+    }
 }
 
 </style>
@@ -183,12 +183,12 @@ h1, h2
 <body>
     <div class="navbarback">&nbsp;</div>
     <script>
-	function navig()
-	{
-		var destin = document.getElementById("navig").value;
-		if (destin != 0) window.location.href = destin;
-	}
-	</script>
+    function navig()
+    {
+        var destin = document.getElementById("navig").value;
+        if (destin != 0) window.location.href = destin;
+    }
+    </script>
     <div class="navbar"><table><tr>
     <td><img src="images/logosmall.png" height="50px" width="88px"/></td>
     <td style="font-family:toro; font-size: 30px;">Queensland University Games Society</td>
@@ -199,7 +199,7 @@ h1, h2
     <td class="navdesk"><a href="join">Join</a></td>
     <td class="navmob">
     <select autocomplete="off" onChange="navig();" id="navig">
-    	<option selected hidden value=0>Menu</option>
+        <option selected hidden value=0>Menu</option>
         <option value="./">Home</option>
         <option value="collection">Collection</option>
         <option value="about">About</option>
@@ -215,7 +215,7 @@ h1, h2
 <p>QUGS has partnered with several Brisbane based gaming businesses, who kindly provide our members with discounts and deals upon the presentation of a membership card.</p>
 <p>The following table lists the QUGS partners in 2020.</p>
 <table class="partn">
-	<tr><td colspan="2" style="width: calc(2vw + 16em);">Partner</td>
+    <tr><td colspan="2" style="width: calc(2vw + 16em);">Partner</td>
         <td style="width: calc(1vw + 8em);">Location(s)</td>
         <td style="width: calc(1vw + 8em);">Benefit</td>
         <td style="width: calc(1vw + 8em);">Website</td></tr>
