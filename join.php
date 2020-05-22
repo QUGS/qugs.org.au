@@ -86,18 +86,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     elseif ($_POST['payment'] === "stripe") // if payment stripe
     {
         require_once("stripe-php-7.34.0/init.php");
-        include("st.php");
         $card = false;
         try
         {
-            $c = \Stripe\Charge::create(array('amount' => 550,
-                                              'currency' => 'aud',
-                                              'description' => 'QUGS Membership',
-                                              'source' => $_POST['stripeToken']
-                                              ));
-            $card = $c['paid'];
+            include("st.php");
+            $cust = \Stripe\Customer::create(array('name'        => $_POST['fname']." ".$_POST['lname'],
+                                                   'source'      => $_POST['stripeToken'],
+                                                   ));
+            $charge = \Stripe\Charge::create(array('amount'      => 550,
+                                                   'currency'    => 'aud',
+                                                   'description' => 'QUGS Membership',
+                                                   'customer'    => $cust['id'],
+                                                    ));
+            $card = $charge['paid'];
         }
-        catch (\Stripe\Error\Card $e) {}
+        catch (Exception $e)
+        {
+            echo("<!--" . $e->getMessage() . "-->");
+        }
         if (!$card) {} // if stripe error
         elseif ($_POST['student']) // if not stripe error and student
         {
@@ -171,7 +177,7 @@ if ($q) // if query created
 
         include("mc.php");
         $c = curl_init('https://' . substr($mailc, strpos($mailc, '-') + 1)
-		               . '.api.mailchimp.com/3.0/lists/faba794f30/members/' . md5(strtolower($_POST['email'])));
+                       . '.api.mailchimp.com/3.0/lists/faba794f30/members/' . md5(strtolower($_POST['email'])));
         curl_setopt($c, CURLOPT_USERPWD, 'user:' . $mailc);
         curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
         curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
