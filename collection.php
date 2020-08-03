@@ -183,7 +183,7 @@ input[type=range]::-moz-range-thumb
 memb = [{bgg:"BradleySigma", disc:"@BradleySigma#7868"},
         {bgg:"lsenjov"     , disc:"@lsenjov#4288"     },
         {bgg:"_Exist"      , disc:"@Exist#8869"       },
-	{bgg: "SPAMLee"    , disc:"Spam_Lee#8893"     }];
+	{bgg:"SPAMLee"     , disc:"@Spam_Lee#8893"    }];
 // Array of games, and who owns them
 games = [];
 // BGG IDs of games the club owns
