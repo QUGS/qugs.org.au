@@ -369,7 +369,7 @@ function fac_details()
                           + '<option value="hmns">Human Movement &amp; Nutrition Sciences</option>'
                           + '<option value="nmsw">Nursing, Midwifery &amp; Social Work</option>'
                           + '<option value="phar">Pharmacy</option>'
-                          + '<option value="psyc">Psycology</option>'
+                          + '<option value="psyc">Psychology</option>'
                           + '<option value="oth_">Other</option>';
             break;
         case "med":
