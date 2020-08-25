@@ -32,11 +32,11 @@ td
     border: 0;
     margin: 0;
     padding: 0;
-    font-size: 16vw; 
+    font-size: 16vw;
     user-select: none;
-    	-webkit-touch-callout: none;
-    	-webkit-user-select: none;
-     	-khtml-user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
 }
@@ -120,7 +120,7 @@ function endturn()
     trade = 0;
     combat = 0;
     document.getElementById("trad").innerHTML = trade;
-    document.getElementById("comb").innerHTML = combat;   
+    document.getElementById("comb").innerHTML = combat;
 }
 function defend()
 {

@@ -86,7 +86,7 @@ s
 </style>
 <script language="javascript">
 var cards = [
-    {name: "Cellar", cat: ["Action"], expand: "Base", cost: 2}, 
+    {name: "Cellar", cat: ["Action"], expand: "Base", cost: 2},
     {name: "Chapel", cat: ["Action"], expand: "Base", cost: 2},
     {name: "Moat", cat: ["Action", "Reaction"], expand: "Base", cost: 2},
     {name: "Harbinger", cat: ["Action"], expand: "Base", cost: 3},
@@ -413,7 +413,7 @@ function DoTheThing()
           + (prosp ? '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="victory.png"/> Colony<br/>' : "")
           + (potion ? '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="potion.png"/> Potion<br/>' : "")
           + '<img height="8vw" width="12vw" src="spacer.png"/>'
-		  + (curse ? '<img height="8vw" width="12vw" src="curse.png"/> Curse<br/>' : '<img height="8vw" width="12vw" src="nocurse.png"/> <s>Curse</s><br/>');
+          + (curse ? '<img height="8vw" width="12vw" src="curse.png"/> Curse<br/>' : '<img height="8vw" width="12vw" src="nocurse.png"/> <s>Curse</s><br/>');
     kingdoms.sort(compare);
     kingdoms.forEach(function(i)
     {
@@ -490,7 +490,7 @@ function ReDoTheThing()
     var curse = false;
     var catags_ = Object.assign({}, catags);
     var n;
-   
+
     for (var i = kingdoms.length-1; i >= 0; i--)
     {
         var c = kingdoms[i];
@@ -521,8 +521,9 @@ function ReDoTheThing()
             if (c.setup) {special.push(c.name);}
         }
     }
-   
-    blackmarket.forEach(function(i) {
+
+    blackmarket.forEach(function(i)
+	{
         if (remove.indexOf(i.name) != -1)
         {
             blackmarket.splice(blackmarket.indexOf(i), 1);
@@ -541,7 +542,7 @@ function ReDoTheThing()
             if (i.setup) {special.push(i.name);}
         }
     });
-   
+
     if (bane && remove.indexOf(bane.name) != -1)
     {
         switch (bane.name)
@@ -562,7 +563,7 @@ function ReDoTheThing()
         alert("Not enough kingdom cards. Please select more.");
         return;
     }
-   
+
     for (var t in catags_)
     {
         n = 0;
@@ -675,7 +676,7 @@ function ReDoTheThing()
           + (prosp ? '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="victory.png"/> Colony<br/>' : "")
           + (potion ? '<img height="8vw" width="12vw" src="spacer.png"/><img height="8vw" width="12vw" src="potion.png"/> Potion<br/>' : "")
           + '<img height="8vw" width="12vw" src="spacer.png"/>'
-		  + (curse ? '<img height="8vw" width="12vw" src="curse.png"/>Curse<br/>' : '<img height="8vw" width="12vw" src="nocurse.png"/><s>Curse</s><br/>');
+          + (curse ? '<img height="8vw" width="12vw" src="curse.png"/>Curse<br/>' : '<img height="8vw" width="12vw" src="nocurse.png"/><s>Curse</s><br/>');
     kingdoms.sort(compare);
     kingdoms.forEach(function(i)
     {

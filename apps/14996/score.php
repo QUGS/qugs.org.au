@@ -106,7 +106,7 @@ var longg = false;
 var scrol;
 function train(t, d)
 {
-   
+
     track[t] += d;
     track[t] = track[t] < 0 ? 0 : track[t];
     document.getElementById("train_"+t+"_count").innerHTML = "&times;" + (track[t]<10 ? "&#8199;" : "")+ track[t];
@@ -121,20 +121,20 @@ function updatescore()
     var stock = 45;
     var tic_s = 0;
     var tic_f = 0;
-   
+
     [1,2,3,4,6,8].forEach(function(i)
     {
         stock -= i * track[i];
         score += delta[i] * track[i];
     });
     document.getElementById("trains_remaining").innerHTML = (stock <= 2 ? '&#x23F3;&#xFE0E;&#8199;' : '') + stock + " Train"+(stock == 1 ? "" : "s")+" Remaining";
-   
+
     for (var key in desti)
     {
         score += desti[key];
         tic_s += desti[key] > 0 ? 1 : 0;
         tic_f += desti[key] < 0 ? 1 : 0;
-    }   
+    }
     document.getElementById("ticket_complete").innerHTML = tic_s + " Tickets Complete. " + tic_f + " Tickets Failed";
     var neg = score < 0;
     score *= (neg ? -1 : 1);

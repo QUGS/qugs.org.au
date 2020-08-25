@@ -26,7 +26,7 @@ $option = "";
 while (($game = mysqli_fetch_assoc($games_l)))
 {
     $row = "\t<tr class=\"gamerow\" data-minp=" . $game['playmin'] . " data-maxp=" . $game['playmax']
-	       . " data-time=" . $game['timeplay'] . " data-bggid=" . $game['bgg'] . ">"
+           . " data-time=" . $game['timeplay'] . " data-bggid=" . $game['bgg'] . ">"
            . "\n\t<td><a href=\"" . $game['link'] . "\">" . $game['name'] . "</a>";
     // If the game has expansions, add them as a new line to the first cell
     if ($game['expand'])
@@ -41,7 +41,7 @@ while (($game = mysqli_fetch_assoc($games_l)))
     $row .= "</td>"
             . "\n<td>" . $game['playmin'] . ($game['playmin'] === $game['playmax'] ? "" : "-" . $game['playmax']) . "</td>"
             . "\n<td>" . ($game['timeplay'] >= 60 ? intval($game['timeplay'] / 60) . " hr ": "")
-			. ($game['timeplay'] % 60 !== 0 ? $game['timeplay'] % 60 . " min": "") . "</td>"
+            . ($game['timeplay'] % 60 !== 0 ? $game['timeplay'] % 60 . " min": "") . "</td>"
             . "\n<td id=s" . $game['bgg'] . ">[Loading]</td>"
             . "\n<td><a href=\"rules/r" . $game['bgg'] . ".pdf\">Link</a></td>"
             . "\n" . ($game['app'] ? "<td>" . $game['app'] . "</td>" : "<td style='color:#808080;'>N/A</td>") . "</tr>\n";
@@ -183,7 +183,7 @@ input[type=range]::-moz-range-thumb
 memb = [{bgg:"BradleySigma", disc:"@BradleySigma#7868"},
         {bgg:"lsenjov"     , disc:"@lsenjov#4288"     },
         {bgg:"_Exist"      , disc:"@Exist#8869"       },
-	{bgg:"SPAMLee"     , disc:"@Spam_Lee#8893"    }];
+        {bgg:"SPAMLee"     , disc:"@Spam_Lee#8893"    }];
 // Array of games, and who owns them
 games = [];
 // BGG IDs of games the club owns

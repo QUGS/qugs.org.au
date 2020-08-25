@@ -45,7 +45,7 @@ input:disabled
     padding: 0;
     border: 0;
     font-size: 8vw;
-    color: #000000;   
+    color: #000000;
 }
 #ordering
 {
@@ -95,7 +95,7 @@ function PlayMusic(file)
     document.getElementById("listing").innerHTML = name;
     document.getElementById("lock").value = "Unlock";
     document.getElementById("rev").value = "Reveal";
-   
+
     locked = true;
     revealed = false;
     document.getElementById("ordering").innerHTML = "";
