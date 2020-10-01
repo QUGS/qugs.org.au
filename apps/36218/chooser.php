@@ -118,6 +118,34 @@ var cards = [
     {name: "Spy", cat: ["Action", "Attack"], expand: "Base", cost: 4},
     {name: "Thief", cat: ["Action", "Attack"], expand: "Base", cost: 4},
     {name: "Adventurer", cat: ["Action"], expand: "Base", cost: 6},
+	
+	{name: "Embargo", cat: ["Action"], expand: "Seaside", curser: true, cost: 2},
+	{name: "Haven", cat: ["Action", "Duration"], expand: "Seaside", cost: 2},
+	{name: "Lighthouse", cat: ["Action", "Duration"], expand: "Seaside", cost: 2},
+	{name: "Native Village", cat: ["Action"], expand: "Seaside", cost: 2},
+	{name: "Pearl Diver", cat: ["Action"], expand: "Seaside", cost: 2},
+	{name: "Ambassador", cat: ["Action", "Attack"], expand: "Seaside", cost: 3},
+	{name: "Fishing Village", cat: ["Action", "Duration"], expand: "Seaside", cost: 3},
+	{name: "Lookout", cat: ["Action"], expand: "Seaside", cost: 3},
+	{name: "Smugglers", cat: ["Action"], expand: "Seaside", cost: 3},
+	{name: "Warehouse", cat: ["Action"], expand: "Seaside", cost: 3},
+	{name: "Caravan", cat: ["Action", "Duration"], expand: "Seaside", cost: 4},
+	{name: "Cutpurse", cat: ["Action", "Attack"], expand: "Seaside", cost: 4},
+	{name: "Island", cat: ["Action", "Victory"], expand: "Seaside", cost: 4},
+	{name: "Navigator", cat: ["Action"], expand: "Seaside", cost: 4},
+	{name: "Pirate Ship", cat: ["Action", "Attack"], expand: "Seaside", cost: 4},
+	{name: "Salvager", cat: ["Action"], expand: "Seaside", cost: 4},
+	{name: "Sea Hag", cat: ["Action", "Attack"], expand: "Seaside", curser: true, cost: 4},
+	{name: "Treasure Map", cat: ["Action"], expand: "Seaside", cost: 4},
+	{name: "Bazar", cat: ["Action"], expand: "Seaside", cost: 5},
+	{name: "Explorer", cat: ["Action"], expand: "Seaside", cost: 5},
+	{name: "Ghost Ship", cat: ["Action", "Attack"], expand: "Seaside", cost: 5},
+	{name: "Merchant Ship", cat: ["Action", "Duration"], expand: "Seaside", cost: 5},
+	{name: "Outpost", cat: ["Action", "Duration"], expand: "Seaside", cost: 5},
+	{name: "Tactician", cat: ["Action", "Duration"], expand: "Seaside", cost: 5},
+	{name: "Treasury", cat: ["Action"], expand: "Seaside", cost: 5},
+	{name: "Wharf", cat: ["Action", "Duration"], expand: "Seaside", cost: 5},
+	
     {name: "Courtyard", cat: ["Action"], expand: "Intrigue", cost: 2},
     {name: "Lurker", cat: ["Action"], expand: "Intrigue", cost: 2},
     {name: "Pawn", cat: ["Action"], expand: "Intrigue", cost: 2},
@@ -144,6 +172,7 @@ var cards = [
     {name: "Upgrade", cat: ["Action"], expand: "Intrigue", cost: 5},
     {name: "Harem", cat: ["Treasure", "Victory"], expand: "Intrigue", cost: 6},
     {name: "Nobels", cat: ["Action", "Victory"], expand: "Intrigue", cost: 6},
+	
     {name: "Transmute", cat: ["Action"], expand: "Alchemy", potion: true, cost: 0},
     {name: "Vineyard", cat: ["Victory"], expand: "Alchemy", potion: true, cost: 0},
     {name: "Herbalist", cat: ["Action"], expand: "Alchemy", cost: 2},
@@ -156,6 +185,7 @@ var cards = [
     {name: "Golem", cat: ["Action"], expand: "Alchemy", potion: true, cost: 4},
     {name: "Apprentice", cat: ["Action"], expand: "Alchemy", cost: 5},
     {name: "Possession", cat: ["Action"], expand: "Alchemy", potion: true, cost: 6},
+	
     {name: "Loan", cat: ["Treasure"], expand: "Prosperity", cost: 3},
     {name: "Trade Route", cat: ["Action"], expand: "Prosperity", cost: 3},
     {name: "Watchtower", cat: ["Action", "Reaction"], expand: "Prosperity", cost: 3},
@@ -181,6 +211,7 @@ var cards = [
     {name: "Forge", cat: ["Action"], expand: "Prosperity", cost: 7},
     {name: "King’s Court", cat: ["Action"], expand: "Prosperity", cost: 7},
     {name: "Peddler", cat: ["Action"], expand: "Prosperity", cost: 8},
+	
     {name: "Hamlet", cat: ["Action"], expand: "Cornucopia", cost: 2},
     {name: "Forture Teller", cat: ["Action", "Attack"], expand: "Cornucopia", cost: 3},
     {name: "Menagerie", cat: ["Action"], expand: "Cornucopia", cost: 3},
@@ -194,6 +225,7 @@ var cards = [
     {name: "Hunting Party", cat: ["Action", "Attack"], expand: "Cornucopia", cost: 5},
     {name: "Jester", cat: ["Action"], expand: "Cornucopia", curser: true, cost: 5},
     {name: "Fairgrounds", cat: ["Victory"], expand: "Cornucopia", cost: 6},
+	
     {name: "Crossroads", cat: ["Action"], expand: "Hinterlands", cost: 2},
     {name: "Duchess", cat: ["Action"], expand: "Hinterlands", cost: 2},
     {name: "Fool’s Gold", cat: ["Treasure", "Reaction"], expand: "Hinterlands", cost: 2},
@@ -220,13 +252,14 @@ var cards = [
     {name: "Stables", cat: ["Action"], expand: "Hinterlands", cost: 5},
     {name: "Border Village", cat: ["Action"], expand: "Hinterlands", cost: 6},
     {name: "Farmland", cat: ["Victory"], expand: "Hinterlands", cost: 6},
+	
     {name: "Black Market", cat: ["Action"], expand: "Promo", setup: true, cost: 3},
     {name: "Envoy", cat: ["Action"], expand: "Promo", cost: 4},
     {name: "Prince", cat: ["Action"], expand: "Promo", cost: 8},
     {name: "Sauna/Avanto", cat: ["Action"], expand: "Promo", cost: 4},
 ];
-var choice = {"Base": true, "Intrigue": true, "Alchemy": true, "Prosperity": true, "Cornucopia": true, "Hinterlands": true, "Promo": true};
-var catags = {"Attack": 0, "Treasure": 0, "Victory": 0, "Reaction": 0, "Action": 0};
+var choice = {"Base": true, "Intrigue": true, "Seaside": true, "Alchemy": true, "Prosperity": true, "Cornucopia": true, "Hinterlands": true, "Promo": true};
+var catags = {"Attack": 0, "Treasure": 0, "Duration": 0, "Victory": 0, "Reaction": 0, "Action": 0};
 var cost_limit = 99;
 var kingdoms = [];
 var remove = [];
@@ -271,7 +304,7 @@ function compare(a, b)
     {
         return a.name.localeCompare(b.name);
     }
-    var expord = {"Base": 0, "Intrigue": 1, "Alchemy": 3, "Prosperity": 4, "Cornucopia": 5, "Hinterlands": 6, "Promo": 999};
+    var expord = {"Base": 0, "Intrigue": 1, "Seaside": 2, "Alchemy": 3, "Prosperity": 4, "Cornucopia": 5, "Hinterlands": 6, "Promo": 999};
     return expord[a.expand] - expord[b.expand];
 }
 
@@ -751,6 +784,7 @@ function ReDoTheThing()
 <div id="options">
 <a id="base" onClick="chose('Base');"><img height="8vw" width="12vw" src="base.png"/>&nbsp;Base</a><br/>
 <a id="alchemy" onClick="chose('Alchemy');"><img height="8vw" width="12vw" src="alchemy.png"/>&nbsp;Alchemy</a><br/>
+<a id="seaside" onClick="chose('Seaside');"><img height="8vw" width="12vw" src="seaside.png"/>&nbsp;Seaside</a><br/>
 <a id="intrigue" onClick="chose('Intrigue');"><img height="8vw" width="12vw" src="intrigue.png"/>&nbsp;Intrigue</a><br/>
 <a id="prosperity" onClick="chose('Prosperity');"><img height="8vw" width="12vw" src="prosperity.png"/>&nbsp;Prosperity</a><br/>
 <a id="cornucopia" onClick="chose('Cornucopia');"><img height="8vw" width="12vw" src="cornucopia.png"/>&nbsp;Cornucopia</a><br/>
@@ -764,7 +798,11 @@ function ReDoTheThing()
     <td><input type="button" value="0+" onClick="minim('Attack', 0)" class="have" id="attack0"/>
     <input type="button" value="1+" onClick="minim('Attack', 1)" id="attack1"/>
     <input type="button" value="2+" onClick="minim('Attack', 2)" id="attack2"/></td></tr>
-<tr><td>Reaction&nbsp;</td>
+<tr><td>Duration</td>
+    <td><input type="button" value="0+" onClick="minim('Duration', 0)" class="have" id="duration0"/>
+    <input type="button" value="1+" onClick="minim('Duration', 1)" id="duration1"/>
+    <input type="button" value="2+" onClick="minim('Duration', 2)" id="duration2"/></td></tr>
+<tr><td>Reaction</td>
     <td><input type="button" value="0+" onClick="minim('Reaction', 0)" class="have" id="reaction0"/>
     <input type="button" value="1+" onClick="minim('Reaction', 1)" id="reaction1"/>
     <input type="button" value="2+" onClick="minim('Reaction', 2)" id="reaction2"/></td></tr>
