@@ -380,6 +380,7 @@ Since its inception in 2019, the winners have been:
 <li>Mar 2019: Bradley Stone <img class="ti" src="images/ti_naalu.png" title="The Naalu Collective"/></li>
 <li>Oct 2019: Logan Senjov <img class="ti" src="images/ti_hacan.png" title="The Emirates of Hacan"/></li>
 <li>Mar 2020: Rowan Evans <img class="ti" src="images/ti_yin.png" title="The Yin Brotherhood"/></li>
+<li>Oct 2020: Harvey Kay-Burman <img class="ti" src="images/ti_nekro.png" title="The Nekro Virus"/></li>
 </ul>
 
 <h2>&nbsp;</h2>
