@@ -12,12 +12,12 @@
     body
     {
       font-family: "Garamond";
-      font-size: 36pt;
+      font-size: 4vh;
 	  background: black;
     }
     select
     {
-      font-size: 36pt;
+      font-size: 4vh;
       font-family: "Garamond";
       background: none;
 	  width: 100%;
@@ -26,7 +26,7 @@
     input
     {
       font-family: "Garamond";
-      font-size: 36pt;
+      font-size: 4vh;
 	  background: black;
 	  color: white;
     }
@@ -39,16 +39,16 @@
 	}
 	.cell_num
 	{
-		width: 4vw;
+		width: 2vw;
 	}
 	.cell_title
 	{
-		width: 20vw;
+		width: 16vw;
 		font-weight: bold;
 	}
 	.cell_name
 	{
-		width: 20vw;
+		width: 24vw;
 	}
 	.cell_icon
 	{
@@ -59,7 +59,7 @@
 	}
 	.cell_fact
 	{
-		width: 30vw;
+		width: 24vw;
 		font-style: italic;
 		text-align: right;
 	}
@@ -219,7 +219,7 @@
 	  
           
         maindiv.innerHTML='\
-            <div style="position:absolute; top:50%; right:50%; width:80vw; margin-right:-40vw; height:80vh; margin-top:-40vh;">\
+            <div style="position:absolute; top:50%; right:50%; width:72vw; margin-right:-36vw; height:80vh; margin-top:-40vh;">\
             <table align="center" cellspacing="0" cellpadding="0" class="strategy">'
 		    + (naalu ? '\
 		    <tr id="strat_0" class="null_0"><td class="cell_num" id="num_0" onclick="pass(0)">0</td>\
@@ -303,8 +303,11 @@
 		else
 		{
 			document.getElementById("strat_"+s).className = "choose_"+s;
-			document.getElementById("icon_"+s).innerHTML = '<img src="ti_'+players[name]+'.png"/>';
-			document.getElementById("fact_"+s).innerHTML = factions[players[name]];
+			if (players[name])
+			{
+				document.getElementById("icon_"+s).innerHTML = '<img src="ti_'+players[name]+'.png"/>';
+				document.getElementById("fact_"+s).innerHTML = factions[players[name]];
+			}
 		}
 	}
 	
