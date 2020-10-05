@@ -279,14 +279,9 @@
             </table>\
             ';
 
-		for (var i=1; i<=8; i++)
-		{
-			document.getElementById("num_"+i).style.textDecorationLine = "none";
-		}
 	    if (naalu)
 	    {
 		    document.getElementById("play0").value = naalu;
-			document.getElementById("num_0").style.textDecorationLine = "none";
 			strategy(0);
 	    }
     }
@@ -334,13 +329,13 @@
 	function pass(s)
 	{
 		doohicky = document.getElementById("num_"+s);
-		if (doohicky.style.textDecorationLine == "none")
+		if (isNaN(doohicky.innerHTML))
 		{
-			doohicky.style.textDecorationLine = "line-through"
+			doohicky.innerHTML = s;
 		}
 		else
 		{
-			doohicky.style.textDecorationLine = "none"
+			doohicky.innerHTML = "&times;";
 		}
 	}
   </script>
