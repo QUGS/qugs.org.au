@@ -280,28 +280,33 @@ h1, h2
 <li>Simon Brown (2018)</li></ul>
 
 <h2>General Meeting Minutes</h2>
-<ul><div class="column3"><li style="font-weight:bold;"><a href="minutes/m1997.txt">1997 AGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m1998.txt">1998 AGM</a></li>
-<li><a href="minutes/m1999_apr.txt">1999 April SGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m1999.txt">1999 AGM</a></li>
-<li><a href="minutes/m1999_dec.txt">1999 December SGM</a></li>
-<li><a href="minutes/m2000_jun.txt">2000 June SGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m2000.txt">2000 AGM</a></li>
-<li><a href="minutes/m2000_dec.txt">2000 December SGM</a></li>
-<li><a href="minutes/m2001_mar.txt">2001 March SGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m2001.txt">2001 AGM</a></li></div>
-<div class="column3"><li style="font-weight:bold;"><a href="minutes/m2002.txt">2002 AGM</a></li>
-<li><a href="minutes/m2003_apr.txt">2003 April SGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m2003.txt">2003 AGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m2004.txt">2004 AGM</a></li>
-<li><a href="minutes/m2005_apr.txt">2005 April SGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m2005.txt">2005 AGM</a></li>
-<li><a href="minutes/m2007_mar.txt">2007 March SGM</a></li>
-<li><a href="minutes/m2007_nov.txt">2007 November SGM</a></li>
-<li><a href="minutes/m2008_oct.txt">2008 October SGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m2009.txt">2009 AGM</a></li></div>
-<div class="column3"><li><a href="minutes/m2010_oct.txt">2010 October SGM</a></li>
-<li><a href="minutes/m2011_oct.txt">2011 October SGM</a></li>
+<ul><div class="column3">
+	<li style="font-weight:bold;"><a href="minutes/m1997.txt">1997 AGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m1998.txt">1998 AGM</a></li>
+	<li><a href="minutes/m1999_apr.txt">1999 April SGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m1999.txt">1999 AGM</a></li>
+	<li><a href="minutes/m1999_dec.txt">1999 December SGM</a></li>
+	<li><a href="minutes/m2000_jun.txt">2000 June SGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2000.txt">2000 AGM</a></li>
+	<li><a href="minutes/m2000_dec.txt">2000 December SGM</a></li>
+	<li><a href="minutes/m2001_mar.txt">2001 March SGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2001.txt">2001 AGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2002.txt">2002 AGM</a></li>
+</div>
+<div class="column3">
+	<li><a href="minutes/m2003_apr.txt">2003 April SGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2003.txt">2003 AGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2004.txt">2004 AGM</a></li>
+	<li><a href="minutes/m2005_apr.txt">2005 April SGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2005.txt">2005 AGM</a></li>
+	<li><a href="minutes/m2007_mar.txt">2007 March SGM</a></li>
+	<li><a href="minutes/m2007_nov.txt">2007 November SGM</a></li>
+	<li><a href="minutes/m2008_oct.txt">2008 October SGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2009.txt">2009 AGM</a></li>
+	<li><a href="minutes/m2010_oct.txt">2010 October SGM</a></li>
+	<li><a href="minutes/m2011_oct.txt">2011 October SGM</a></li>
+</div>
+<div class="column3">
 <li style="font-weight:bold;"><a href="minutes/m2012.txt">2012 AGM</a></li>
 <li><a href="minutes/m2014_feb.txt">2014 February SGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2014.txt">2014 AGM</a></li>
@@ -309,7 +314,9 @@ h1, h2
 <li style="font-weight:bold;"><a href="minutes/m2016.pdf">2016 AGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2017.pdf">2017 AGM</a></li>
 <li style="font-weight:bold;"><a href="minutes/m2018.pdf">2018 AGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m2019.pdf">2019 AGM</a></li></div></ul>
+<li style="font-weight:bold;"><a href="minutes/m2019.pdf">2019 AGM</a></li>
+<li style="font-weight:bold;"><a href="minutes/m2020.pdf">2020 AGM</a></li>
+</div></ul>
 
 <p style="font-weight:bold;"><a href="constitution.pdf">Constitution</a></p>
 
