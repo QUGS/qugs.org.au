@@ -307,15 +307,16 @@ h1, h2
 	<li><a href="minutes/m2011_oct.txt">2011 October SGM</a></li>
 </div>
 <div class="column3">
-<li style="font-weight:bold;"><a href="minutes/m2012.txt">2012 AGM</a></li>
-<li><a href="minutes/m2014_feb.txt">2014 February SGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m2014.txt">2014 AGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m2015.txt">2015 AGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m2016.pdf">2016 AGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m2017.pdf">2017 AGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m2018.pdf">2018 AGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m2019.pdf">2019 AGM</a></li>
-<li style="font-weight:bold;"><a href="minutes/m2020.pdf">2020 AGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2012.txt">2012 AGM</a></li>
+	<li><a href="minutes/m2014_feb.txt">2014 February SGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2014.txt">2014 AGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2015.txt">2015 AGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2016.pdf">2016 AGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2017.pdf">2017 AGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2018.pdf">2018 AGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2019.pdf">2019 AGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2020.pdf">2020 AGM</a></li>
+	<br/><br/>
 </div></ul>
 
 <p style="font-weight:bold;"><a href="constitution.pdf">Constitution</a></p>
