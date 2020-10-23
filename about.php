@@ -266,7 +266,7 @@ h1, h2
 <tr><td>2018</td><td>Lee Phillips</td><td>Dakota Edwards<sup>A</sup></td><td>Bradley Stone</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr><td>2019</td><td>Bradley Stone</td><td>Samuel Parchert</td><td>Lee Phillips</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr><td>2020</td><td>Bradley Stone</td><td>Renee Bonney</td><td>Lee Phillips</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><td>2020</td><td>Bradley Stone</td><td>Jzi Sinn Tan</td><td>Mairah Zulkepli</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2021</td><td>Bradley Stone</td><td>Jzi Sinn Tan</td><td>Mairah Zulkepli</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 </table>
 <div class="column2"><sup>A</sup> Acting officer.<br/>
 <sup>C</sup> Custodian.<br/>
