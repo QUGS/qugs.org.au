@@ -13,7 +13,7 @@
 {
     vertical-align: top;
     text-align: center;
-    width: 114px;
+    width: 190px;
 }
 .social table
 {
@@ -54,10 +54,9 @@ body
     </select></td></tr></table></div>
 <img src="images/logo.png" height="323px" width="570px"/><br/>
 <table class="social" align="center"><tr>
-    <td><a href="https://www.facebook.com/groups/QUBGS/"><img src="images/facebook.png" height="64px" width="64px" title="Facebook"/></a></td>
-    <td><a href="https://www.facebook.com/groups/QUGSmagic"><img src="images/facebookmtg.png" height="64px" width="64px" title="Facebook (Magic The Gathering)"/></a></td>
-    <td><a href="https://www.discord.gg/b6HndRm"><img src="images/discord.png" height="64px" width="64px" title="Discord"/></a></td>
-    <td><a href="mailto:president@qugs.org.au"><img src="images/mail.png" height="64px" width="64px" title="E-Mail"/></a></td>
+    <td><a href="https://www.facebook.com/qldunigamesoc/"><img src="images/facebook.png" height="96px" width="96px" title="Facebook"/></a></td>
+    <td><a href="https://www.discord.gg/b6HndRm"><img src="images/discord.png" height="96px" width="96px" title="Discord"/></a></td>
+    <td><a href="mailto:president@qugs.org.au"><img src="images/mail.png" height="96px" width="96px" title="E-Mail"/></a></td>
 </tr></table><br/>
 <a href="join" style="text-align:center;font-size:72px;font-family:helv;">Join Now</a><br/><br/>
 <iframe src="https://calendar.google.com/calendar/b/2/embed?showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=1&amp;mode=AGENDA&amp;height=352&amp;wkst=2&amp;bgcolor=%23FFFFFF&amp;src=ull5dckmqdllp5fq3af5rhpqf0%40group.calendar.google.com&amp;color=%2329527A&amp;ctz=Australia%2FBrisbane" style="border-width:0" width="570" height="352" frameborder="0" scrolling="no"></iframe>

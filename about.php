@@ -213,7 +213,7 @@ h1, h2
 
 <h2>Partners</h2>
 <p>QUGS has partnered with several Brisbane based gaming businesses, who kindly provide our members with discounts and deals upon the presentation of a membership card.</p>
-<p>The following table lists the QUGS partners in 2020.</p>
+<p>The following table lists the QUGS partners in 2021.</p>
 <table class="partn">
     <tr><td colspan="2" style="width: calc(2vw + 16em);">Partner</td>
         <td style="width: calc(1vw + 8em);">Location(s)</td>
@@ -390,6 +390,7 @@ Since its inception in 2019, the winners have been:
 <li>Oct 2019: Logan Senjov <img class="ti" src="images/ti_hacan.png" title="The Emirates of Hacan"/></li>
 <li>Mar 2020: Rowan Evans <img class="ti" src="images/ti_yin.png" title="The Yin Brotherhood"/></li>
 <li>Oct 2020: Harvey Kay-Burman <img class="ti" src="images/ti_nekro.png" title="The Nekro Virus"/></li>
+<!--li>Dec 2020: Bradley Stone <img class="ti" src="images/ti_vuilraith.png" title="The Vuil'Raith Cabal"/></li-->
 </ul>
 
 <h2>&nbsp;</h2>
