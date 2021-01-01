@@ -278,11 +278,11 @@ if ($q) // if query created
 		 . "<p>Please visit our <a href=\"https://www.qugs.org.au/\">website</a> for an up-to-date calendar of our events, as well as a list of the games in the QUGS Collection. You can also follow our <a href=\"https://www.facebook.com/qldunigamesoc/\">Facebook</a> page and join our <a href=\"https://discord.com/invite/b6HndRm\">Discord</a> sever.</p>\n"
 		 . "<p>If you do not have a QUGS membership card, please show this e–mail to a committee member at a QUGS event to receive one.</p>\n"
 		 . "<table>\n"
-		 . "<tr><td>QUGS Membership, 2021<br/>" . $_POST['fname'] . " " . $_POST['lname'] . "</td><td>$5.00</td></tr>\n"
+		 . "<tr><td>QUGS Membership, 2021<br/>&emsp;&emsp;" . $_POST['fname'] . " " . $_POST['lname'] . "</td><td>$5.00</td></tr>\n"
 		 . ($_POST['payment'] === "stripe" ? "<tr><td>Stripe Fee</td><td>$0.50</td></tr>\n" : "")
 		 . ($_POST['payment'] === "cash" ? "<tr><td>Paid (Cash)</td><td>&minus; $5.00</td></tr>\n" : "")
 		 . ($_POST['payment'] === "voucher" ? "<tr><td>Paid (UQU Voucher)</td><td>&minus; $5.00</td></tr>\n" : "")
-		 . ($_POST['payment'] === "stripe" ? "<tr><td>Paid (Stripe)</td><td>&minus; $5.50</td></tr><br/>" . $_POST['stripeToken'] . "\n" : "")
+		 . ($_POST['payment'] === "stripe" ? "<tr><td>Paid (Stripe)<br/>&emsp;&emsp;" . $_POST['stripeToken'] . "</td><td>&minus; $5.50</td></tr>\n" : "")
 		 . "</table>\n"
 		 . "<p style=\"margin-bottom: 0.4em;\">Thank you for being a member of QUGS in 2001, and we look forward to seeing you at our events</p>\n"
 		 . "<p style=\"margin-top: 0.4em;\">Bradley (President) and the rest of the QUGS 2021 Committee</p>\n"
