@@ -636,11 +636,11 @@ function stripecheck()
         <td>School:</td><td><select name="school" id="school" required><option value="" selected>&ensp;&mdash;&ensp;Select a Faculty&ensp;&mdash;&ensp;</option></select></td></tr>
     <tr class="studrow"><td>International:</td>
         <td><input type="checkbox" name="international" id="international" value="1"/></td></tr>
-    <tr><td>Payment:</td>
+    <tr><td>Paymen Methodt:</td>
         <td><select name="payment" id="payment" onChange="pay_details()" required>
         <option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option>
         <option value="cash">Cash</option>
-        <option value="stripe">Online (via <i>Stripe</i>)</option>
+        <option value="stripe">Card (via <i>Stripe</i>)</option>
         <option value="voucher">UQUnion Voucher</option>
         </select></td></tr>
     <tr class="payrow" style="display:none;visibility:collapse;"><td>Executive Password:</td>
