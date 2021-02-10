@@ -636,7 +636,7 @@ function stripecheck()
         <td>School:</td><td><select name="school" id="school" required><option value="" selected>&ensp;&mdash;&ensp;Select a Faculty&ensp;&mdash;&ensp;</option></select></td></tr>
     <tr class="studrow"><td>International:</td>
         <td><input type="checkbox" name="international" id="international" value="1"/></td></tr>
-    <tr><td>Paymen Methodt:</td>
+    <tr><td>Payment Method:</td>
         <td><select name="payment" id="payment" onChange="pay_details()" required>
         <option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option>
         <option value="cash">Cash</option>
