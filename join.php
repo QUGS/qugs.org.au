@@ -440,13 +440,13 @@ function fac_details()
                           + '<option value="arch">Architecture</option>'
                           + '<option value="chee">Chemical Engineering</option>'
                           + '<option value="civ">Civil Engineering</option>'
-                          + '<option value="mech">Mechanical &amp; Mining Engineering</option>'
                           + '<option value="itee">Information Technology &amp; Electrical Engineering</option>'
+                          + '<option value="mech">Mechanical &amp; Mining Engineering</option>'
                           + '<option value="oth_">Other</option>';
             break;
         case "hbs":
             s.innerHTML = '<option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option>'
-                          + '<option value="dent">Dentisty</option>'
+                          + '<option value="dent">Dentistry</option>'
                           + '<option value="hrs">Health &amp; Rehabilitation Sciences</option>'
                           + '<option value="hmns">Human Movement &amp; Nutrition Sciences</option>'
                           + '<option value="nmsw">Nursing, Midwifery &amp; Social Work</option>'
@@ -462,7 +462,7 @@ function fac_details()
             break;
         case "hss":
             s.innerHTML = '<option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option>'
-                          + '<option value="comm">Comminication &amp; Arts</option>'
+                          + '<option value="comm">Communication &amp; Arts</option>'
                           + '<option value="edu">Education</option>'
                           + '<option value="hist">Historical &amp; Philosophical Inquiry</option>'
                           + '<option value="lang">Languages &amp; Culture</option>'
@@ -475,9 +475,9 @@ function fac_details()
             s.innerHTML = '<option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option>'
                           + '<option value="agri">Agriculture &amp; Food Science</option>'
                           + '<option value="biol">Biological Sciences</option>'
-                          + '<option value="envi">Earth &amp; Environmental Sciences</option>'
                           + '<option value="chem">Chemical &amp; Molecular Biosciences</option>'
-                          + '<option value="math">Maths &amp; Phyisics</option>'
+                          + '<option value="envi">Earth &amp; Environmental Sciences</option>'
+                          + '<option value="math">Mathematics &amp; Physics</option>'
                           + '<option value="vet">Veterinary Science</option>'
                           + '<option value="oth_">Other</option>';
             break;
