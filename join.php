@@ -174,26 +174,28 @@ if ($q) // if query created
 {
     mysqli_query($db, $q) or die(mysqli_error($db));
     $m = -1;
-
+	require_once("mailchimp-marketing-php/vendor/autoload.php");
 	include("mc.php");
-	$c = curl_init('https://' . substr($mailc, strpos($mailc, '-') + 1)
-				   . '.api.mailchimp.com/3.0/lists/faba794f30/members/' . md5(strtolower($_POST['email'])));
-	curl_setopt($c, CURLOPT_USERPWD, 'user:' . $mailc);
-	curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-	curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($c, CURLOPT_TIMEOUT, 10);
-	curl_setopt($c, CURLOPT_CUSTOMREQUEST, 'PUT');
-	curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
-	curl_setopt($c, CURLOPT_POSTFIELDS,
-				json_encode(array('email_address' => $_POST['email'],
-								  'status'        => 'subscribed',
-								  'merge_fields'  => array('FNAME' => $_POST['fname'],
-														   'LNAME' => $_POST['lname']),
-								  'interests'     => array('bb561b8943'  => true) // change annually
-				)));
-	$m = curl_exec($c);
-	$m = (curl_getinfo($c, CURLINFO_HTTP_CODE) === 200 ? "200" : $m);
-	curl_close($c);
+	$client = new MailchimpMarketing\ApiClient();
+	$client->setConfig([
+		"apiKey"	=>	$mailapi,
+		"server"	=>	substr($mailapi, strpos($mailapi, '-') + 1)
+	]);
+	try
+	{
+		$resp = (array) $client->lists->addListMember("faba794f30", [
+			"email_address" 	=> 	$_POST['email'],
+			"status" 			=> 	"subscribed",
+			"merge_fields"		=>	array('FNAME' => $_POST['fname'],
+										  'LNAME' => $_POST['lname']),
+			"interests"     	=> 	array('bb561b8943'  => true) //change annually
+		]);
+	}
+	catch (GuzzleHttp\Exception\ClientException $e)
+	{
+		$resp = json_decode($e->getResponse()->getBody()->getContents(), true);
+	}
+	$m = $resp["status"] == "subscribed" ? "200" : ($resp["status"].": ".$resp["title"]."\n".$resp["detail"]);
 
 	// email qugs inbox
     mail("president@qugs.org.au", (($_POST['fname'] && $_POST['lname']) ? ($_POST['fname'] . " " . $_POST['lname']) : "Somebody") . " has joined QUGS",
@@ -218,81 +220,81 @@ if ($q) // if query created
 	// email member
 	mail($_POST['email'], "Welcome To QUGS",
 		 "<html>\n"
-		 . "<head>\n"
-		 . "<title>Welcome To QUGS</title>\n"
-		 . "<style>\n"
-		 . "div\n"
-		 . "{\n"
-		 . "  margin: auto;\n"
-		 . "  width: 30em;\n"
-		 . "}\n"
-		 . "h1\n"
-		 . "{\n"
-		 . "  font-size: x-large;\n"
-		 . "  text-align: center;\n"
-		 . "}\n"
-		 . "p\n"
-		 . "{\n"
-		 . "  line-height: 1.2;\n"
-		 . "  margin-top: 1.2em;\n"
-		 . "  margin-bottom: 1.2em;\n"
-		 . "  text-indent: -2em;\n"
-		 . "  padding-left: 2em;\n"
-		 . "}\n"
-		 . "table\n"
-		 . "{\n"
-		 . "  border-collapse: collapse;\n"
-		 . "  margin: auto;\n"
-		 . "}\n"
-		 . "tr:last-child\n"
-		 . "{\n"
-		 . "  border-top: solid 2px black;\n"
-		 . "  border-bottom: solid 2px black;\n"
-		 . "}\n"
-		 . "td:first-child\n"
-		 . "{\n"
-		 . "  width: 20em;\n"
-		 . "}\n"
-		 . "td:last-child\n"
-		 . "{\n"
-		 . "  width: 5em;\n"
-		 . "  text-align: right;\n"
-		 . "  vertical-align: top;\n"
-		 . "}\n"
-		 . "td\n"
-		 . "{\n"
-		 . "  border: none;\n"
-		 . "  padding: 0.5em;\n"
-		 . "}\n"
-		 . "img\n"
-		 . "{\n"
-		 . "  display: block;\n"
-		 . "  margin: auto;\n"
-		 . "  width: 20em;\n"
-		 . "}\n"
-		 . "</style>\n"
-		 . "</head>\n"
-		 . "<body>\n"
-		 . "<div>\n"
-		 . "<h1>Thank you for joining the Queensland University Games Society for 2021.</h1>\n"
-		 . "<p>Please visit our <a href=\"https://www.qugs.org.au/\">website</a> for an up-to-date calendar of our events, as well as a list of the games in the QUGS Collection. You can also follow our <a href=\"https://www.facebook.com/qldunigamesoc/\">Facebook</a> page and join our <a href=\"https://discord.com/invite/b6HndRm\">Discord</a> sever.</p>\n"
-		 . "<p>If you do not have a QUGS membership card, please show this e–mail to a committee member at a QUGS event to receive one.</p>\n"
-		 . "<table>\n"
-		 . "<tr><td>QUGS Membership, 2021<br/>&emsp;&emsp;" . $_POST['fname'] . " " . $_POST['lname'] . "</td><td>$5.00</td></tr>\n"
-		 . ($_POST['payment'] === "stripe" ? "<tr><td>Stripe Fee</td><td>$0.50</td></tr>\n" : "")
-		 . ($_POST['payment'] === "cash" ? "<tr><td>Paid (Cash)</td><td>&minus; $5.00</td></tr>\n" : "")
-		 . ($_POST['payment'] === "voucher" ? "<tr><td>Paid (UQU Voucher)</td><td>&minus; $5.00</td></tr>\n" : "")
-		 . ($_POST['payment'] === "stripe" ? "<tr><td>Paid (Stripe)<br/>&emsp;&emsp;" . $_POST['stripeToken'] . "</td><td>&minus; $5.50</td></tr>\n" : "")
-		 . "</table>\n"
-		 . "<p style=\"margin-bottom: 0.4em;\">Thank you for being a member of QUGS in 2001, and we look forward to seeing you at our events</p>\n"
-		 . "<p style=\"margin-top: 0.4em;\">Bradley (President) and the rest of the QUGS 2021 Committee</p>\n"
-		 . "<img src=\"https://www.qugs.org.au/images/logo.png\"/>\n"
-		 . "</div>\n"
-		 . "</body>\n"
-		 . "</html>\n",
+			 . "<head>\n"
+			 . "<title>Welcome To QUGS</title>\n"
+			 . "<style>\n"
+			 . "div\n"
+			 . "{\n"
+			 . "  margin: auto;\n"
+			 . "  width: 30em;\n"
+			 . "}\n"
+			 . "h1\n"
+			 . "{\n"
+			 . "  font-size: x-large;\n"
+			 . "  text-align: center;\n"
+			 . "}\n"
+			 . "p\n"
+			 . "{\n"
+			 . "  line-height: 1.2;\n"
+			 . "  margin-top: 1.2em;\n"
+			 . "  margin-bottom: 1.2em;\n"
+			 . "  text-indent: -2em;\n"
+			 . "  padding-left: 2em;\n"
+			 . "}\n"
+			 . "table\n"
+			 . "{\n"
+			 . "  border-collapse: collapse;\n"
+			 . "  margin: auto;\n"
+			 . "}\n"
+			 . "tr:last-child\n"
+			 . "{\n"
+			 . "  border-top: solid 2px black;\n"
+			 . "  border-bottom: solid 2px black;\n"
+			 . "}\n"
+			 . "td:first-child\n"
+			 . "{\n"
+			 . "  width: 20em;\n"
+			 . "}\n"
+			 . "td:last-child\n"
+			 . "{\n"
+			 . "  width: 5em;\n"
+			 . "  text-align: right;\n"
+			 . "  vertical-align: top;\n"
+			 . "}\n"
+			 . "td\n"
+			 . "{\n"
+			 . "  border: none;\n"
+			 . "  padding: 0.5em;\n"
+			 . "}\n"
+			 . "img\n"
+			 . "{\n"
+			 . "  display: block;\n"
+			 . "  margin: auto;\n"
+			 . "  width: 20em;\n"
+			 . "}\n"
+			 . "</style>\n"
+			 . "</head>\n"
+			 . "<body>\n"
+			 . "<div>\n"
+			 . "<h1>Thank you for joining the Queensland University Games Society for 2021.</h1>\n"
+			 . "<p>Please visit our <a href=\"https://www.qugs.org.au/\">website</a> for an up-to-date calendar of our events, as well as a list of the games in the QUGS Collection. You can also follow our <a href=\"https://www.facebook.com/qldunigamesoc/\">Facebook</a> page and join our <a href=\"https://discord.com/invite/b6HndRm\">Discord</a> sever.</p>\n"
+			 . "<p>If you do not have a QUGS membership card, please show this e–mail to a committee member at a QUGS event to receive one.</p>\n"
+			 . "<table>\n"
+			 . "<tr><td>QUGS Membership, 2021<br/>&emsp;&emsp;" . $_POST['fname'] . " " . $_POST['lname'] . "</td><td>$5.00</td></tr>\n"
+			 . ($_POST['payment'] === "stripe" ? "<tr><td>Stripe Fee</td><td>$0.50</td></tr>\n" : "")
+			 . ($_POST['payment'] === "cash" ? "<tr><td>Paid (Cash)</td><td>&minus; $5.00</td></tr>\n" : "")
+			 . ($_POST['payment'] === "voucher" ? "<tr><td>Paid (UQU Voucher)</td><td>&minus; $5.00</td></tr>\n" : "")
+			 . ($_POST['payment'] === "stripe" ? "<tr><td>Paid (Stripe)<br/>&emsp;&emsp;" . $_POST['stripeToken'] . "</td><td>&minus; $5.50</td></tr>\n" : "")
+			 . "</table>\n"
+			 . "<p style=\"margin-bottom: 0.4em;\">Thank you for being a member of QUGS in 2001, and we look forward to seeing you at our events</p>\n"
+			 . "<p style=\"margin-top: 0.4em;\">Bradley (President) and the rest of the QUGS 2021 Committee</p>\n"
+			 . "<img src=\"https://www.qugs.org.au/images/logo.png\"/>\n"
+			 . "</div>\n"
+			 . "</body>\n"
+			 . "</html>\n",
          array("MIME-Version" => "1.0",
 		       "Content-type" => "text/html;charset=UTF-8",
-		       "From" => "membership@qugs.org.au")
+		       "From" => "Queensland University Games Society <membership@qugs.org.au>")
 		 );
 
     echo "<style>@font-face{font-family: helv;src: url(Helv.otf);}"
