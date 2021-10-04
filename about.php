@@ -611,6 +611,7 @@ Since its inception in 2019, the winners have been:
 <li>Oct 2020: Harvey Kay&ndash;Burman <img class="ti" src="images/ti_nekro.png" title="The Nekro Virus"/></li>
 <!--li>Dec 2020: Bradley Stone <img class="ti" src="images/ti_vuilraith.png" title="The Vuil'Raith Cabal"/></li-->
 <li>May 2021: Harvey Kay&ndash;Burman <img class="ti" src="images/ti_ul.png" title="The Titans of Ul"/></li>
+<li>Oct 2021: Bradley Stone <img class="ti" src="images/ti_l1z1x.png" title="The L1Z1X Mindnet"/></li>
 </ul>
 
 <h2>&nbsp;</h2>
