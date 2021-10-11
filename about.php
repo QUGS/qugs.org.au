@@ -542,6 +542,7 @@ h1, h2
 	<li style="font-weight:bold;"><a href="minutes/m2018.pdf">2018 AGM</a></li>
 	<li style="font-weight:bold;"><a href="minutes/m2019.pdf">2019 AGM</a></li>
 	<li style="font-weight:bold;"><a href="minutes/m2020.pdf">2020 AGM</a></li>
+	<li style="font-weight:bold;"><a href="minutes/m2021.pdf">2021 AGM</a></li>
 	<br/><br/>
 </div></ul>
 
