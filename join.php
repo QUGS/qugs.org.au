@@ -188,7 +188,7 @@ if ($q) // if query created
 			"status" 			=> 	"subscribed",
 			"merge_fields"		=>	array('FNAME' => $_POST['fname'],
 										  'LNAME' => $_POST['lname']),
-			"interests"     	=> 	array('bb561b8943'  => true) //change annually
+			"interests"     	=> 	array('0c7a821d5f'  => true) //change annually //update yearly
 		]);
 	}
 	catch (GuzzleHttp\Exception\ClientException $e)
