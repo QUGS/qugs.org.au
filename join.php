@@ -183,7 +183,7 @@ if ($q) // if query created
 	]);
 	try
 	{
-		$resp = (array) $client->lists->addListMember("faba794f30", [
+		$resp = (array) $client->lists->setListMember("faba794f30", md5(strtolower($_POST['email'])), [
 			"email_address" 	=> 	$_POST['email'],
 			"status" 			=> 	"subscribed",
 			"merge_fields"		=>	array('FNAME' => $_POST['fname'],
