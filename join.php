@@ -198,7 +198,7 @@ if ($q) // if query created
 	$m = $resp["status"] == "subscribed" ? "200" : ($resp["status"].": ".$resp["title"]."\n".$resp["detail"]);
 
 	// email qugs inbox
-    mail("president@qugs.org.au", (($_POST['fname'] && $_POST['lname']) ? ($_POST['fname'] . " " . $_POST['lname']) : "Somebody") . " has joined QUGS",
+    mail("president@qugs.org", (($_POST['fname'] && $_POST['lname']) ? ($_POST['fname'] . " " . $_POST['lname']) : "Somebody") . " has joined QUGS",
          "First Name: " . ($_POST['fname'] ? $_POST['fname'] : "N/A")
          . "\nLast Name: " . ($_POST['lname'] ? $_POST['lname'] : "N/A")
          . "\nEmail: " . ($_POST['email'] ? $_POST['email'] : "N/A")
@@ -215,7 +215,7 @@ if ($q) // if query created
            ("\nStripe Token: " . ($_POST['stripeToken'] ? $_POST['stripeToken'] : "N/A")
             . "\nStripe Email: " . ($_POST['stripeEmail'] ? $_POST['stripeEmail'] : "N/A")))
         . "\nMailChimp: " . $m,
-        "From: membership@qugs.org.au");
+        "From: membership@qugs.org");
 
 	// email member
 	mail($_POST['email'], "Welcome To QUGS",
@@ -277,7 +277,7 @@ if ($q) // if query created
 			 . "<body>\n"
 			 . "<div>\n"
 			 . "<h1>Thank you for joining the Queensland University Games Society for 2022.</h1>\n" //change annually //update yearly
-			 . "<p>Please visit our <a href=\"https://www.qugs.org.au/\">website</a> for an up-to-date calendar of our events, as well as a list of the games in the QUGS Collection. You can also follow our <a href=\"https://www.facebook.com/qldunigamesoc/\">Facebook</a> page and join our <a href=\"https://discord.com/invite/b6HndRm\">Discord</a> sever.</p>\n"
+			 . "<p>Please visit our <a href=\"https://www.qugs.org/\">website</a> for an up-to-date calendar of our events, as well as a list of the games in the QUGS Collection. You can also follow our <a href=\"https://www.facebook.com/qldunigamesoc/\">Facebook</a> page and join our <a href=\"https://discord.com/invite/b6HndRm\">Discord</a> sever.</p>\n"
 			 . "<p>If you do not have a QUGS membership card, please show this e–mail to a committee member at a QUGS event to receive one.</p>\n"
 			 . "<table>\n"
 			 . "<tr><td>QUGS Membership, 2022<br/>&emsp;&emsp;" . $_POST['fname'] . " " . $_POST['lname'] . "</td><td>$5.00</td></tr>\n" //change annually //update yearly
@@ -288,13 +288,13 @@ if ($q) // if query created
 			 . "</table>\n"
 			 . "<p style=\"margin-bottom: 0.4em;\">Thank you for being a member of QUGS in 2001, and we look forward to seeing you at our events</p>\n"
 			 . "<p style=\"margin-top: 0.4em;\">Blaire (President) and the rest of the QUGS 2022 Committee</p>\n" //change annually //update yearly
-			 . "<img src=\"https://www.qugs.org.au/images/logo.png\"/>\n"
+			 . "<img src=\"https://www.qugs.org/images/logo.png\"/>\n"
 			 . "</div>\n"
 			 . "</body>\n"
 			 . "</html>\n",
          array("MIME-Version" => "1.0",
 		       "Content-type" => "text/html;charset=UTF-8",
-		       "From" => "Queensland University Games Society <membership@qugs.org.au>")
+		       "From" => "Queensland University Games Society <membership@qugs.org>")
 		 );
 
     echo "<style>@font-face{font-family: helv;src: url(Helv.otf);}"
