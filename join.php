@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         $cash = password_verify($_POST['exec'], "$2y$10$1oWCnF.MZLJfq9eUkwwEPeeatxJfbIaYpfUOBs.XvldQywtrv2eai");
         if ($cash) // if password correct
         {
-            if ($_POST['student']) // if student
+            if (isset($_POST['student'])) // if student
             {
                 $q = 'INSERT INTO Membership
                       (
@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             echo("<!--" . $e->getMessage() . "-->");
         }
         if (!$card) {} // if stripe error
-        elseif ($_POST['student']) // if not stripe error and student
+        elseif (isset($_POST['student'])) // if not stripe error and student
         {
             $q = 'INSERT INTO Membership
                   (
@@ -204,7 +204,7 @@ if ($q) // if query created
          . "\nEmail: " . ($_POST['email'] ? $_POST['email'] : "N/A")
          . "\nPhone: " . ($_POST['phone'] ? $_POST['phone'] : "N/A")
          . "\nGender: " . ($_POST['gender'] ? $_POST['gender'] : "N/A")
-         . "\nStudent: " . ($_POST['student'] ? ("Yes"
+         . "\nStudent: " . (isset($_POST['student']) ? ("Yes"
                           . "\nNumber: " . ($_POST['stuid'] ? $_POST['stuid'] : "N/A")
                           . "\nYear: " . ($_POST['year'] ? $_POST['year'] : "N/A")
                           . "\nFaculty: " . ($_POST['faculty'] ? $_POST['faculty'] : "N/A")
@@ -215,7 +215,8 @@ if ($q) // if query created
            ("\nStripe Token: " . ($_POST['stripeToken'] ? $_POST['stripeToken'] : "N/A")
             . "\nStripe Email: " . ($_POST['stripeEmail'] ? $_POST['stripeEmail'] : "N/A")))
         . "\nMailChimp: " . $m,
-        "From: membership@qugs.org");
+        "From: Queensland University Games Society <membership@qugs.org>"
+		);
 
 	// email member
 	mail($_POST['email'], "Welcome To QUGS",
