@@ -87,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     {
         require_once("stripe-php-7.34.0/init.php");
         $card = false;
+        $card_error = "";
         try
         {
             include("st.php");
@@ -103,6 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         catch (Exception $e)
         {
             echo("<!--" . $e->getMessage() . "-->");
+            $card_error = $e->getMessage();
         }
         if (!$card) {} // if stripe error
         elseif (isset($_POST['student'])) // if not stripe error and student
@@ -690,7 +692,7 @@ echo ($b ? "" : '<script>
     pay_details();
 </script>');
 echo ($cash ? "" : '<script>alert("Executive Password Incorrect.");</script>');
-echo ($card ? "" : '<script>alert("An Error Occured With Payment.\nPlease Try Again, Or Pay With Cash (In Person).");</script>');
+echo ($card ? "" : '<script>alert("An Error Occured With Payment.\nPlease Try Again, Or Pay With Cash (In Person).\nError Details: '.$card_error.'");</script>');
 ?>
 </body>
 </html>
