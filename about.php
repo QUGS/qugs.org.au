@@ -620,6 +620,7 @@ Since its inception in 2019, the winners have been:
 <li>May 2021: Harvey Kay&ndash;Burman <img class="ti" src="images/ti_ul.png" title="The Titans of Ul"/></li>
 <li>Oct 2021: Bradley Stone <img class="ti" src="images/ti_l1z1x.png" title="The L1Z1X Mindnet"/></li>
 <li>May 2022: Bradley Stone <img class="ti" src="images/ti_yssaril.png" title="The Yssaril Tribes"/></li>
+<li>Oct 2022: Bradley Stone <img class="ti" src="images/ti_creuss.png" title="The Ghosts of Creuss"/></li>
 </ul>
 
 <h2>&nbsp;</h2>
