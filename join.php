@@ -289,7 +289,7 @@ if ($q) // if query created
 			 . ($_POST['payment'] === "voucher" ? "<tr><td>Paid (UQU Voucher)</td><td>&minus; $5.00</td></tr>\n" : "")
 			 . ($_POST['payment'] === "stripe" ? "<tr><td>Paid (Stripe)<br/>&emsp;&emsp;" . $_POST['stripeToken'] . "</td><td>&minus; $5.50</td></tr>\n" : "")
 			 . "</table>\n"
-			 . "<p style=\"margin-bottom: 0.4em;\">Thank you for being a member of QUGS in 2001, and we look forward to seeing you at our events</p>\n"
+			 . "<p style=\"margin-bottom: 0.4em;\">Thank you for being a member of QUGS in 2023, and we look forward to seeing you at our events</p>\n" //change annually //update yearly
 			 . "<p style=\"margin-top: 0.4em;\">Blaire (President) and the rest of the QUGS 2023 Committee</p>\n" //change annually //update yearly
 			 . "<img src=\"https://www.qugs.org/images/logo.png\"/>\n"
 			 . "</div>\n"
