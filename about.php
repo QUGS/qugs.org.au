@@ -621,6 +621,7 @@ Since its inception in 2019, the winners have been:
 <li>Oct 2021: Bradley Stone <img class="ti" src="images/ti_l1z1x.png" title="The L1Z1X Mindnet"/></li>
 <li>May 2022: Bradley Stone <img class="ti" src="images/ti_yssaril.png" title="The Yssaril Tribes"/></li>
 <li>Oct 2022: Bradley Stone <img class="ti" src="images/ti_creuss.png" title="The Ghosts of Creuss"/></li>
+<li>May 2023: Bradley Stone <img class="ti" src="images/ti_argent.png" title="The Argent Flight"/></li>
 </ul>
 
 <h2>&nbsp;</h2>
