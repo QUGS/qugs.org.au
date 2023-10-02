@@ -622,6 +622,7 @@ Since its inception in 2019, the winners have been:
 <li>May 2022: Bradley Stone <img class="ti" src="images/ti_yssaril.png" title="The Yssaril Tribes"/></li>
 <li>Oct 2022: Bradley Stone <img class="ti" src="images/ti_creuss.png" title="The Ghosts of Creuss"/></li>
 <li>May 2023: Bradley Stone <img class="ti" src="images/ti_argent.png" title="The Argent Flight"/></li>
+<li>Oct 2023: Harvey Kay&ndash;Burman <img class="ti" src="images/ti_sol.png" title="The Federation of Sol"/></li>
 </ul>
 
 <h2>&nbsp;</h2>
