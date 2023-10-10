@@ -492,6 +492,12 @@ h1, h2
     <td>Alexa Baxter</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td></tr>
+<tr><td>2023</td>
+    <td>Blaire Alexander&ndash;Gordon</td>
+    <td>Noah Kneipp</td>
+    <td>Alexa Baxter</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td></tr>
 </table>
 <div class="column2"><sup>A</sup> Acting officer.<br/>
 <sup>C</sup> Custodian.<br/>
