@@ -190,7 +190,7 @@ if ($q) // if query created
 			"status" 			=> 	"subscribed",
 			"merge_fields"		=>	array('FNAME' => $_POST['fname'],
 										  'LNAME' => $_POST['lname']),
-			"interests"     	=> 	array('bbadfe9407'  => true) //change annually //update yearly
+			"interests"     	=> 	array('385300f2cd'  => true) //change annually //update yearly
 		]);
 	}
 	catch (GuzzleHttp\Exception\ClientException $e)
@@ -279,18 +279,18 @@ if ($q) // if query created
 			 . "</head>\n"
 			 . "<body>\n"
 			 . "<div>\n"
-			 . "<h1>Thank you for joining the Queensland University Games Society for 2023.</h1>\n" //change annually //update yearly
+			 . "<h1>Thank you for joining the Queensland University Games Society for 2024.</h1>\n" //change annually //update yearly
 			 . "<p>Please visit our <a href=\"https://www.qugs.org/\">website</a> for an up-to-date calendar of our events, as well as a list of the games in the QUGS Collection. You can also follow our <a href=\"https://www.facebook.com/qldunigamesoc/\">Facebook</a> page and join our <a href=\"https://discord.com/invite/b6HndRm\">Discord</a> sever.</p>\n"
 			 . "<p>If you do not have a QUGS membership card, please show this e–mail to a committee member at a QUGS event to receive one.</p>\n"
 			 . "<table>\n"
-			 . "<tr><td>QUGS Membership, 2023<br/>&emsp;&emsp;" . $_POST['fname'] . " " . $_POST['lname'] . "</td><td>$5.00</td></tr>\n" //change annually //update yearly
+			 . "<tr><td>QUGS Membership, 2024<br/>&emsp;&emsp;" . $_POST['fname'] . " " . $_POST['lname'] . "</td><td>$5.00</td></tr>\n" //change annually //update yearly
 			 . ($_POST['payment'] === "stripe" ? "<tr><td>Stripe Fee</td><td>$0.50</td></tr>\n" : "")
 			 . ($_POST['payment'] === "cash" ? "<tr><td>Paid (Cash)</td><td>&minus; $5.00</td></tr>\n" : "")
 			 . ($_POST['payment'] === "voucher" ? "<tr><td>Paid (UQU Voucher)</td><td>&minus; $5.00</td></tr>\n" : "")
 			 . ($_POST['payment'] === "stripe" ? "<tr><td>Paid (Stripe)<br/>&emsp;&emsp;" . $_POST['stripeToken'] . "</td><td>&minus; $5.50</td></tr>\n" : "")
 			 . "</table>\n"
-			 . "<p style=\"margin-bottom: 0.4em;\">Thank you for being a member of QUGS in 2023, and we look forward to seeing you at our events</p>\n" //change annually //update yearly
-			 . "<p style=\"margin-top: 0.4em;\">Blaire (President) and the rest of the QUGS 2023 Committee</p>\n" //change annually //update yearly
+			 . "<p style=\"margin-bottom: 0.4em;\">Thank you for being a member of QUGS in 2024, and we look forward to seeing you at our events</p>\n" //change annually //update yearly
+			 . "<p style=\"margin-top: 0.4em;\">Blaire (President) and the rest of the QUGS 2024 Committee</p>\n" //change annually //update yearly
 			 . "<img src=\"https://www.qugs.org/images/logo.png\"/>\n"
 			 . "</div>\n"
 			 . "</body>\n"
@@ -610,7 +610,9 @@ function stripecheck()
             <option value="" selected>&ensp;&mdash;&ensp;Select an Option&ensp;&mdash;&ensp;</option>
             <option value="<?php echo ($gen ? "m" : "f");?>"><?php echo ($gen ? "Male" : "Female");?></option>
             <option value="<?php echo ($gen ? "f" : "m");?>"><?php echo ($gen ? "Female" : "Male");?></option>
+            <option value="n">Non-Binary</option>
             <option value="o">Other</option>
+            <option value="p">Prefer Not To Answer</option>
         </select></td></tr>
     <tr><td>UQ Student:</td>
         <td><input type="checkbox" name="student" id="student" checked onChange="uq_details()" value="1"/></td></tr>
