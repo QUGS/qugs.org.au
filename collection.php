@@ -259,73 +259,79 @@ function table()
     // Each game will have a name, a range of players, a time, a BGG rating, a BGG ID, and one or more owners
     var details = [];
     // Perform a BGG API call on all games
-    var bgg_gam = new XMLHttpRequest();
-    // Creates a string of BGG game IDs, seperated by commas (with a final comma to be removed)
-    var arg = "";
-    for (var j = 0; j < games.length; j++)
-    {
-        arg += games[j].id+",";
-    }
+    var bgg_gam = [];
     // Get all details on all games
-    bgg_gam.open("GET", "https://www.boardgamegeek.com/xmlapi2/thing?id="+arg.slice(0, -1)+"&stats=1");
-    bgg_gam.onreadystatechange=function()
-    {
-        // If API call sucsessful
-        if (bgg_gam.readyState === 4 && bgg_gam.status === 200)
-        {
-            // Create array of games ("items") from API response
-            var bgg_list = bgg_gam.responseXML.getElementsByTagName("item");
-            for (var i = 0; i < bgg_list.length; i++)
-            {
-                // Create new object for a game, and add object attributes
-                var g = {};
-                g.name = bgg_list[i].getElementsByTagName("name")[0].getAttribute("value");
-                g.minp = parseInt(bgg_list[i].getElementsByTagName("minplayers")[0].getAttribute("value"));
-                g.maxp = parseInt(bgg_list[i].getElementsByTagName("maxplayers")[0].getAttribute("value"));
-                g.time = parseInt(bgg_list[i].getElementsByTagName("playingtime")[0].getAttribute("value"));
-                // Use the Bayesian average ("Geekscore"), gives suppressed results for games with few ratings
-                g.rate = parseFloat(bgg_list[i].getElementsByTagName("bayesaverage")[0].getAttribute("value"));
-                g.id = bgg_list[i].getAttribute("id");
-                // Lists owners of game, with line breaks for two or more owners
-                for (var j = 0; j < games.length; j++)
-                {
-                    if (games[j].id === parseInt(bgg_list[i].getAttribute("id")))
-                    {
-                        g.owner = games[j].owner[0];
-                        for (var k = 1; k < games[j].owner.length; k++)
-                        {
-                            g.owner += "<br/>" + games[j].owner[k];
-                        }
-                        break;
-                    }
-                }
-                details.push(g);
-            }
-            // Sorts list of games by name, ignoring "the " and "a "
-            details.sort(game_comp);
-            // Header of table
-            var out = "<table class=\"collect\"><tr><td>Game</td><td>Players</td><td>Time</td><td>BGG Rating</td><td>Discord</td></tr>\n"
-            // For every game, add a row
-            for (var i = 0; i < details.length; i++)
-            {
-                var g = details[i];
-                out += "<tr><td><a href=https://boardgamegeek.com/boardgame/"+g.id+">"+g.name+"</a></td>"
-                       + "<td>"+g.minp+(g.minp === g.maxp ? "" : "-"+g.maxp)+"</td>"
-                       + "<td>"+(g.time >= 60 ? ((g.time/60)|0) + " hr " : "")+(g.time%60 === 0 ? "" : g.time%60+ " min")+"</td>"
-                       + (g.rate === 0 ? "<td style='color:#808080;'>N/A</td>" : "<td>"+g.rate.toFixed(2)+"</td>")
-                       + "<td>"+g.owner+"</td></tr>\n";
-            }
-            out += "</table>";
-            document.getElementById("tab").innerHTML = out;
+	var index = 0;
+	while (index < games.length)
+	{
+		// Creates a string of BGG game IDs, seperated by commas (with a final comma to be removed)
+		var arg = "";
+		for (var j = 0; j < 20 && j+index < games.length; j++)
+		{
+			arg += games[index+j].id+",";
+		}
+		bgg_gam = new XMLHttpRequest();
+		bgg_gam.open("GET", "https://www.boardgamegeek.com/xmlapi2/thing?id="+arg.slice(0, -1)+"&stats=1");
+		bgg_gam.onreadystatechange=function()
+		{
+			// If API call sucsessful
+			if (this.readyState === 4 && this.status === 200)
+			{
+				// Create array of games ("items") from API response
+				var bgg_list = this.responseXML.getElementsByTagName("item");
+				for (var i = 0; i < bgg_list.length; i++)
+				{
+					// Create new object for a game, and add object attributes
+					var g = {};
+					g.name = bgg_list[i].getElementsByTagName("name")[0].getAttribute("value");
+					g.minp = parseInt(bgg_list[i].getElementsByTagName("minplayers")[0].getAttribute("value"));
+					g.maxp = parseInt(bgg_list[i].getElementsByTagName("maxplayers")[0].getAttribute("value"));
+					g.time = parseInt(bgg_list[i].getElementsByTagName("playingtime")[0].getAttribute("value"));
+					// Use the Bayesian average ("Geekscore"), gives suppressed results for games with few ratings
+					g.rate = parseFloat(bgg_list[i].getElementsByTagName("bayesaverage")[0].getAttribute("value"));
+					g.id = bgg_list[i].getAttribute("id");
+					// Lists owners of game, with line breaks for two or more owners
+					for (var j = 0; j < games.length; j++)
+					{
+						if (games[j].id === parseInt(bgg_list[i].getAttribute("id")))
+						{
+							g.owner = games[j].owner[0];
+							for (var k = 1; k < games[j].owner.length; k++)
+							{
+								g.owner += "<br/>" + games[j].owner[k];
+							}
+							break;
+						}
+					}
+					details.push(g);
+				}
+				// Sorts list of games by name, ignoring "the " and "a "
+				details.sort(game_comp);
+				// Header of table
+				var out = "<table class=\"collect\"><tr><td>Game</td><td>Players</td><td>Time</td><td>BGG Rating</td><td>Discord</td></tr>\n"
+				// For every game, add a row
+				for (var i = 0; i < details.length; i++)
+				{
+					var g = details[i];
+					out += "<tr><td><a href=https://boardgamegeek.com/boardgame/"+g.id+">"+g.name+"</a></td>"
+						   + "<td>"+g.minp+(g.minp === g.maxp ? "" : "-"+g.maxp)+"</td>"
+						   + "<td>"+(g.time >= 60 ? ((g.time/60)|0) + " hr " : "")+(g.time%60 === 0 ? "" : g.time%60+ " min")+"</td>"
+						   + (g.rate === 0 ? "<td style='color:#808080;'>N/A</td>" : "<td>"+g.rate.toFixed(2)+"</td>")
+						   + "<td>"+g.owner+"</td></tr>\n";
+				}
+				out += "</table>";
+				document.getElementById("tab").innerHTML = out;
 
-        }
-        // If BGG gives the "try again later" status, try again later
-        else if (bgg_gam.readyState === 4 && bgg_gam.status === 202)
-        {
-            bgg_gam.send();
-        }
-    }
-    bgg_gam.send();
+			}
+			// If BGG gives the "try again later" status, try again later
+			else if (this.readyState === 4 && this.status === 202)
+			{
+				this.send();
+			}
+		}
+		bgg_gam.send();
+		index += 20;
+	}
 }
 
 // Compares the name of two games, dropping "the" and "a "
@@ -345,34 +351,36 @@ ratbypass = true;
 function ratings()
 {
     // Performs a BGG API call on all games the club owns
-    var bgg_rat = new XMLHttpRequest();
-    bgg_rat.open("GET", "https://www.boardgamegeek.com/xmlapi2/thing?id="+QUGSid.join()+"&stats=1");
-    bgg_rat.onreadystatechange=function()
-    {
-        // If API call sucsessful
-        if (bgg_rat.readyState === 4 && bgg_rat.status === 200)
-        {
-            // Create array of games ("items") from API response
-            var bgg_list = bgg_rat.responseXML.getElementsByTagName("item");
-            // For every game, get the Bayesian average ("Geekscore"), and insert it into the appropriate cell of the table
-            for (var i = 0; i < bgg_list.length; i++)
-            {
-                r = parseFloat(bgg_list[i].getElementsByTagName("bayesaverage")[0].getAttribute("value"))
-                document.getElementById("s"+bgg_list[i].getAttribute("id")).outerHTML = (r === 0 ? "<td style='color:#808080;'>N/A</td>" : "<td>"+r.toFixed(2)+"</td>");
-                ratfilt[bgg_list[i].getAttribute("id")] = r;
-            }
-            ratbypass = false;
-            // Make "BGG Rating" clickable to show filter
-            document.getElementById("BGGrat").outerHTML = "<td style=\"text-decoration:underline;\" onClick=\"rateform = !rateform; document.getElementById('rateform').style.display = rateform ? 'inline' : 'none'; if (!rateform) {document.getElementById('ratemin').value=0;document.getElementById('ratemax').value=12;raterfilter();}\">BGG Rating</td>";
-        }
-        // If BGG gives the "try again later" status, try again later
-        else if (bgg_rat.readyState === 4 && bgg_rat.status === 202)
-        {
-            bgg_rat.send()
-        }
-    }
-    bgg_rat.send();
-
+	for (var index = 0; index < QUGSid.length; index+=20)
+	{
+		var bgg_rat = new XMLHttpRequest();
+		bgg_rat.open("GET", "https://www.boardgamegeek.com/xmlapi2/thing?id="+QUGSid.slice(index, index+20).join()+"&stats=1");
+		bgg_rat.onreadystatechange=function()
+		{
+			// If API call sucsessful
+			if (this.readyState === 4 && this.status === 200)
+			{
+				// Create array of games ("items") from API response
+				var bgg_list = this.responseXML.getElementsByTagName("item");
+				// For every game, get the Bayesian average ("Geekscore"), and insert it into the appropriate cell of the table
+				for (var i = 0; i < bgg_list.length; i++)
+				{
+					r = parseFloat(bgg_list[i].getElementsByTagName("bayesaverage")[0].getAttribute("value"))
+					document.getElementById("s"+bgg_list[i].getAttribute("id")).outerHTML = (r === 0 ? "<td style='color:#808080;'>N/A</td>" : "<td>"+r.toFixed(2)+"</td>");
+					ratfilt[bgg_list[i].getAttribute("id")] = r;
+				}
+				ratbypass = false;
+				// Make "BGG Rating" clickable to show filter
+				document.getElementById("BGGrat").outerHTML = "<td style=\"text-decoration:underline;\" onClick=\"rateform = !rateform; document.getElementById('rateform').style.display = rateform ? 'inline' : 'none'; if (!rateform) {document.getElementById('ratemin').value=0;document.getElementById('ratemax').value=12;raterfilter();}\">BGG Rating</td>";
+			}
+			// If BGG gives the "try again later" status, try again later
+			else if (this.readyState === 4 && this.status === 202)
+			{
+				this.send()
+			}
+		}
+		bgg_rat.send();
+	}
 }
 
 // Filter forms visibilities
