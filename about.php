@@ -639,6 +639,8 @@ Since its inception in 2019, the winners have been:
 <li>May 2024: Bradley Stone <img class="ti" src="images/ti_vuilraith.png" title="The Vuil'raith Cabal"/></li>
 <li style="list-style-type: none;">&nbsp;</li>
 <li>May 2025: Andy Chen <img class="ti" src="images/ti_jolnar.png" title="The Universities of Jol&ndash;Nar"/></li>
+<li style="list-style-type: none;">&nbsp;</li>
+<li>May 2026: Kibo Liang <img class="ti" src="images/ti_saar.png" title="The Clan of Saar"/></li>
 </ul>
 
 <h2>&nbsp;</h2>
