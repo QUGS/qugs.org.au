@@ -274,7 +274,6 @@ function table()
 		}
 		bgg_gam = new XMLHttpRequest();
 		bgg_gam.open("GET", "/bgg.php?command=thing&id="+arg.slice(0, -1)+"&stats=1");
-		bgg_gam.setRequestHeader("Authorization", "Bearer a6eda3b2-0202-42da-9b15-64e6ccfa1ed7");
 		bgg_gam.onreadystatechange=function()
 		{
 			// If API call sucsessful
