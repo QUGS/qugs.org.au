@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: https://www.boardgamegeek.com');
 include("db.php");
 
 $maint_sub = false;
@@ -202,7 +203,8 @@ function collect()
     var m = memb.shift();
     var bgg_req = new XMLHttpRequest();
     // Get the abbreviated details of games the member owns, excluding expansions,
-    bgg_req.open("GET", "https://www.boardgamegeek.com/xmlapi2/collection?username="+m.bgg+"&brief=1&own=1&excludesubtype=boardgameexpansion");
+	bgg_req.open("GET", "/bgg.php?command=collection&username="+m.bgg+"&brief=1&own=1&excludesubtype=boardgameexpansion");
+	bgg_req.setRequestHeader("Content-Type", "text/plain");
     bgg_req.onreadystatechange=function()
     {
         // If API call sucsessful
@@ -271,7 +273,8 @@ function table()
 			arg += games[index+j].id+",";
 		}
 		bgg_gam = new XMLHttpRequest();
-		bgg_gam.open("GET", "https://www.boardgamegeek.com/xmlapi2/thing?id="+arg.slice(0, -1)+"&stats=1");
+		bgg_gam.open("GET", "/bgg.php?command=thing&id="+arg.slice(0, -1)+"&stats=1");
+		bgg_gam.setRequestHeader("Authorization", "Bearer a6eda3b2-0202-42da-9b15-64e6ccfa1ed7");
 		bgg_gam.onreadystatechange=function()
 		{
 			// If API call sucsessful
@@ -354,7 +357,7 @@ function ratings()
 	for (var index = 0; index < QUGSid.length; index+=20)
 	{
 		var bgg_rat = new XMLHttpRequest();
-		bgg_rat.open("GET", "https://www.boardgamegeek.com/xmlapi2/thing?id="+QUGSid.slice(index, index+20).join()+"&stats=1");
+		bgg_rat.open("GET", "/bgg.php?command=thing&id="+QUGSid.slice(index, index+20).join()+"&stats=1");
 		bgg_rat.onreadystatechange=function()
 		{
 			// If API call sucsessful
